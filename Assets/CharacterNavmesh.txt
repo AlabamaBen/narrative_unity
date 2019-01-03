@@ -1,0 +1,5 @@
+Solution plugin : https://assetstore.unity.com/packages/tools/ai/polynav-2d-pathfinding-14718
+
+Solution custom, faire son propre navmesh à base de collider de polygone
+
+Solution cheaté : utiliser le navmesh 3D sur de la 2D, billboard le perso pour qu'il soit face à la camera.

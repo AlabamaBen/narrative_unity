@@ -5,9 +5,11 @@ using UnityEngine;
 // This script has to be attached in the (walking) collider sprite
 // A Polygin Collider 2D must also be attached to detect mouse click
 public class PAndCMovementManager : MonoBehaviour {
+    [SerializeField]
+    private PlayerMovement playerMovement;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -18,11 +20,10 @@ public class PAndCMovementManager : MonoBehaviour {
 
     private void OnMouseUp()
     {
-        Debug.Log("in");
     }
 
     private void OnMouseDown()
     {
-
+        playerMovement.Move();
     }
 }
