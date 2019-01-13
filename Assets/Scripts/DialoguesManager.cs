@@ -66,6 +66,7 @@ public class DialoguesManager : MonoBehaviour {
             }
             else
             {
+                dialogueSequenceTemp.Add(tempObject);
                 allDialogues.Add(dialogueSequenceTemp);
                 dialogueSequenceTemp = new List<DataObject>();
                 compteur++;
@@ -76,21 +77,13 @@ public class DialoguesManager : MonoBehaviour {
 
         sequenceIndex = 0;
         dialogueIndex = 0;
-
-        Debug.Log("allDialogues.Count " + allDialogues[0].Count);
-        Debug.Log("allDialogues.Count " + allDialogues[1].Count);
-        Debug.Log("allDialogues.Count " + allDialogues[2].Count);
-
+        
         /*
-        foreach (KeyValuePair<string,DataObject> obj in csvDataDict)
+        foreach(var obj in allDialogues)
         {
-            Debug.Log(obj.Key + " : " + obj.Value.ToString());
-        }
-        foreach (Transform childGroup in this.transform)
-        {
-            foreach (Transform childElement in childGroup)
+            foreach(var obj2 in obj)
             {
-                Debug.Log(childElement.name);
+                Debug.Log(obj2.dialogue);
             }
         }*/
     }
@@ -101,11 +94,6 @@ public class DialoguesManager : MonoBehaviour {
         {
             if(sequenceIndex< allDialogues.Count)
             {
-                //Debug.Log("sequenceIndex " + sequenceIndex);
-                Debug.Log("dialogueIndex " + dialogueIndex);
-
-                Debug.Log("sequenceIndex " + sequenceIndex);
-
                 nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
                 boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
 
