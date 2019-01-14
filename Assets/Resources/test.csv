@@ -1,0 +1,10 @@
+Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue)
+0;Alex;Pourquoi je m'inflige ça moi ?;;1;
+0;Alex;Il est quelle heure ?;;1;
+1;Alex;Mais qu'est ce que c'est que ce truc par contre ?;;1;
+1;Alex;Wouaw elle est incroyable cette bague, enfin si on la nettoie un peu.;;1;
+1;Alex;Olala mais je suis encore mal c'est pas possible, il est sortie d'où ce chat ?;;1;
+1;Natyahs;Ou est ce que tu vois un chat ?;;1;
+1;Alex;Qui vient de parler ? Je deviens folle ?;;1;
+2;Alex;Oh non non non pas maintenant !!;;1;
+2;Natyahs;Ah bah ça c'est dommage je l'avais pas vu venir.;;1;

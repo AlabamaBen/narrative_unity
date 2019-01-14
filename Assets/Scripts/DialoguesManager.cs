@@ -25,9 +25,16 @@ public class DialoguesManager : MonoBehaviour {
         // Init Data
         allDialogues = new List<List<DataObject>>();
 
+        //Get the path of the Game data folder
+        string  m_Path = Application.dataPath + "/Resources/test.csv";
+
+        //Output the Game data path to the console
+        Debug.Log("Path : " + m_Path);
+
         // Care not to open the csv file (in excel or other app) when launching script
         // Check that your file is UTF 8 encoded 
-        StreamReader reader = new StreamReader(@"C:\Users\TARA\Desktop\test.csv");
+        StreamReader reader = new StreamReader(m_Path);
+
 
         string line;
 
