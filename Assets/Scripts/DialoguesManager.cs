@@ -48,7 +48,7 @@ public class DialoguesManager : MonoBehaviour {
         string m_Path = Application.dataPath + "/Resources/test.csv";
 
         //Output the Game data path to the console
-        Debug.Log("Path : " + m_Path);
+        //Debug.Log("Path : " + m_Path);
 
         // Care not to open the csv file (in excel or other app) when launching script
         // Check that your file is UTF 8 encoded 
@@ -121,8 +121,8 @@ public class DialoguesManager : MonoBehaviour {
         bool sequenceIsFinished = false;
         if (sequenceIndex < allDialogues.Count)
         {
-            Debug.Log("sequenceIndex " + sequenceIndex);
-            Debug.Log("dialogueIndex " + dialogueIndex);
+            //Debug.Log("sequenceIndex " + sequenceIndex);
+            //Debug.Log("dialogueIndex " + dialogueIndex);
             nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
             boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
 

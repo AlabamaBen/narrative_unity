@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
                 {
                     if (Input.anyKeyDown) // next on boite de dialogue
                     {
-                        Debug.Log("INTRO");
+                        // Debug.Log("INTRO");
                         dialoguesSeqFinished = DialoguesManager.instance.DisplaySequenceDialogues();
                     }
                 }
@@ -45,10 +45,36 @@ public class GameManager : MonoBehaviour {
                     Debug.Log("INTRO FINISHED");
                     step++;
                     dialoguesSeqFinished = false;
+
+                    // Init next step
+                    ClickableObjetManager.instance.startPAndClick = true;
+                    ClickableObjetManager.instance.finishedPAndCStep = false;
                 }
                 break;
             case 1:
-                Debug.Log("PHASE 01 POINT AND CLICK");
+                if (ClickableObjetManager.instance.finishedPAndCStep)
+                {
+                    Debug.Log("PHASE 01 POINT AND CLICK finished");
+                    ClickableObjetManager.instance.finishedPAndCStep = false;
+                }
+                break;
+            case 2:
+                if (!dialoguesSeqFinished)
+                {
+                    if (Input.anyKeyDown) // next on boite de dialogue
+                    {
+
+                        dialoguesSeqFinished = DialoguesManager.instance.DisplaySequenceDialogues();
+                    }
+                }
+                else
+                {
+                    Debug.Log("INTRO FINISHED");
+                    step++;
+                    dialoguesSeqFinished = false;
+
+                    // Init next step
+                }
                 break;
         }
     }

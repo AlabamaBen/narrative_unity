@@ -40,12 +40,15 @@ public class ClickableObjetManager : MonoBehaviour {
     
     public void ObjectClicked(ClickableObject obj)
     {
+        Debug.Log(obj.gameObject.name);
         switch (phase)
         {
             case 0:
-                if (!finishedPAndCStep && obj.gameObject.name == "Malle")
+                if (startPAndClick && !finishedPAndCStep && obj.gameObject.name == "Boite")
                 {
+                    Debug.Log("OUI");
                     finishedPAndCStep = true;
+                    startPAndClick = false;
                 }
                 break;
             case 1:

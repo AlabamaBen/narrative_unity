@@ -23,7 +23,7 @@ public class ClickableObject : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
     }
 
