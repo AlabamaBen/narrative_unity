@@ -52,24 +52,25 @@ public class GameManager : MonoBehaviour {
                 }
                 break;
             case 1:
+                break;
+            case 2:
                 if (ClickableObjetManager.instance.finishedPAndCStep)
                 {
                     Debug.Log("PHASE 01 POINT AND CLICK finished");
+                    step++;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
                 }
                 break;
-            case 2:
+            case 3:
                 if (!dialoguesSeqFinished)
                 {
                     if (Input.anyKeyDown) // next on boite de dialogue
                     {
-
                         dialoguesSeqFinished = DialoguesManager.instance.DisplaySequenceDialogues();
                     }
                 }
                 else
                 {
-                    Debug.Log("INTRO FINISHED");
                     step++;
                     dialoguesSeqFinished = false;
 
