@@ -19,10 +19,11 @@ public class DialoguesManager : MonoBehaviour {
 
     public int sequenceIndex;
     public int dialogueIndex;
+    public bool startDialogue;
 
     private string str;
-    public float speed;
     public static DialoguesManager instance = null;
+    private bool textDisplayed;
 
     private void Awake()
     {
@@ -40,7 +41,7 @@ public class DialoguesManager : MonoBehaviour {
     {
         // Init Data
         InitCsvParser();
-        Invoke("DisplayText", 3f);
+        startDialogue = false;
     }
 
     private void InitCsvParser()
@@ -119,6 +120,14 @@ public class DialoguesManager : MonoBehaviour {
         }*/
     }
 
+    public void ClickOnNextDialogue()
+    {
+        if (startDialogue&& !textDisplayed)
+        {
+            GameManager.instance.dialoguesSeqFinished = DisplaySequenceDialogues();
+        }
+    }
+
     public bool DisplaySequenceDialogues()
     {
         bool sequenceIsFinished = false;
@@ -127,7 +136,8 @@ public class DialoguesManager : MonoBehaviour {
             //Debug.Log("sequenceIndex " + sequenceIndex);
             //Debug.Log("dialogueIndex " + dialogueIndex);
             nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
-            boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
+            StartCoroutine(AnimateText(allDialogues[sequenceIndex][dialogueIndex].dialogue, 0.02F));
+            //boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
 
             if (dialogueIndex < allDialogues[sequenceIndex].Count-1)
             {
@@ -149,23 +159,25 @@ public class DialoguesManager : MonoBehaviour {
 
     public void SetDialogueBox(string _nomInterlocuteur, string _boiteDialogue)
     {
-        nomInterlocuteur.text = _nomInterlocuteur;
-        boiteDialogue.text = _boiteDialogue;
+        if (!textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
+        {
+            nomInterlocuteur.text = _nomInterlocuteur;
+            StartCoroutine(AnimateText(_boiteDialogue, 0.02F));
+        }
     }
     
-    IEnumerator AnimateText(string strComplete)
+    IEnumerator AnimateText(string strComplete,float speed)
     {
+        textDisplayed = true;
         int i = 0;
         str = "";
         while (i < strComplete.Length)
         {
             str += strComplete[i++];
             boiteDialogue.text = str;
-            yield return new WaitForSeconds(0.12F);
+            yield return new WaitForSeconds(speed);
         }
+        textDisplayed = false;
     }
-    public void DisplayText()
-    {
-        StartCoroutine(AnimateText("Ceci est un test"));
-    }
+    
 }

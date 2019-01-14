@@ -34,15 +34,12 @@ public class GameManager : MonoBehaviour {
             case 0:
                 if (!dialoguesSeqFinished)
                 {
-                    if (Input.anyKeyDown) // next on boite de dialogue
-                    {
-                        // Debug.Log("INTRO");
-                        dialoguesSeqFinished = DialoguesManager.instance.DisplaySequenceDialogues();
-                    }
+                    if (!DialoguesManager.instance.startDialogue)
+                        DialoguesManager.instance.startDialogue = true;
                 }
-                else
-                {
+                else{
                     Debug.Log("INTRO FINISHED");
+                    DialoguesManager.instance.startDialogue = false;
                     step++;
                     dialoguesSeqFinished = false;
 
