@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
             case 0:
                 if (!dialoguesSeqFinished)
                 {
-                    if (Input.anyKeyDown)
+                    if (Input.anyKeyDown) // next on boite de dialogue
                     {
                         Debug.Log("INTRO");
                         dialoguesSeqFinished = DialoguesManager.instance.DisplaySequenceDialogues();
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour {
                 {
                     Debug.Log("INTRO FINISHED");
                     step++;
+                    dialoguesSeqFinished = false;
                 }
                 break;
             case 1:

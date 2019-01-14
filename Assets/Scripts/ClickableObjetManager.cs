@@ -9,13 +9,48 @@ public class ClickableObjetManager : MonoBehaviour {
 
     private List<ClickableObject> clickableObjets;
 
-	// Use this for initialization
-	void Start () {
+    public static ClickableObjetManager instance = null;
+
+    public bool finishedPAndCStep;
+    public bool startPAndClick;
+
+    // Use this for initialization
+    void Awake()
+    {
+        //Check if instance already exists
+        if (instance == null)
+            //if not, set instance to this
+            instance = this;
+        //If instance already exists and it's not this:
+        else if (instance != this)
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);
+    }
+
+    // Use this for initialization
+    void Start () {
         foreach (GameObject obj in pointAndClickSet)
         {
             obj.SetActive(false);
         }
         pointAndClickSet[0].SetActive(true);
+        finishedPAndCStep = true;
+        startPAndClick = false;
+    }
+    
+    public void ObjectClicked(ClickableObject obj)
+    {
+        switch (phase)
+        {
+            case 0:
+                if (!finishedPAndCStep && obj.gameObject.name == "Malle")
+                {
+                    finishedPAndCStep = true;
+                }
+                break;
+            case 1:
+                break;
+        }
     }
 	
 	// Update is called once per frame

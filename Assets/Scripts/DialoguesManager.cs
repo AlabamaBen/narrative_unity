@@ -38,67 +38,10 @@ public class DialoguesManager : MonoBehaviour {
     {
         // Init Data
         InitCsvParser();
-
-    }
-
-    private void Update()
-    {
-        if (false) // Input.anyKeyDown
-        {
-            if (sequenceIndex < allDialogues.Count)
-            {
-                nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
-                boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
-
-                if (dialogueIndex < allDialogues[sequenceIndex].Count - 1)
-                {
-                    dialogueIndex++;
-                }
-                else
-                {
-                    sequenceIndex++;
-                    dialogueIndex = 0;
-                }
-
-            }
-            else
-            {
-                Debug.Log("Fin des dialogues");
-            }
-        }
-    }
-
-    public bool DisplaySequenceDialogues()
-    {
-        bool sequenceIsFinished = false;
-        if (sequenceIndex < allDialogues.Count)
-        {
-            Debug.Log("sequenceIndex " + sequenceIndex);
-            Debug.Log("dialogueIndex " + dialogueIndex);
-            nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
-            boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
-
-            if (dialogueIndex < allDialogues[sequenceIndex].Count - 1)
-            {
-                dialogueIndex++;
-            }
-            else
-            {
-                sequenceIndex++;
-                dialogueIndex = 0;
-                sequenceIsFinished = false;
-            }
-        }
-        else
-        {
-            Debug.Log("Fin des dialogues");
-        }
-        return sequenceIsFinished;
     }
 
     private void InitCsvParser()
     {
-
         allDialogues = new List<List<DataObject>>();
 
         //Get the path of the Game data folder
@@ -149,9 +92,9 @@ public class DialoguesManager : MonoBehaviour {
             }
             else
             {
-                dialogueSequenceTemp.Add(tempObject);
                 allDialogues.Add(dialogueSequenceTemp);
                 dialogueSequenceTemp = new List<DataObject>();
+                dialogueSequenceTemp.Add(tempObject);
                 compteur++;
             }
 
@@ -162,15 +105,45 @@ public class DialoguesManager : MonoBehaviour {
         dialogueIndex = 0;
 
         /*
-        foreach(var obj in allDialogues)
+        for(int i= 0; i<allDialogues.Count;i ++)
         {
-            foreach(var obj2 in obj)
+            Debug.Log("sequence index " + i);
+            for (int j = 0; j < allDialogues[i].Count; j++)
             {
-                Debug.Log(obj2.dialogue);
+                Debug.Log("dialogue index " + j);
+                Debug.Log(allDialogues[i][j].dialogue);
             }
         }*/
     }
-    
+
+    public bool DisplaySequenceDialogues()
+    {
+        bool sequenceIsFinished = false;
+        if (sequenceIndex < allDialogues.Count)
+        {
+            Debug.Log("sequenceIndex " + sequenceIndex);
+            Debug.Log("dialogueIndex " + dialogueIndex);
+            nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
+            boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
+
+            if (dialogueIndex < allDialogues[sequenceIndex].Count-1)
+            {
+                dialogueIndex++;
+            }
+            else
+            {
+                sequenceIndex++;
+                dialogueIndex = 0;
+                sequenceIsFinished = true;
+            }
+        }
+        else
+        {
+            Debug.Log("Fin des dialogues");
+        }
+        return sequenceIsFinished;
+    }
+
     public void SetDialogueBox(string _nomInterlocuteur, string _boiteDialogue)
     {
         nomInterlocuteur.text = _nomInterlocuteur;
