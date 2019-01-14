@@ -7,10 +7,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DialoguesManager : MonoBehaviour {
+    public List<DataObject> dialogueSequenceTemp;
     [SerializeField]
-    private List<DataObject> dialogueSequenceTemp;
-    [SerializeField]
-    private List<List<DataObject>> allDialogues;
+    public List<List<DataObject>> allDialogues;
 
     [SerializeField]
     private Text nomInterlocuteur;
@@ -19,14 +18,35 @@ public class DialoguesManager : MonoBehaviour {
 
     private int sequenceIndex;
     private int dialogueIndex;
-    // Use this for initialization
-    void Start()
+
+    public DialoguesManager instance = null;
+
+    private void Awake()
+    {
+        //Check if instance already exists
+        if (instance == null)
+            //if not, set instance to this
+            instance = this;
+        //If instance already exists and it's not this:
+        else if (instance != this)
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);
+    }
+
+    private void Start()
     {
         // Init Data
+        InitCsvParser();
+
+    }
+
+    private void InitCsvParser()
+    {
+
         allDialogues = new List<List<DataObject>>();
 
         //Get the path of the Game data folder
-        string  m_Path = Application.dataPath + "/Resources/test.csv";
+        string m_Path = Application.dataPath + "/Resources/test.csv";
 
         //Output the Game data path to the console
         Debug.Log("Path : " + m_Path);
@@ -66,8 +86,8 @@ public class DialoguesManager : MonoBehaviour {
             //Separating columns to array
             string[] rowData = CSVParser.Split(line);
 
-            DataObject tempObject = new DataObject(rowData[0],rowData[1], rowData[2], rowData[3], rowData[4], rowData[5]);
-            if (int.Parse(rowData[0])==compteur)
+            DataObject tempObject = new DataObject(rowData[0], rowData[1], rowData[2], rowData[3], rowData[4], rowData[5]);
+            if (int.Parse(rowData[0]) == compteur)
             {
                 dialogueSequenceTemp.Add(tempObject); // first column is the key name
             }
@@ -84,7 +104,7 @@ public class DialoguesManager : MonoBehaviour {
 
         sequenceIndex = 0;
         dialogueIndex = 0;
-        
+
         /*
         foreach(var obj in allDialogues)
         {
