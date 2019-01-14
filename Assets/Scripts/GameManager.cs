@@ -31,45 +31,44 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         switch (step)
         {
-            case 0:
+            case 0: // Intro
                 if (!dialoguesSeqFinished)
                 {
-                    if (Input.anyKeyDown) // next on boite de dialogue
-                    {
-                        // Debug.Log("INTRO");
-                        dialoguesSeqFinished = DialoguesManager.instance.DisplaySequenceDialogues();
-                    }
+                    if (!DialoguesManager.instance.startDialogue)
+                        DialoguesManager.instance.startDialogue = true;
                 }
-                else
-                {
+                else{
                     Debug.Log("INTRO FINISHED");
+                    DialoguesManager.instance.startDialogue = false;
                     step++;
                     dialoguesSeqFinished = false;
 
-                    // Init next step
-                    ClickableObjetManager.instance.startPAndClick = true;
-                    ClickableObjetManager.instance.finishedPAndCStep = false;
                 }
                 break;
-            case 1:
+            case 1: // Smartphone
+                PhoneManager.instance.StartPhone();
+                // Init next step
+                ClickableObjetManager.instance.startPAndClick = true;
+                ClickableObjetManager.instance.finishedPAndCStep = false;
+                break;
+            case 2:
                 if (ClickableObjetManager.instance.finishedPAndCStep)
                 {
                     Debug.Log("PHASE 01 POINT AND CLICK finished");
+                    step++;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
                 }
                 break;
-            case 2:
+            case 3:
                 if (!dialoguesSeqFinished)
                 {
                     if (Input.anyKeyDown) // next on boite de dialogue
                     {
-
                         dialoguesSeqFinished = DialoguesManager.instance.DisplaySequenceDialogues();
                     }
                 }
                 else
                 {
-                    Debug.Log("INTRO FINISHED");
                     step++;
                     dialoguesSeqFinished = false;
 
