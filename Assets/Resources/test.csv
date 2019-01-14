@@ -1,6 +1,6 @@
 Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue)
-0;Alex;Pourquoi je m'inflige ça moi ?;;1;
-0;Alex;Il est quelle heure ?;;1;
+0;Alex;**(Bâillement),(Étirement) Aaaah ma tête ...pffffff… Quelle soirée hier !**;Pensee;1;
+0;Alex;**Il est quelle heure ?**;Pensee;1;
 1;Alex;Mais qu'est ce que c'est que ce truc par contre ?;;1;
 1;Alex;Wouaw elle est incroyable cette bague, enfin si on la nettoie un peu.;;1;
 1;Alex;Olala mais je suis encore mal c'est pas possible, il est sortie d'où ce chat ?;;1;

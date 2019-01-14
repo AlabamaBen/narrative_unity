@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickableObject : MonoBehaviour {
+public class ClickableObject : MonoBehaviour
+{
+    [HideInInspector]
     public bool isClicked;
+    // public bool hideAfterClick;
     public string dialogue;
 
     private void Awake()
@@ -15,11 +18,12 @@ public class ClickableObject : MonoBehaviour {
     {
         if (!dialogue.Equals(""))
         {
-
+            DialoguesManager.instance.SetDialogueBox("Alex", dialogue);
+            ClickableObjetManager.instance.ObjectClicked(this);
         }
         else
         {
-            gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
     }
 

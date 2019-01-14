@@ -7,8 +7,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DialoguesManager : MonoBehaviour {
+    [HideInInspector]
     public List<DataObject> dialogueSequenceTemp;
-    [SerializeField]
+    [HideInInspector]
     public List<List<DataObject>> allDialogues;
 
     [SerializeField]
@@ -16,10 +17,10 @@ public class DialoguesManager : MonoBehaviour {
     [SerializeField]
     private Text boiteDialogue;
 
-    private int sequenceIndex;
-    private int dialogueIndex;
+    public int sequenceIndex;
+    public int dialogueIndex;
 
-    public DialoguesManager instance = null;
+    public static DialoguesManager instance = null;
 
     private void Awake()
     {
@@ -37,19 +38,17 @@ public class DialoguesManager : MonoBehaviour {
     {
         // Init Data
         InitCsvParser();
-
     }
 
     private void InitCsvParser()
     {
-
         allDialogues = new List<List<DataObject>>();
 
         //Get the path of the Game data folder
         string m_Path = Application.dataPath + "/Resources/test.csv";
 
         //Output the Game data path to the console
-        Debug.Log("Path : " + m_Path);
+        //Debug.Log("Path : " + m_Path);
 
         // Care not to open the csv file (in excel or other app) when launching script
         // Check that your file is UTF 8 encoded 
@@ -93,9 +92,9 @@ public class DialoguesManager : MonoBehaviour {
             }
             else
             {
-                dialogueSequenceTemp.Add(tempObject);
                 allDialogues.Add(dialogueSequenceTemp);
                 dialogueSequenceTemp = new List<DataObject>();
+                dialogueSequenceTemp.Add(tempObject);
                 compteur++;
             }
 
@@ -106,39 +105,48 @@ public class DialoguesManager : MonoBehaviour {
         dialogueIndex = 0;
 
         /*
-        foreach(var obj in allDialogues)
+        for(int i= 0; i<allDialogues.Count;i ++)
         {
-            foreach(var obj2 in obj)
+            Debug.Log("sequence index " + i);
+            for (int j = 0; j < allDialogues[i].Count; j++)
             {
-                Debug.Log(obj2.dialogue);
+                Debug.Log("dialogue index " + j);
+                Debug.Log(allDialogues[i][j].dialogue);
             }
         }*/
     }
 
-    private void Update()
+    public bool DisplaySequenceDialogues()
     {
-        if (Input.anyKeyDown)
+        bool sequenceIsFinished = false;
+        if (sequenceIndex < allDialogues.Count)
         {
-            if(sequenceIndex< allDialogues.Count)
+            //Debug.Log("sequenceIndex " + sequenceIndex);
+            //Debug.Log("dialogueIndex " + dialogueIndex);
+            nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
+            boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
+
+            if (dialogueIndex < allDialogues[sequenceIndex].Count-1)
             {
-                nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
-                boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
-
-                if (dialogueIndex < allDialogues[sequenceIndex].Count-1)
-                {
-                    dialogueIndex++;
-                }
-                else
-                {
-                    sequenceIndex++;
-                    dialogueIndex = 0;
-                }
-
+                dialogueIndex++;
             }
             else
             {
-                Debug.Log("Fin des dialogues");
+                sequenceIndex++;
+                dialogueIndex = 0;
+                sequenceIsFinished = true;
             }
         }
+        else
+        {
+            Debug.Log("Fin des dialogues");
+        }
+        return sequenceIsFinished;
+    }
+
+    public void SetDialogueBox(string _nomInterlocuteur, string _boiteDialogue)
+    {
+        nomInterlocuteur.text = _nomInterlocuteur;
+        boiteDialogue.text = _boiteDialogue;
     }
 }
