@@ -7,8 +7,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DialoguesManager : MonoBehaviour {
+    [HideInInspector]
     public List<DataObject> dialogueSequenceTemp;
-    [SerializeField]
+    [HideInInspector]
     public List<List<DataObject>> allDialogues;
 
     [SerializeField]
@@ -16,10 +17,10 @@ public class DialoguesManager : MonoBehaviour {
     [SerializeField]
     private Text boiteDialogue;
 
-    private int sequenceIndex;
-    private int dialogueIndex;
+    public int sequenceIndex;
+    public int dialogueIndex;
 
-    public DialoguesManager instance = null;
+    public static DialoguesManager instance = null;
 
     private void Awake()
     {
@@ -38,6 +39,61 @@ public class DialoguesManager : MonoBehaviour {
         // Init Data
         InitCsvParser();
 
+    }
+
+    private void Update()
+    {
+        if (false) // Input.anyKeyDown
+        {
+            if (sequenceIndex < allDialogues.Count)
+            {
+                nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
+                boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
+
+                if (dialogueIndex < allDialogues[sequenceIndex].Count - 1)
+                {
+                    dialogueIndex++;
+                }
+                else
+                {
+                    sequenceIndex++;
+                    dialogueIndex = 0;
+                }
+
+            }
+            else
+            {
+                Debug.Log("Fin des dialogues");
+            }
+        }
+    }
+
+    public bool DisplaySequenceDialogues()
+    {
+        bool sequenceIsFinished = false;
+        if (sequenceIndex < allDialogues.Count)
+        {
+            Debug.Log("sequenceIndex " + sequenceIndex);
+            Debug.Log("dialogueIndex " + dialogueIndex);
+            nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
+            boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
+
+            if (dialogueIndex < allDialogues[sequenceIndex].Count - 1)
+            {
+                dialogueIndex++;
+            }
+            else
+            {
+                sequenceIndex++;
+                dialogueIndex = 0;
+                sequenceIsFinished = false;
+            }
+        }
+        else
+        {
+            Debug.Log("Fin des dialogues");
+        }
+        return sequenceIsFinished;
     }
 
     private void InitCsvParser()
@@ -114,31 +170,10 @@ public class DialoguesManager : MonoBehaviour {
             }
         }*/
     }
-
-    private void Update()
+    
+    public void SetDialogueBox(string _nomInterlocuteur, string _boiteDialogue)
     {
-        if (Input.anyKeyDown)
-        {
-            if(sequenceIndex< allDialogues.Count)
-            {
-                nomInterlocuteur.text = allDialogues[sequenceIndex][dialogueIndex].character;
-                boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
-
-                if (dialogueIndex < allDialogues[sequenceIndex].Count-1)
-                {
-                    dialogueIndex++;
-                }
-                else
-                {
-                    sequenceIndex++;
-                    dialogueIndex = 0;
-                }
-
-            }
-            else
-            {
-                Debug.Log("Fin des dialogues");
-            }
-        }
+        nomInterlocuteur.text = _nomInterlocuteur;
+        boiteDialogue.text = _boiteDialogue;
     }
 }

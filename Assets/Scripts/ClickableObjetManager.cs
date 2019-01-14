@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class ClickableObjetManager : MonoBehaviour {
 
-    public List<GameObject> clickableObjectsPhase;
+    public List<GameObject> pointAndClickSet;
     public static int phase = 0;
 
     private List<ClickableObject> clickableObjets;
 
 	// Use this for initialization
 	void Start () {
-        foreach (GameObject obj in clickableObjectsPhase)
+        foreach (GameObject obj in pointAndClickSet)
         {
             obj.SetActive(false);
         }
-        clickableObjectsPhase[0].SetActive(true);
+        pointAndClickSet[0].SetActive(true);
     }
 	
 	// Update is called once per frame
