@@ -43,13 +43,17 @@ public class GameManager : MonoBehaviour {
                     step++;
                     dialoguesSeqFinished = false;
 
+                    // Init next step
+                    PhoneManager.instance.StartPhone();
                 }
                 break;
             case 1: // Smartphone
-                PhoneManager.instance.StartPhone();
-                // Init next step
-                ClickableObjetManager.instance.startPAndClick = true;
-                ClickableObjetManager.instance.finishedPAndCStep = false;
+                if(PhoneManager.instance.phoneGameFinished)
+                {
+                    // Init next step
+                    ClickableObjetManager.instance.startPAndClick = true;
+                    ClickableObjetManager.instance.finishedPAndCStep = false;
+                }
                 break;
             case 2:
                 if (ClickableObjetManager.instance.finishedPAndCStep)
