@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        spriteOffset = 1.5f; //this.GetComponent<SpriteRenderer>().size.y/2;
+        spriteOffset = 4.3f; //this.GetComponent<SpriteRenderer>().size.y/2;
     }
 	
 	// Update is called once per frame

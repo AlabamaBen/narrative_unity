@@ -20,6 +20,8 @@ public class DialoguesManager : MonoBehaviour {
     public int sequenceIndex;
     public int dialogueIndex;
 
+    private string str;
+    public float speed;
     public static DialoguesManager instance = null;
 
     private void Awake()
@@ -38,6 +40,7 @@ public class DialoguesManager : MonoBehaviour {
     {
         // Init Data
         InitCsvParser();
+        Invoke("DisplayText", 3f);
     }
 
     private void InitCsvParser()
@@ -148,5 +151,21 @@ public class DialoguesManager : MonoBehaviour {
     {
         nomInterlocuteur.text = _nomInterlocuteur;
         boiteDialogue.text = _boiteDialogue;
+    }
+    
+    IEnumerator AnimateText(string strComplete)
+    {
+        int i = 0;
+        str = "";
+        while (i < strComplete.Length)
+        {
+            str += strComplete[i++];
+            boiteDialogue.text = str;
+            yield return new WaitForSeconds(0.12F);
+        }
+    }
+    public void DisplayText()
+    {
+        StartCoroutine(AnimateText("Ceci est un test"));
     }
 }
