@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         switch (step)
         {
-            case 0:
+            case 0: // Intro
                 if (!dialoguesSeqFinished)
                 {
                     if (!DialoguesManager.instance.startDialogue)
@@ -43,12 +43,13 @@ public class GameManager : MonoBehaviour {
                     step++;
                     dialoguesSeqFinished = false;
 
-                    // Init next step
-                    ClickableObjetManager.instance.startPAndClick = true;
-                    ClickableObjetManager.instance.finishedPAndCStep = false;
                 }
                 break;
-            case 1:
+            case 1: // Smartphone
+                PhoneManager.instance.StartPhone();
+                // Init next step
+                ClickableObjetManager.instance.startPAndClick = true;
+                ClickableObjetManager.instance.finishedPAndCStep = false;
                 break;
             case 2:
                 if (ClickableObjetManager.instance.finishedPAndCStep)
