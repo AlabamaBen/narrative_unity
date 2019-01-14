@@ -15,6 +15,9 @@ public class Ring : MonoBehaviour {
 
     public SpriteRenderer dirt;
 
+    public SFXSound SFX_Wipe;
+    public SFXSound SFX_Cleaned;
+
     // Use this for initialization
     void Start () {
         start_position = transform.position;
@@ -52,15 +55,23 @@ public class Ring : MonoBehaviour {
     private void OnMouseDrag()
     {
         Vector2 curScreenPoint = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        Debug.Log((curScreenPoint - last_mouse_position).sqrMagnitude);
 
         if ((curScreenPoint - last_mouse_position).sqrMagnitude > 0.1 && !Cleaned)
         {
-            Debug.Log("Drag");
+            
             dirt.color = new Color(dirt.color.r, dirt.color.g, dirt.color.b, dirt.color.a - 0.01f);
+
+
+            Debug.Log((int)(dirt.color.a * 255));
+            if ((int)(dirt.color.a * 255)%4 == 0 )
+            {
+                SFX_Wipe.PlayTheSound();
+            }
+
             if(dirt.color.a * 255 < 1f)
             {
-                Cleaned = true; 
+                Cleaned = true;
+                SFX_Cleaned.PlayTheSound();
             }
         }
         last_mouse_position = curScreenPoint;

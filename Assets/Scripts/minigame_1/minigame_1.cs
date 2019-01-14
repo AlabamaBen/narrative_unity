@@ -13,7 +13,10 @@ public class minigame_1 : MonoBehaviour {
 
     public int Target = 10;
 
-    public Ring ring; 
+    public Ring ring;
+
+    public SFXSound SFX_Hit;
+    public SFXSound SFX_Open;
 
 
     public float amplitude;
@@ -28,6 +31,7 @@ public class minigame_1 : MonoBehaviour {
             progress_bar.value++;
             if (progress_bar.value == Target)
             {
+                SFX_Open.PlayTheSound();
                 Debug.Log("Open");
                 GetComponent<Animator>().SetTrigger("Open");
                 ring.Opening();
@@ -78,6 +82,7 @@ public class minigame_1 : MonoBehaviour {
         //enable shaking and setting power
         shakeOn = true;
         shakePower = amplitude;
+        SFX_Hit.PlayTheSound();
     }
 
     // shake off
