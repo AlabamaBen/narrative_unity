@@ -13,7 +13,8 @@ public class PhoneManager : MonoBehaviour {
     [SerializeField]
     private Image screen;
     public List<Sprite> screenSprites;
-    
+    public List<GameObject> buttonToDesactivate;
+
     public bool phoneGameFinished = false;
     // Use this for initialization
     void Awake()
@@ -44,10 +45,16 @@ public class PhoneManager : MonoBehaviour {
 
                 if (!phoneOpened)
                 {
-                    animator.SetBool("phoneOpened",true);
+                    StartCoroutine(LaunchAnimationPhone(true, 1f));
                 }
                 break;
         }
+    }
+
+    private IEnumerator LaunchAnimationPhone(bool phoneOpened, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        animator.SetBool("phoneOpened", phoneOpened);
     }
     
     public void ClickOnMessageButton()
@@ -57,18 +64,31 @@ public class PhoneManager : MonoBehaviour {
             case 0:
                 screen.sprite = screenSprites[substep];
                 screen.gameObject.SetActive(true);
+                DesactivateAllButtons();
+                buttonToDesactivate[1].SetActive(true);
                 substep++;
                 break;
             case 1:
                 screen.sprite = screenSprites[substep];
+                DesactivateAllButtons();
+                buttonToDesactivate[2].SetActive(true);
                 substep++;
                 break;
             case 2:
-                animator.SetBool("phoneOpened", false);
-                substep=0;
-                step++;
+                StartCoroutine(LaunchAnimationPhone(false, 0.75f));
+                substep =0;
+                DesactivateAllButtons();
                 phoneGameFinished = true;
+                step++;
                 break;
+        }
+    }
+
+    private void DesactivateAllButtons()
+    {
+        foreach (GameObject button in buttonToDesactivate)
+        {
+            button.SetActive(false);
         }
     }
 }
