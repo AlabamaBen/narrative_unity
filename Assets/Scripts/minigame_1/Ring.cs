@@ -49,7 +49,8 @@ public class Ring : MonoBehaviour {
         }
     }
 
-    bool Cleaned = false; 
+    [HideInInspector]
+    public bool Cleaned = false; 
 
     Vector2 last_mouse_position; 
     private void OnMouseDrag()
