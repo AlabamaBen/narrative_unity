@@ -1660,6 +1660,7 @@ MonoBehaviour:
   dirt: {fileID: 1746039369}
   SFX_Wipe: {fileID: 1166481550}
   SFX_Cleaned: {fileID: 1509664239}
+  Cleaned: 0
 --- !u!122 &1517889672
 Halo:
   m_ObjectHideFlags: 0
@@ -1670,7 +1671,7 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4278190335
-  m_Size: 4.2
+  m_Size: 5.87
 --- !u!65 &1517889673
 BoxCollider:
   m_ObjectHideFlags: 0
