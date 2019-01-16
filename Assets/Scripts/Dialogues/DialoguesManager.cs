@@ -21,7 +21,7 @@ public class DialoguesManager : MonoBehaviour {
     public int dialogueIndex;
     public bool startDialogue;
 
-    private string str;
+    private string stringToDisplay;
     public static DialoguesManager instance = null;
     private bool textDisplayed;
 
@@ -170,11 +170,11 @@ public class DialoguesManager : MonoBehaviour {
     {
         textDisplayed = true;
         int i = 0;
-        str = "";
+        stringToDisplay = "";
         while (i < strComplete.Length)
         {
-            str += strComplete[i++];
-            boiteDialogue.text = str;
+            stringToDisplay += strComplete[i++];
+            boiteDialogue.text = stringToDisplay;
             yield return new WaitForSeconds(speed);
         }
         textDisplayed = false;

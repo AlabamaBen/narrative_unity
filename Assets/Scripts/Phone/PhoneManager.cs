@@ -15,6 +15,14 @@ public class PhoneManager : MonoBehaviour {
     public List<Sprite> screenSprites;
     public List<GameObject> buttonToDesactivate;
 
+    private string stringToDisplay;
+    [SerializeField]
+    private Text boiteEnvoi;
+    private bool textDisplayed;
+
+    [SerializeField]
+    private GameObject smsObj;
+
     public bool phoneGameFinished = false;
     // Use this for initialization
     void Awake()
@@ -34,6 +42,7 @@ public class PhoneManager : MonoBehaviour {
     private void Start()
     {
         animator = this.GetComponent<Animator>();
+        textDisplayed = false;
     }
 
     public void StartPhone()
@@ -75,7 +84,8 @@ public class PhoneManager : MonoBehaviour {
                 substep++;
                 break;
             case 2:
-                StartCoroutine(LaunchAnimationPhone(false, 0.75f));
+                SetDialogueBox("Haha, Ok ça marche !");
+                StartCoroutine(LaunchAnimationPhone(false, 2.5f));
                 substep =0;
                 DesactivateAllButtons();
                 phoneGameFinished = true;
@@ -90,5 +100,26 @@ public class PhoneManager : MonoBehaviour {
         {
             button.SetActive(false);
         }
+    }
+
+    public void SetDialogueBox(string textMessage)
+    {
+        StartCoroutine(AnimateText(textMessage, 0.05F));
+    }
+
+    IEnumerator AnimateText(string strComplete, float speed)
+    {
+        textDisplayed = true;
+        int i = 0;
+        stringToDisplay = "";
+        while (i < strComplete.Length)
+        {
+            stringToDisplay += strComplete[i++];
+            boiteEnvoi.text = stringToDisplay;
+            yield return new WaitForSeconds(speed);
+        }
+        smsObj.SetActive(true);
+        smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
+        textDisplayed = false;
     }
 }
