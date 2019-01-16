@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour {
 
     private bool sceneLoaded;
 
+
+    // Constant from DialoguesManager
+    // public static int sequenceIndex;
+    // public static int dialogueIndex;
+
     // Use this for initialization
     void Awake() {
         //Check if instance already exists
@@ -94,20 +99,22 @@ public class GameManager : MonoBehaviour {
                 {
                     sceneLoaded = true;
                     StartCoroutine(LoadScene("MainScene", 2f));
+                    step++;
                 }
                 break;
             case 5:
                 if (!dialoguesSeqFinished)
                 {
-                    if (Input.anyKeyDown) // next on boite de dialogue
-                    {
-                        dialoguesSeqFinished = DialoguesManager.instance.DisplaySequenceDialogues();
-                    }
+                    Debug.Log("dialoguesSeqFinished");
+                    if (!DialoguesManager.instance.startDialogue)
+                        DialoguesManager.instance.startDialogue = true;
                 }
                 else
                 {
+                    DialoguesManager.instance.startDialogue = false;
                     step++;
                     dialoguesSeqFinished = false;
+                    sceneLoaded = false;
 
                     // Init next step
                 }

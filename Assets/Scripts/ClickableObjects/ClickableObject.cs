@@ -16,7 +16,7 @@ public class ClickableObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!dialogue.Equals("") && !DialoguesManager.textDisplayed)
+        if (!dialogue.Equals("") && !DialoguesManager.instance.textDisplayed)
         {
             DialoguesManager.instance.SetDialogueBox("Alex", dialogue);
             ClickableObjetManager.instance.ObjectClicked(this);

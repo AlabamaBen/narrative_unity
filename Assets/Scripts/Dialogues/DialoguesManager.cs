@@ -17,13 +17,13 @@ public class DialoguesManager : MonoBehaviour {
     [SerializeField]
     private Text boiteDialogue;
 
-    public int sequenceIndex;
-    public int dialogueIndex;
+    public static int sequenceIndex;
+    public static int dialogueIndex;
     public bool startDialogue;
 
     private string stringToDisplay;
     public static DialoguesManager instance = null;
-    public static bool textDisplayed;
+    public bool textDisplayed;
 
     private void Awake()
     {
