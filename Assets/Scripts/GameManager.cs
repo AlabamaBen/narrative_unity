@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
@@ -50,9 +51,11 @@ public class GameManager : MonoBehaviour {
             case 1: // Smartphone
                 if(PhoneManager.instance.phoneGameFinished)
                 {
+                    Debug.Log("PHONE FINISHED");
                     // Init next step
                     ClickableObjetManager.instance.startPAndClick = true;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
+                    step++;
                 }
                 break;
             case 2:
@@ -64,6 +67,12 @@ public class GameManager : MonoBehaviour {
                 }
                 break;
             case 3:
+                SceneManager.LoadScene("minigame_1", LoadSceneMode.Single);
+                step++;
+                break;
+            case 4:
+                break;
+            case 5:
                 if (!dialoguesSeqFinished)
                 {
                     if (Input.anyKeyDown) // next on boite de dialogue

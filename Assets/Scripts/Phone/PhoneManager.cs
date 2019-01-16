@@ -118,6 +118,7 @@ public class PhoneManager : MonoBehaviour {
             boiteEnvoi.text = stringToDisplay;
             yield return new WaitForSeconds(speed);
         }
+        boiteEnvoi.text = "";
         smsObj.SetActive(true);
         smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
         textDisplayed = false;

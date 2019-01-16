@@ -47,15 +47,11 @@ public class ClickableObjetManager : MonoBehaviour {
                 {
                     finishedPAndCStep = true;
                     startPAndClick = false;
+                    phase++;
                 }
                 break;
             case 1:
                 break;
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
