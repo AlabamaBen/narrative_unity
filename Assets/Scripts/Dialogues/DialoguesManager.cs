@@ -23,7 +23,7 @@ public class DialoguesManager : MonoBehaviour {
 
     private string stringToDisplay;
     public static DialoguesManager instance = null;
-    private bool textDisplayed;
+    public static bool textDisplayed;
 
     private void Awake()
     {

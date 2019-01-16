@@ -16,12 +16,12 @@ public class ClickableObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!dialogue.Equals(""))
+        if (!dialogue.Equals("") && !DialoguesManager.textDisplayed)
         {
             DialoguesManager.instance.SetDialogueBox("Alex", dialogue);
             ClickableObjetManager.instance.ObjectClicked(this);
         }
-        else
+        else if(dialogue.Equals(""))
         {
             this.gameObject.SetActive(false);
         }

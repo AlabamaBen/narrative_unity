@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 
     public bool dialoguesSeqFinished;
 
+    private bool sceneLoaded;
+
     // Use this for initialization
     void Awake() {
         //Check if instance already exists
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour {
             //if not, set instance to this
             instance = this;
             dialoguesSeqFinished = false;
+            sceneLoaded = false;
         }
         //If instance already exists and it's not this:
         else if (instance != this)
@@ -29,7 +32,9 @@ public class GameManager : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        Scene m_Scene;
         switch (step)
         {
             case 0: // Intro
@@ -67,10 +72,29 @@ public class GameManager : MonoBehaviour {
                 }
                 break;
             case 3:
-                SceneManager.LoadScene("minigame_1", LoadSceneMode.Single);
-                step++;
+                m_Scene = SceneManager.GetActiveScene();
+                if (m_Scene.name != "minigame_1" && !sceneLoaded)
+                {
+                    sceneLoaded = true;
+                    StartCoroutine(LoadScene("minigame_1",2f));
+                }
+                else
+                {
+                    if (Ring.Cleaned)
+                    {
+                        Debug.Log("minigame_1 finished");
+                        step++;
+                        sceneLoaded = false;
+                    }
+                }
                 break;
             case 4:
+                m_Scene = SceneManager.GetActiveScene();
+                if (m_Scene.name != "MainScene" && !sceneLoaded)
+                {
+                    sceneLoaded = true;
+                    StartCoroutine(LoadScene("MainScene", 2f));
+                }
                 break;
             case 5:
                 if (!dialoguesSeqFinished)
@@ -89,5 +113,11 @@ public class GameManager : MonoBehaviour {
                 }
                 break;
         }
+    }
+    
+    IEnumerator LoadScene(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }

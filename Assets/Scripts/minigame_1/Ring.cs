@@ -50,7 +50,7 @@ public class Ring : MonoBehaviour {
     }
 
     [HideInInspector]
-    public bool Cleaned = false; 
+    public static bool Cleaned = false; 
 
     Vector2 last_mouse_position; 
     private void OnMouseDrag()
