@@ -1265,7 +1265,8 @@ Transform:
 --- !u!1 &1412959314
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1666701039382858, guid: 393ef62e9eb7cf948a9f475888df6c1c,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -1283,7 +1284,8 @@ GameObject:
 --- !u!4 &1412959315
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4943648131167088, guid: 393ef62e9eb7cf948a9f475888df6c1c,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1412959314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1296,7 +1298,8 @@ Transform:
 --- !u!114 &1412959316
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 114529680777513584, guid: 393ef62e9eb7cf948a9f475888df6c1c,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1412959314}
   m_Enabled: 1
@@ -1304,11 +1307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b2d53e077d1fa4d80771da6e8df976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theSound: {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
+  theSound: {fileID: 8300000, guid: 27b4da4bfedc872448785171b10851f4, type: 3}
 --- !u!82 &1412959317
 AudioSource:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 82225500604916450, guid: 393ef62e9eb7cf948a9f475888df6c1c,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1412959314}
   m_Enabled: 1
@@ -1403,7 +1407,8 @@ AudioSource:
 --- !u!114 &1412959318
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 114133866982407416, guid: 393ef62e9eb7cf948a9f475888df6c1c,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1412959314}
   m_Enabled: 1
@@ -1561,7 +1566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b2d53e077d1fa4d80771da6e8df976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theSound: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  theSound: {fileID: 8300000, guid: 8e0f11fb4d8b1b346afe5c939e054cb8, type: 3}
 --- !u!1 &1517889668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,7 +1665,6 @@ MonoBehaviour:
   dirt: {fileID: 1746039369}
   SFX_Wipe: {fileID: 1166481550}
   SFX_Cleaned: {fileID: 1509664239}
-  Cleaned: 0
 --- !u!122 &1517889672
 Halo:
   m_ObjectHideFlags: 0
@@ -1926,7 +1930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b2d53e077d1fa4d80771da6e8df976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theSound: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
+  theSound: {fileID: 8300000, guid: ad4fb7af9f4013e41b96020f289d8e42, type: 3}
 --- !u!82 &2079871126
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2051,7 +2055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &2085321838
 AudioSource:
   m_ObjectHideFlags: 0

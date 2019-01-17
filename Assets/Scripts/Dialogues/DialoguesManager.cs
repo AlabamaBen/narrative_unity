@@ -84,7 +84,9 @@ public class DialoguesManager : MonoBehaviour {
             StartCoroutine(AnimateText(_boiteDialogue, 0.02F));
         }
     }
-    
+
+    public SFXSound talk_sound;
+
     IEnumerator AnimateText(string strComplete,float speed)
     {
         textDisplayed = true;
@@ -94,6 +96,7 @@ public class DialoguesManager : MonoBehaviour {
         {
             stringToDisplay += strComplete[i++];
             boiteDialogue.text = stringToDisplay;
+            talk_sound.PlayTheSound();
             yield return new WaitForSeconds(speed);
         }
         textDisplayed = false;
