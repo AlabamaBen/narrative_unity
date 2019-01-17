@@ -12,12 +12,19 @@ public class DialoguesManager : MonoBehaviour {
     private Text nomInterlocuteur;
     [SerializeField]
     private Text boiteDialogue;
-    
+
+    [HideInInspector]
     public bool startDialogue;
 
     private string stringToDisplay;
-    public static DialoguesManager instance = null;
+    [HideInInspector]
+    public float text_speed = 0.02f;
+    [HideInInspector]
     public bool textDisplayed;
+
+    public SFXSound talk_sound;
+
+    public static DialoguesManager instance = null;
 
     private void Awake()
     {
@@ -76,8 +83,6 @@ public class DialoguesManager : MonoBehaviour {
         return sequenceIsFinished;
     }
 
-    public float text_speed = 0.02f; 
-
     public void SetDialogueBox(string _nomInterlocuteur, string _boiteDialogue)
     {
         if (!textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
@@ -89,7 +94,6 @@ public class DialoguesManager : MonoBehaviour {
         }
     }
 
-    public SFXSound talk_sound;
 
     IEnumerator AnimateText(string strComplete,float speed)
     {

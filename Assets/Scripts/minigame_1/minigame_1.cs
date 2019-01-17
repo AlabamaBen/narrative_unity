@@ -26,13 +26,13 @@ public class minigame_1 : MonoBehaviour {
     {
         if (!shakeOn && progress_bar.value < Target)
         {
-            Debug.Log("Click");
+            //Debug.Log("Click");
             Shake(amplitude, length);
             progress_bar.value++;
             if (progress_bar.value == Target)
             {
                 SFX_Open.PlayTheSound();
-                Debug.Log("Open");
+                //Debug.Log("Open");
                 GetComponent<Animator>().SetTrigger("Open");
                 ring.Opening();
             }
