@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UB;
+
+public enum Ring_State
+{
+    in_the_box, 
+    getting_out, 
+    is_out, 
+    cleaned, 
+    opened,
+    SmokeFadeOut,
+    End
+}
 
 public class Ring : MonoBehaviour {
 
@@ -18,34 +30,107 @@ public class Ring : MonoBehaviour {
     public SFXSound SFX_Wipe;
     public SFXSound SFX_Cleaned;
 
+    public SpriteRenderer sprite_cat;
+
+    public ParticleSystem fire; 
+
+    Ring_State state;
+
+
+    public Get_Smokes get_Smokes; 
+    public float fog_speed; 
     // Use this for initialization
     void Start () {
         start_position = transform.position;
 
         last_mouse_position = this.transform.position;
-    }
 
-    bool opening = false;
-    bool opened = false;  
+        state = Ring_State.in_the_box;
+    }
 
     public void Opening()
     {
-        opening = true; 
+
+        state = Ring_State.getting_out;
     }
-	
+
+    public float time = 0; 
 	// Update is called once per frame
 	void Update () {
 
-        if(opening)
+        switch (state)
         {
-            this.transform.Translate(new Vector3(0, 5 * Time.deltaTime));
-            if ((start_position - transform.position).sqrMagnitude > distance)
-            {
-                opening = false;
-                opened = true;
-                Debug.Log("Opened");
-            }
+            case Ring_State.in_the_box:
+                break;
+            case Ring_State.getting_out:
+                this.transform.Translate(new Vector3(0, 5 * Time.deltaTime));
+                if ((start_position - transform.position).sqrMagnitude > distance)
+                {
+                    state = Ring_State.is_out;
+                }
+                break;
+            case Ring_State.is_out:
+                break;
+            case Ring_State.cleaned:
+                //Invoke("open", 3f); 
+                time += Time.deltaTime; 
+                Glow.color = new Color(Glow.color.r, Glow.color.g, Glow.color.b, (Mathf.Cos(time * glow_speed / Mathf.PI)+ 1f) /2f ) ;
+                break;
+            case Ring_State.opened:
+                foreach (D2FogsPE fog in get_Smokes.Fogs)
+                {
+                    fog.enabled = true;
+                    fog.Density += fog_speed * Time.deltaTime;
+                    if(fog.Density > 3f)
+                    {
+                        state = Ring_State.SmokeFadeOut;
+                        sprite_cat.enabled = true; 
+                    }
+                }
+                break;
+            case Ring_State.SmokeFadeOut:
 
+                fire.Stop();
+                foreach (D2FogsPE fog in get_Smokes.Fogs)
+                {
+                    fog.Density -= fog_speed * Time.deltaTime;
+                    if (fog.Density < 0f)
+                    {
+                        state = Ring_State.End;
+                    }
+                }
+
+                break;
+            case Ring_State.End:
+                break;
+
+
+            default:
+                break;
+        }
+
+
+    }
+    public Sprite Opened_sprite;
+    public SpriteRenderer Glow;
+    public float glow_speed = 10f;
+
+    private void OnMouseDown()
+    {
+        if(state == Ring_State.cleaned)
+        {
+            GetComponent<SpriteRenderer>().sprite = Opened_sprite;
+            Glow.enabled = false;
+            state = Ring_State.opened;
+
+            fire.Play();
+
+            foreach (D2FogsPE fog in get_Smokes.Fogs)
+            {
+                fog.enabled = true;
+                fog.Density = 0; 
+            }
+            
         }
     }
 
@@ -57,7 +142,7 @@ public class Ring : MonoBehaviour {
     {
         Vector2 curScreenPoint = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
-        if ((curScreenPoint - last_mouse_position).sqrMagnitude > 0.1 && !Cleaned)
+        if ((curScreenPoint - last_mouse_position).sqrMagnitude > 0.1 && state == Ring_State.is_out)
         {
             
             dirt.color = new Color(dirt.color.r, dirt.color.g, dirt.color.b, dirt.color.a - 0.01f);
@@ -72,9 +157,11 @@ public class Ring : MonoBehaviour {
             if(dirt.color.a * 255 < 1f)
             {
                 Cleaned = true;
+                state = Ring_State.cleaned;
                 SFX_Cleaned.PlayTheSound();
             }
         }
         last_mouse_position = curScreenPoint;
     }
+
 }
