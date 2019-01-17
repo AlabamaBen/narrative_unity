@@ -46,7 +46,9 @@ public class GameManager : MonoBehaviour {
                 if (!dialoguesSeqFinished)
                 {
                     if (!DialoguesManager.instance.startDialogue)
+                    {
                         DialoguesManager.instance.startDialogue = true;
+                    }
                 }
                 else{
                     Debug.Log("INTRO FINISHED");
@@ -107,11 +109,17 @@ public class GameManager : MonoBehaviour {
                 {
                     Debug.Log("dialoguesSeqFinished");
                     if (!DialoguesManager.instance.startDialogue)
+                    {
                         DialoguesManager.instance.startDialogue = true;
+                    }
+                    if (Input.anyKeyDown && !DialoguesManager.instance.textDisplayed)
+                    {
+                        dialoguesSeqFinished = DialoguesManager.instance.DisplayNextSequenceDialog();
+                    }
                 }
                 else
                 {
-                    DialoguesManager.instance.startDialogue = false;
+                        DialoguesManager.instance.startDialogue = false;
                     step++;
                     dialoguesSeqFinished = false;
                     sceneLoaded = false;
