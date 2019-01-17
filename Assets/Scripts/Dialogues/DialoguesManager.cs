@@ -8,10 +8,14 @@ public class DialoguesManager : MonoBehaviour {
     private List<DataObject> dialogueSequenceTemp;
     private List<List<DataObject>> allDialogues;
 
+    [Header("Monologue_Pensee_Alex")]
     [SerializeField]
     private Text nomInterlocuteur;
     [SerializeField]
     private Text boiteDialogue;
+
+    [Header("Dialogue_Alex_Nat")]
+    public GameObject messageBox_Temp;
 
     [HideInInspector]
     public bool startDialogue;
@@ -43,9 +47,11 @@ public class DialoguesManager : MonoBehaviour {
         startDialogue = false;
         dialogueSequenceTemp = LoadDialoguesManager.instance.dialogueSequenceTemp;
         allDialogues = LoadDialoguesManager.instance.allDialogues;
+
+        // Define a target position above and behind the target transform
+        messageBox_Temp.GetComponent<MoveMessageBox>().targetPosition = messageBox_Temp.transform.position + Vector3.up * 100;
     }
-
-
+    
     public void ClickOnNextDialogue()
     {
         if (startDialogue&& !textDisplayed)
@@ -93,8 +99,7 @@ public class DialoguesManager : MonoBehaviour {
 
         }
     }
-
-
+    
     IEnumerator AnimateText(string strComplete,float speed)
     {
         textDisplayed = true;
@@ -109,5 +114,5 @@ public class DialoguesManager : MonoBehaviour {
         }
         textDisplayed = false;
     }
-    
+
 }
