@@ -18,10 +18,6 @@ public class PAndCMovementManager : MonoBehaviour {
 		
 	}
 
-    private void OnMouseUp()
-    {
-    }
-
     private void OnMouseDown()
     {
         playerMovement.Move();
