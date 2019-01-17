@@ -16,6 +16,8 @@ public class DialoguesManager : MonoBehaviour {
 
     [Header("Dialogue_Alex_Nat")]
     public GameObject messageBox_Temp;
+    public GameObject messagesParent;
+    public List<GameObject> messagesList;
 
     [HideInInspector]
     public bool startDialogue;
@@ -48,10 +50,39 @@ public class DialoguesManager : MonoBehaviour {
         dialogueSequenceTemp = LoadDialoguesManager.instance.dialogueSequenceTemp;
         allDialogues = LoadDialoguesManager.instance.allDialogues;
 
-        // Define a target position above and behind the target transform
-        messageBox_Temp.GetComponent<MoveMessageBox>().targetPosition = messageBox_Temp.transform.position + Vector3.up * 100;
+        // Create a
+        GameObject currentMsg = Instantiate(messageBox_Temp);
+        currentMsg.transform.SetParent(messagesParent.transform);
+        currentMsg.transform.position = messageBox_Temp.transform.position;
+        currentMsg.transform.localScale = Vector3.one;
+        currentMsg.SetActive(true);
+        messagesList.Add(currentMsg);
     }
-    
+
+    private void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            foreach(GameObject msg in messagesList)
+            {
+                msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position + Vector3.up * 70;
+            }
+            GameObject currentMsg = Instantiate(messageBox_Temp);
+            currentMsg.transform.SetParent(messagesParent.transform);
+            currentMsg.transform.position = messageBox_Temp.transform.position;
+            currentMsg.transform.localScale = Vector3.one;
+            currentMsg.SetActive(true);
+            messagesList.Add(currentMsg);
+
+            if (messagesList.Count > 5)
+            {
+                GameObject msgToDestroy = messagesList[0];
+                messagesList.Remove(msgToDestroy);
+                Destroy(msgToDestroy);
+            }
+        }
+    }
+
     public void ClickOnNextDialogue()
     {
         if (startDialogue&& !textDisplayed)
