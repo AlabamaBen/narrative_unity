@@ -15,9 +15,10 @@ public class DialoguesManager : MonoBehaviour {
     private Text boiteDialogue;
 
     [Header("Dialogue_Alex_Nat")]
-    public GameObject messageBox_Temp;
+    public GameObject messageBox_Temp_Natyahs;
+    public GameObject messageBox_Temp_Alex;
     public GameObject messagesParent;
-    public List<GameObject> messagesList;
+    private List<GameObject> messagesList;
 
     [HideInInspector]
     public bool startDialogue;
@@ -49,14 +50,17 @@ public class DialoguesManager : MonoBehaviour {
         startDialogue = false;
         dialogueSequenceTemp = LoadDialoguesManager.instance.dialogueSequenceTemp;
         allDialogues = LoadDialoguesManager.instance.allDialogues;
+        messagesList = new List<GameObject>();
 
         // Create a
-        GameObject currentMsg = Instantiate(messageBox_Temp);
+        GameObject currentMsg = Instantiate(messageBox_Temp_Alex);
         currentMsg.transform.SetParent(messagesParent.transform);
-        currentMsg.transform.position = messageBox_Temp.transform.position;
+        currentMsg.transform.position = messageBox_Temp_Alex.transform.position;
         currentMsg.transform.localScale = Vector3.one;
         currentMsg.SetActive(true);
         messagesList.Add(currentMsg);
+        StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(),"Niort?", 0.02F));
+
     }
 
     private void Update()
@@ -65,14 +69,17 @@ public class DialoguesManager : MonoBehaviour {
         {
             foreach(GameObject msg in messagesList)
             {
-                msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position + Vector3.up * 70;
+                msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position + Vector3.up * 80;
             }
-            GameObject currentMsg = Instantiate(messageBox_Temp);
+
+            GameObject currentMsg = Instantiate(messageBox_Temp_Natyahs);
             currentMsg.transform.SetParent(messagesParent.transform);
-            currentMsg.transform.position = messageBox_Temp.transform.position;
+            currentMsg.transform.position = messageBox_Temp_Natyahs.transform.position;
             currentMsg.transform.localScale = Vector3.one;
             currentMsg.SetActive(true);
+            //currentMsg.GetComponentInChildren<Text>().text = "Salut";
             messagesList.Add(currentMsg);
+            StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(), "Niort", 0.02F));
 
             if (messagesList.Count > 5)
             {
@@ -99,7 +106,7 @@ public class DialoguesManager : MonoBehaviour {
             //Debug.Log("sequenceIndex " + sequenceIndex);
             //Debug.Log("dialogueIndex " + dialogueIndex);
             nomInterlocuteur.text = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].character;
-            StartCoroutine(AnimateText(allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue, 0.02F));
+            StartCoroutine(AnimateTextMonolog(allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue, 0.02F));
             //boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
 
             if (LoadDialoguesManager.dialogueIndex < allDialogues[LoadDialoguesManager.sequenceIndex].Count-1)
@@ -126,12 +133,12 @@ public class DialoguesManager : MonoBehaviour {
         {
             nomInterlocuteur.text = _nomInterlocuteur;
             //StartCoroutine(AnimateText(_boiteDialogue, 0.02F));
-            StartCoroutine(AnimateText(_boiteDialogue, text_speed));
+            StartCoroutine(AnimateTextMonolog(_boiteDialogue, text_speed));
 
         }
     }
     
-    IEnumerator AnimateText(string strComplete,float speed)
+    IEnumerator AnimateTextMonolog(string strComplete,float speed)
     {
         textDisplayed = true;
         int i = 0;
@@ -146,4 +153,18 @@ public class DialoguesManager : MonoBehaviour {
         textDisplayed = false;
     }
 
+    IEnumerator AnimateTextDialog(Text textBox, string strComplete, float speed)
+    {
+        textDisplayed = true;
+        int i = 0;
+        stringToDisplay = "";
+        while (i < strComplete.Length)
+        {
+            stringToDisplay += strComplete[i++];
+            textBox.text = stringToDisplay;
+            talk_sound.PlayTheSound();
+            yield return new WaitForSeconds(speed);
+        }
+        textDisplayed = false;
+    }
 }
