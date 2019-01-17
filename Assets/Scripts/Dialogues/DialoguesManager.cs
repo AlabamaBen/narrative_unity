@@ -76,12 +76,16 @@ public class DialoguesManager : MonoBehaviour {
         return sequenceIsFinished;
     }
 
+    public float text_speed = 0.02f; 
+
     public void SetDialogueBox(string _nomInterlocuteur, string _boiteDialogue)
     {
         if (!textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
         {
             nomInterlocuteur.text = _nomInterlocuteur;
-            StartCoroutine(AnimateText(_boiteDialogue, 0.02F));
+            //StartCoroutine(AnimateText(_boiteDialogue, 0.02F));
+            StartCoroutine(AnimateText(_boiteDialogue, text_speed));
+
         }
     }
 
