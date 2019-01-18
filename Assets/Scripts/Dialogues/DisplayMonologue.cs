@@ -49,6 +49,4 @@ public class DisplayMonologue : MonoBehaviour {
         // animator.SetTrigger("closeMonolog");
         SpeechManager.instance.textDisplayed = false;
     }
-
-
 }

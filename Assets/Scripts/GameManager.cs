@@ -115,32 +115,34 @@ public class GameManager : MonoBehaviour {
             case 5:
                 if (!dialoguesSeqFinished)
                 {
-                    if (!SpeechManager.instance.startDialogue && SpeechManager.instance.displayDialogue.dialogue_Alex_Nat!=null && SpeechManager.instance.displayDialogue.messagesList != null) // NEED TO FIND BETTER SOLUTION
+                    if (!SpeechManager.instance.startDialogue && SpeechManager.instance.displayDialogue.dialogue_Alex_Nat!=null && SpeechManager.instance.displayDialogue.messagesList != null ) // NEED TO FIND BETTER SOLUTION
                     {
                         blockInput = true;
                         // Display first line of dialogue
-                        SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(true);
-                        SpeechManager.instance.DisplayNextSequenceDialogue();
-                        SpeechManager.instance.startDialogue = true;
+                        SpeechManager.instance.DisplayFirstSequence();
+
                         Invoke("waitAndUnblockInput", 1f);
                     }
-                    if (!blockInput && SpeechManager.instance.startDialogue && Input.anyKeyDown && !SpeechManager.instance.textDisplayed) // Player click to display next dialog
+                    else if (!blockInput && SpeechManager.instance.startDialogue && Input.anyKeyDown && !SpeechManager.instance.textDisplayed) // Player click to display next dialog
                     {
                         dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
                     }
                 }
                 else
                 {
-                    SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
-                    SpeechManager.instance.startDialogue = false;
-                    step++;
-                    dialoguesSeqFinished = false;
-                    sceneLoaded = false;
+                    if (!SpeechManager.instance.textDisplayed) // Player click to display next dialog
+                    {
+                        SpeechManager.instance.HideDialog();
+                        step++;
+                        dialoguesSeqFinished = false;
+                        sceneLoaded = false;
+                    }
 
                     // Init next step
                 }
                 break;
             case 6:
+
                 break;
         }
     }

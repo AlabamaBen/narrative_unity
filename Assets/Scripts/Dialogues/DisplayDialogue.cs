@@ -10,6 +10,7 @@ public class DisplayDialogue : MonoBehaviour {
     public GameObject message_List_Panel;
     public List<GameObject> messagesList;
     private string stringToDisplay; // dynamic string that is displayed
+    public Animator animator;
     [Header("SFX sound param")]
     public SFXSound_Voice talk_sound;
     [SerializeField]
@@ -19,6 +20,12 @@ public class DisplayDialogue : MonoBehaviour {
     {
         messagesList = new List<GameObject>();
     }
+
+    private void Start()
+    {
+        animator = this.GetComponent<Animator>();
+    }
+
 
     IEnumerator AnimateTextDialog(Text textBox, string strComplete, float speed)
     {
@@ -72,6 +79,24 @@ public class DisplayDialogue : MonoBehaviour {
             GameObject msgToDestroy = messagesList[0];
             messagesList.Remove(msgToDestroy);
             Destroy(msgToDestroy);
+        }
+    }
+
+
+    public void DestroyAllDialogues()
+    {
+        StartCoroutine(DestroyLastDialog(0.35F));
+    }
+
+
+    IEnumerator DestroyLastDialog(float speed)
+    {
+        while (messagesList.Count>0)
+        {
+            GameObject temp = messagesList[0];
+            messagesList.RemoveAt(0);
+            Destroy(temp);
+            yield return new WaitForSeconds(speed);
         }
     }
 }

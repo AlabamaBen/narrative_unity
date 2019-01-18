@@ -133,6 +133,21 @@ public class SpeechManager : MonoBehaviour
         }
         return sequenceIsFinished;
     }
+
+    public void DisplayFirstSequence()
+    {
+        displayDialogue.dialogue_Alex_Nat.SetActive(true);
+        displayDialogue.animator.SetBool("dialogOpened", true);
+        Invoke("DisplayNextSequenceDialogue", 1f);
+        startDialogue = true;
+    }
+
+    public void HideDialog()
+    {
+        displayDialogue.animator.SetBool("dialogOpened", false);
+        displayDialogue.DestroyAllDialogues();
+        startDialogue = false;
+    }
     #endregion
 
 }
