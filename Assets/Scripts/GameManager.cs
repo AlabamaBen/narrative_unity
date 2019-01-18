@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
     private bool sceneLoaded;
     private bool blockInput = false;
 
+    public static bool blockMovementOnGround = false;
+
 
     // Constant from DialoguesManager
     // public static int sequenceIndex;
@@ -121,6 +123,7 @@ public class GameManager : MonoBehaviour {
                     if (!SpeechManager.instance.startDialogue && SpeechManager.instance.displayDialogue.dialogue_Alex_Nat!=null && SpeechManager.instance.displayDialogue.messagesList != null ) // NEED TO FIND BETTER SOLUTION
                     {
                         blockInput = true;
+                        blockMovementOnGround = true;
                         // Display first line of dialogue
                         SpeechManager.instance.DisplayFirstSequence();
 
@@ -136,6 +139,7 @@ public class GameManager : MonoBehaviour {
                     if (!SpeechManager.instance.textDisplayed) // Player click to display next dialog
                     {
                         SpeechManager.instance.HideDialog();
+                        blockMovementOnGround = false;
                         step++;
                         dialoguesSeqFinished = false;
                         sceneLoaded = false;

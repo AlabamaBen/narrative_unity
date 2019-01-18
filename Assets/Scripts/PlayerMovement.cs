@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour {
                 animator.SetBool("Walking", false);
             }
 
-            Debug.Log("x : " + (transform.position - target).x);
+            //Debug.Log("x : " + (transform.position - target).x);
 
             if ((transform.position - target).x > 0.1f && facing_right)
             {

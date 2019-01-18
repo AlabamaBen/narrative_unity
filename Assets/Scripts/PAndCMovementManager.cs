@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // This script has to be attached in the (walking) collider sprite
 // A Polygin Collider 2D must also be attached to detect mouse click
@@ -20,6 +21,9 @@ public class PAndCMovementManager : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        playerMovement.Move();
+        if (!GameManager.blockMovementOnGround && !EventSystem.current.IsPointerOverGameObject()) // Do not move when clicking on a UI button
+        {
+            playerMovement.Move();
+        }
     }
 }
