@@ -51,14 +51,18 @@ public class GameManager : MonoBehaviour {
                         DialoguesManager.instance.startDialogue = true;
                     }
                 }
-                else{
+                else
+                {
                     Debug.Log("INTRO FINISHED");
                     DialoguesManager.instance.startDialogue = false;
-                    step++;
-                    dialoguesSeqFinished = false;
+                    if (!DialoguesManager.instance.displayMonolog.animator.GetBool("openMonolog")) // if player has closed last thought (open Monolog closed)
+                    {
+                        step++;
+                        dialoguesSeqFinished = false;
 
-                    // Init next step
-                    PhoneManager.instance.StartPhone();
+                        // Init next step
+                        PhoneManager.instance.StartPhone();
+                    }
                 }
                 break;
             case 1: // Smartphone
