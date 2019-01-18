@@ -4,12 +4,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialoguesManager : MonoBehaviour {
+public class DialoguesManager : MonoBehaviour
+{
     private List<DataObject> dialogueSequenceTemp;
     private List<List<DataObject>> allDialogues;
 
-    [SerializeField]
-    private DisplayMonolog displayMonolog;
+    [HideInInspector]
+    public DisplayMonolog displayMonolog;
 
 
     [Header("Dialogue_Alex_Nat")]
@@ -18,17 +19,18 @@ public class DialoguesManager : MonoBehaviour {
     public GameObject messageBox_Temp_Alex;
     public GameObject messagesParent;
     private List<GameObject> messagesList;
+    private string stringToDisplay; // dynamic string that is displayed
+    public float text_speed = 0.02f;
+    [Header("SFX sound")]
+    public SFXSound talk_sound;
 
     [HideInInspector]
     public bool startDialogue;
-
-    private string stringToDisplay;
-    public float text_speed = 0.02f;
     [HideInInspector]
-    public bool textDisplayed;
-    public SFXSound talk_sound;
-
+    public bool textDisplayed; // boolean that indicates if the text has finished typing (for both monolog and dialog)
+    
     public static DialoguesManager instance = null;
+    private bool buttonMonologAntiSpam;
 
     private void Awake()
     {
@@ -48,19 +50,17 @@ public class DialoguesManager : MonoBehaviour {
         dialogueSequenceTemp = LoadDialoguesManager.instance.dialogueSequenceTemp;
         allDialogues = LoadDialoguesManager.instance.allDialogues;
         messagesList = new List<GameObject>();
-        /*
-        GameObject currentMsg = Instantiate(messageBox_Temp_Alex);
-        currentMsg.transform.SetParent(messagesParent.transform);
-        currentMsg.transform.position = messageBox_Temp_Alex.transform.position;
-        currentMsg.transform.localScale = Vector3.one;
-        currentMsg.SetActive(true);
-        messagesList.Add(currentMsg);
-        StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(),"Salut Ca va?", 0.02F));*/
-
     }
 
     private void Update()
     {
+        // IF "Monolog" animation is playing 
+        //if(displayMonolog.animator.GetCurrentAnimatorStateInfo(0).IsName("Monolog")) {}
+
+        // IF "Monolog" animation has finished (but still playing)
+        //if (displayMonolog.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !displayMonolog.animator.IsInTransition(0)) {}
+
+
         /*
         if (Input.anyKeyDown && !textDisplayed)
         {
@@ -89,15 +89,22 @@ public class DialoguesManager : MonoBehaviour {
     #region Monolog Manager
     public void ClickOnNextMonolog()
     {
-        if (displayMonolog.animator.GetBool("openMonolog"))
+        if (!buttonMonologAntiSpam && displayMonolog.animator.GetBool("openMonolog") && !textDisplayed)
         {
+            buttonMonologAntiSpam = true;
             displayMonolog.animator.SetBool("openMonolog", false);
 
-            if (startDialogue && !textDisplayed)
+            if (startDialogue)
             {
                 StartCoroutine(WaitCloseMonologAndDisplayNextSequenceMonolog());
             }
+            Invoke("EnablebuttonMonologAntiSpam", 1f);
         }
+    }
+
+    private void EnablebuttonMonologAntiSpam()
+    {
+        buttonMonologAntiSpam = false;
     }
 
     private IEnumerator WaitCloseMonologAndDisplayNextSequenceMonolog()
@@ -110,7 +117,6 @@ public class DialoguesManager : MonoBehaviour {
     {
         displayMonolog.SetMonolog(thought);
     }
-    #endregion
 
     public bool DisplayNextSequenceMonolog()
     {
@@ -123,7 +129,7 @@ public class DialoguesManager : MonoBehaviour {
             StartCoroutine(displayMonolog.AnimateTextMonolog(allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue, 0.02F));
             //boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
 
-            if (LoadDialoguesManager.dialogueIndex < allDialogues[LoadDialoguesManager.sequenceIndex].Count-1)
+            if (LoadDialoguesManager.dialogueIndex < allDialogues[LoadDialoguesManager.sequenceIndex].Count - 1)
             {
                 LoadDialoguesManager.dialogueIndex++;
             }
@@ -140,6 +146,8 @@ public class DialoguesManager : MonoBehaviour {
         }
         return sequenceIsFinished;
     }
+    #endregion
+
 
     public bool DisplayNextSequenceDialog()
     {

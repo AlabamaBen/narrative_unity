@@ -25,6 +25,7 @@ public class DisplayMonolog : MonoBehaviour {
 
     public void SetMonolog(string _boiteDialogue)
     {
+        animator.SetBool("openMonolog", false);
         if (!DialoguesManager.instance.textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
         {
             StartCoroutine(AnimateTextMonolog(_boiteDialogue, monolog_speed));
