@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour {
                 m_Scene = SceneManager.GetActiveScene();
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
-                    //TEST 
+                    //TEST, next line to remove 
                     //Ring.Game_End = true;
 
                     sceneLoaded = true;
@@ -151,6 +151,7 @@ public class GameManager : MonoBehaviour {
             case 6:
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0)) { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
+                    SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
                     // Init next step
                     PhoneManager.instance.StartPhone();
                 }

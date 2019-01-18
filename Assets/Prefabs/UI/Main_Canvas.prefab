@@ -1436,7 +1436,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Haha, Ok \xE7a marche !\n"
+  m_Text: '
+
+'
 --- !u!114 &114732851283886258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1617,6 +1619,7 @@ MonoBehaviour:
   - {fileID: 1789998543971296}
   - {fileID: 1089811411464014}
   boiteEnvoi: {fileID: 114402147962627090}
+  smsTexte: {fileID: 114724113262477274}
   smsObj: {fileID: 1560465269365586}
   phoneGameFinished: 0
 --- !u!114 &114911157163181946
@@ -2463,6 +2466,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.7498779, y: -72.600006}
+  m_AnchoredPosition: {x: 0.74975586, y: -72.600006}
   m_SizeDelta: {x: 228.01843, y: 72.6}
   m_Pivot: {x: 0, y: 0}

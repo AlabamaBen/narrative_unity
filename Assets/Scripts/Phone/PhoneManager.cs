@@ -18,6 +18,8 @@ public class PhoneManager : MonoBehaviour {
     private string stringToDisplay;
     [SerializeField]
     private Text boiteEnvoi;
+    [SerializeField]
+    private Text smsTexte;
     private bool textDisplayed;
 
     [SerializeField]
@@ -58,6 +60,7 @@ public class PhoneManager : MonoBehaviour {
     public void ClickOnMessageButton()
     {
 
+        Debug.Log("step" + step);
         switch (step)
         {
             case 0:
@@ -78,6 +81,7 @@ public class PhoneManager : MonoBehaviour {
                         break;
                     case 2:
                         SetDialogueBox("Haha, Ok ça marche !");
+                        smsTexte.text = "Haha, Ok ça marche !";
                         DesactivateAllButtons();
                         buttonToDesactivate[3].SetActive(true);
                         substep++;
@@ -104,6 +108,30 @@ public class PhoneManager : MonoBehaviour {
                         DesactivateAllButtons();
                         buttonToDesactivate[1].SetActive(true);
                         substep++;
+                        break;
+                    case 1:
+                        screen.sprite = screenSprites[substep];
+                        DesactivateAllButtons();
+                        buttonToDesactivate[2].SetActive(true);
+                        substep++;
+                        break;
+                    case 2:
+                        SetDialogueBox("Ok !");
+                        smsTexte.text = "Ok !";
+                        DesactivateAllButtons();
+                        buttonToDesactivate[3].SetActive(true);
+                        substep++;
+                        break;
+                    case 3:
+                        boiteEnvoi.text = "";
+                        smsObj.SetActive(true);
+                        smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
+
+                        StartCoroutine(LaunchAnimationPhone(false, 2f));
+                        DesactivateAllButtons();
+                        phoneGameFinished = true;
+                        substep = 0;
+                        step++;
                         break;
                 }
                 break;
