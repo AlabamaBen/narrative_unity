@@ -38,42 +38,7 @@ public class SpeechManager : MonoBehaviour
         dialogueSequenceTemp = LoadDialoguesManager.instance.dialogueSequenceTemp;
         allDialogues = LoadDialoguesManager.instance.allDialogues;
     }
-
-    private void Update()
-    {
-        // IF "Monolog" animation is playing 
-        //if(displayMonolog.animator.GetCurrentAnimatorStateInfo(0).IsName("Monolog")) {}
-
-        // IF "Monolog" animation has finished (but still playing)
-        //if (displayMonolog.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !displayMonolog.animator.IsInTransition(0)) {}
-
-
-        /*
-        if (Input.anyKeyDown && !textDisplayed)
-        {
-            foreach(GameObject msg in messagesList)
-            {
-                msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position + Vector3.up * 100;
-            }
-
-            GameObject currentMsg = Instantiate(messageBox_Temp_Natyahs);
-            currentMsg.transform.SetParent(messagesParent.transform);
-            currentMsg.transform.position = messageBox_Temp_Natyahs.transform.position;
-            currentMsg.transform.localScale = Vector3.one;
-            currentMsg.SetActive(true);
-            //currentMsg.GetComponentInChildren<Text>().text = "Salut";
-            messagesList.Add(currentMsg);
-            StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(), "Salut Ca va ?", 0.02F));
-
-            if (messagesList.Count > 5)
-            {
-                GameObject msgToDestroy = messagesList[0];
-                messagesList.Remove(msgToDestroy);
-                Destroy(msgToDestroy);
-            }
-        }*/
-    }
-
+    
     #region Monolog Manager
 
     public void ClickOnNextMonolog()
@@ -146,9 +111,6 @@ public class SpeechManager : MonoBehaviour
         bool sequenceIsFinished = false;
         if (LoadDialoguesManager.sequenceIndex < allDialogues.Count)
         {
-            displayDialogue.dialogue_Alex_Nat.SetActive(true);
-            //Debug.Log("sequenceIndex " + sequenceIndex);
-            //Debug.Log("dialogueIndex " + dialogueIndex);
             string nomInterlocuteur = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].character;
             string dialogue = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue;
             displayDialogue.SlideDialogue(nomInterlocuteur, dialogue);

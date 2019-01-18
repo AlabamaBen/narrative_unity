@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
                     if (!SpeechManager.instance.displayMonologue.animator.GetBool("openMonolog")) // if player has closed last thought (open Monolog closed)
                     {
                         // TEST
-                        step++;
+                        step=3;
                         dialoguesSeqFinished = false;
 
                         // Init next step
@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour {
             case 1: // Smartphone
                 if(PhoneManager.instance.phoneGameFinished)
                 {
-                    //Debug.Log("PHONE FINISHED");
                     // Init next step
                     ClickableObjetManager.instance.startPAndClick = true;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
@@ -79,7 +78,6 @@ public class GameManager : MonoBehaviour {
             case 2:
                 if (ClickableObjetManager.instance.finishedPAndCStep)
                 {
-                    Debug.Log("PHASE 01 POINT AND CLICK finished");
                     step++;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
                 }
@@ -88,6 +86,9 @@ public class GameManager : MonoBehaviour {
                 m_Scene = SceneManager.GetActiveScene();
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
+                    //TEST 
+                    Ring.Game_End = true;
+
                     sceneLoaded = true;
                     StartCoroutine(LoadScene("minigame_1",2f));
                 }
@@ -95,7 +96,6 @@ public class GameManager : MonoBehaviour {
                 {
                     if (Ring.Game_End)
                     {
-                        Debug.Log("minigame_1 finished");
                         step++;
                         sceneLoaded = false;
                     }
@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour {
                     {
                         blockInput = true;
                         // Display first line of dialogue
+                        SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(true);
                         SpeechManager.instance.DisplayNextSequenceDialogue();
                         SpeechManager.instance.startDialogue = true;
                         Invoke("waitAndUnblockInput", 1f);
@@ -130,6 +131,7 @@ public class GameManager : MonoBehaviour {
                 }
                 else
                 {
+                    SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
                     SpeechManager.instance.startDialogue = false;
                     step++;
                     dialoguesSeqFinished = false;
@@ -137,6 +139,8 @@ public class GameManager : MonoBehaviour {
 
                     // Init next step
                 }
+                break;
+            case 6:
                 break;
         }
     }
