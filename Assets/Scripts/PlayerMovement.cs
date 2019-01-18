@@ -8,22 +8,43 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject pointer;
     private Vector3 target;
     private float spriteOffset;
-      
+
+    public Animator animator;
 
     // Use this for initialization
     void Start () {
-        spriteOffset = this.GetComponent<SpriteRenderer>().size.y * this.transform.localScale.y / 4;
-        Debug.Log("size : " + spriteOffset);
+        spriteOffset = 0; //this.GetComponent<SpriteRenderer>().size.y * this.transform.localScale.y / 4;
         // spriteOffset = 5f; //this.GetComponent<SpriteRenderer>().size.y/2;
     }
-	
+
+    private bool facing_right = true; 
+
 	// Update is called once per frame
 	void Update () {
         if (isMoving)
         {
+            animator.SetBool("Walking", true);
             transform.position = Vector3.MoveTowards(transform.position, target + Vector3.up * spriteOffset, speed * Time.deltaTime);
+            if((transform.position - target).sqrMagnitude <0.1f)
+            {
+                isMoving = false;
+                animator.SetBool("Walking", false);
+            }
+
+            Debug.Log("x : " + (transform.position - target).x);
+
+            if ((transform.position - target).x > 0.1f && facing_right)
+            {
+                transform.localScale = new Vector2(transform.localScale.x * -1f, transform.localScale.y);
+                facing_right = false;
+            }
+            if ((transform.position - target).x < 0.1f && !facing_right)
+            {
+                transform.localScale = new Vector2(transform.localScale.x * -1f, transform.localScale.y);
+                facing_right = true;
+            }
         }
-	}
+    }
 
     public void Move()
     {
