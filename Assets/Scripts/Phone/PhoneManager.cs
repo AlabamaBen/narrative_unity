@@ -59,12 +59,6 @@ public class PhoneManager : MonoBehaviour {
                 break;
         }
     }
-
-    private IEnumerator LaunchAnimationPhone(bool phoneOpened, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        animator.SetBool("phoneOpened", phoneOpened);
-    }
     
     public void ClickOnMessageButton()
     {
@@ -85,13 +79,28 @@ public class PhoneManager : MonoBehaviour {
                 break;
             case 2:
                 SetDialogueBox("Haha, Ok ça marche !");
-                StartCoroutine(LaunchAnimationPhone(false, 2.5f));
-                substep =0;
+                DesactivateAllButtons();
+                buttonToDesactivate[3].SetActive(true);
+                substep++;
+                break;
+            case 3:
+                boiteEnvoi.text = "";
+                smsObj.SetActive(true);
+                smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
+
+                StartCoroutine(LaunchAnimationPhone(false, 2f));
                 DesactivateAllButtons();
                 phoneGameFinished = true;
+                substep = 0;
                 step++;
                 break;
         }
+    }
+
+    private IEnumerator LaunchAnimationPhone(bool phoneOpened, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        animator.SetBool("phoneOpened", phoneOpened);
     }
 
     private void DesactivateAllButtons()
@@ -118,9 +127,6 @@ public class PhoneManager : MonoBehaviour {
             boiteEnvoi.text = stringToDisplay;
             yield return new WaitForSeconds(speed);
         }
-        boiteEnvoi.text = "";
-        smsObj.SetActive(true);
-        smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
         textDisplayed = false;
     }
 }
