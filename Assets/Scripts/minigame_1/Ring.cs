@@ -140,7 +140,9 @@ public class Ring : MonoBehaviour {
     }
 
     [HideInInspector]
-    public static bool Game_End = false; 
+    public static bool Game_End = false;
+
+    float sound_wip_time = 0; 
 
     Vector2 last_mouse_position; 
     private void OnMouseDrag()
@@ -154,7 +156,7 @@ public class Ring : MonoBehaviour {
 
 
             Debug.Log((int)(dirt.color.a * 255));
-            if ((int)(dirt.color.a * 255)%4 == 0 )
+            if ((int)(dirt.color.a * 255) % 11 == 0 )
             {
                 SFX_Wipe.PlayTheSound();
             }
