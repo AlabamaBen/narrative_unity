@@ -47,52 +47,65 @@ public class PhoneManager : MonoBehaviour {
 
     public void StartPhone()
     {
-        switch (step)
-        {
-            case 0:
-                bool phoneOpened = animator.GetBool("phoneOpened");
+        bool phoneOpened = animator.GetBool("phoneOpened");
 
-                if (!phoneOpened)
-                {
-                    StartCoroutine(LaunchAnimationPhone(true, 1f));
-                }
-                break;
+        if (!phoneOpened)
+        {
+            StartCoroutine(LaunchAnimationPhone(true, 1f));
         }
     }
     
     public void ClickOnMessageButton()
     {
-        switch (substep)
+
+        switch (step)
         {
             case 0:
-                screen.sprite = screenSprites[substep];
-                screen.gameObject.SetActive(true);
-                DesactivateAllButtons();
-                buttonToDesactivate[1].SetActive(true);
-                substep++;
+                switch (substep)
+                {
+                    case 0:
+                        screen.sprite = screenSprites[substep];
+                        screen.gameObject.SetActive(true);
+                        DesactivateAllButtons();
+                        buttonToDesactivate[1].SetActive(true);
+                        substep++;
+                        break;
+                    case 1:
+                        screen.sprite = screenSprites[substep];
+                        DesactivateAllButtons();
+                        buttonToDesactivate[2].SetActive(true);
+                        substep++;
+                        break;
+                    case 2:
+                        SetDialogueBox("Haha, Ok ça marche !");
+                        DesactivateAllButtons();
+                        buttonToDesactivate[3].SetActive(true);
+                        substep++;
+                        break;
+                    case 3:
+                        boiteEnvoi.text = "";
+                        smsObj.SetActive(true);
+                        smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
+
+                        StartCoroutine(LaunchAnimationPhone(false, 2f));
+                        DesactivateAllButtons();
+                        phoneGameFinished = true;
+                        substep = 0;
+                        step++;
+                        break;
+                }
                 break;
             case 1:
-                screen.sprite = screenSprites[substep];
-                DesactivateAllButtons();
-                buttonToDesactivate[2].SetActive(true);
-                substep++;
-                break;
-            case 2:
-                SetDialogueBox("Haha, Ok ça marche !");
-                DesactivateAllButtons();
-                buttonToDesactivate[3].SetActive(true);
-                substep++;
-                break;
-            case 3:
-                boiteEnvoi.text = "";
-                smsObj.SetActive(true);
-                smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
-
-                StartCoroutine(LaunchAnimationPhone(false, 2f));
-                DesactivateAllButtons();
-                phoneGameFinished = true;
-                substep = 0;
-                step++;
+                switch (substep)
+                {
+                    case 0:
+                        screen.sprite = screenSprites[substep];
+                        screen.gameObject.SetActive(true);
+                        DesactivateAllButtons();
+                        buttonToDesactivate[1].SetActive(true);
+                        substep++;
+                        break;
+                }
                 break;
         }
     }

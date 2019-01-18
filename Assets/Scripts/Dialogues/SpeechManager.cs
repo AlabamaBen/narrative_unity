@@ -20,6 +20,13 @@ public class SpeechManager : MonoBehaviour
     public static SpeechManager instance = null;
     private bool buttonMonologAntiSpam;
 
+    // IF "Monolog" animation is playing 
+    //if(displayMonolog.animator.GetCurrentAnimatorStateInfo(0).IsName("Monolog")) {}
+
+    // IF "Monolog" animation has finished (but still playing)
+    //if (displayMonolog.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !displayMonolog.animator.IsInTransition(0)) {}
+
+
     private void Awake()
     {
         //Check if instance already exists
