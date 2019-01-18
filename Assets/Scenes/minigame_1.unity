@@ -335,6 +335,11 @@ Prefab:
       propertyPath: musicList.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: 212c173fcc840b941a901b7a0e9ae315, type: 3}
+    - target: {fileID: 82377491050677130, guid: f4914ac355b39bf4ab0ddcf6f1071df9,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.34
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4914ac355b39bf4ab0ddcf6f1071df9, type: 2}
   m_IsPrefabAsset: 0

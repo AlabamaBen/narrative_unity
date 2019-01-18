@@ -22,7 +22,7 @@ public class DialoguesManager : MonoBehaviour
     private string stringToDisplay; // dynamic string that is displayed
     public float text_speed = 0.02f;
     [Header("SFX sound")]
-    public SFXSound talk_sound;
+    public SFXSound_Voice talk_sound;
 
     [HideInInspector]
     public bool startDialogue;
@@ -227,7 +227,9 @@ public class DialoguesManager : MonoBehaviour
         {
             stringToDisplay += strComplete[i++];
             textBox.text = stringToDisplay;
+
             talk_sound.PlayTheSound();
+
             yield return new WaitForSeconds(speed);
         }
         textDisplayed = false;

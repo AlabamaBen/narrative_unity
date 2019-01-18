@@ -279,11 +279,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 310729373}
-  - component: {fileID: 310729370}
   - component: {fileID: 310729372}
+  - component: {fileID: 310729370}
   - component: {fileID: 310729371}
   m_Layer: 0
-  m_Name: SFX_Skeleton
+  m_Name: SFX_Talk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,16 +292,18 @@ GameObject:
 --- !u!114 &310729370
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114718581744756718, guid: edeba378bc5fad347b168ae488557f4d,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 310729369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b2d53e077d1fa4d80771da6e8df976, type: 3}
+  m_Script: {fileID: 11500000, guid: fdf4846b1ee0bf4459214b97266131f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theSound: {fileID: 8300000, guid: 8e297f98d1cd9404fa17afe9688a2f6c, type: 3}
+  theSounds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &310729371
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1884,10 +1886,10 @@ MonoBehaviour:
   messageBox_Temp_Natyahs: {fileID: 811353595}
   messageBox_Temp_Alex: {fileID: 1774613928}
   messagesParent: {fileID: 357176067}
-  startDialogue: 0
   text_speed: 0.02
-  textDisplayed: 0
   talk_sound: {fileID: 310729370}
+  startDialogue: 0
+  textDisplayed: 0
 --- !u!114 &1019780354
 MonoBehaviour:
   m_ObjectHideFlags: 0

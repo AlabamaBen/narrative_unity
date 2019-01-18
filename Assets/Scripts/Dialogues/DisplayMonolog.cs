@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +16,7 @@ public class DisplayMonolog : MonoBehaviour {
     [HideInInspector]
     public Animator animator;
     private string stringToDisplay;
-    public SFXSound talk_sound;
+    public SFXSound_Voice talk_sound;
 
     private void Start()
     {
