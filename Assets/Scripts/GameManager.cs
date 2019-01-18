@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
                     if (!DialoguesManager.instance.displayMonolog.animator.GetBool("openMonolog")) // if player has closed last thought (open Monolog closed)
                     {
                         //Debug.Log("INTRO FINISHED");
-                        step = 2;
+                        step++;
                         dialoguesSeqFinished = false;
 
                         // Init next step
