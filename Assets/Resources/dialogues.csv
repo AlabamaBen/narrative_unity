@@ -1,15 +1,17 @@
 Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue)
-0;Alex;**(Bâillement),(Étirement) Aaaah ma tête ...pffffff… Quelle soirée hier !**;Pensee;1;
-0;Alex;**Il est quelle heure ?**;Pensee;1;
+0;Alex;(Bâillement),(Étirement) Aaaah ma tête ...pffffff… Quelle soirée hier !;Pensee;1;
+0;Alex;Il est quelle heure ?;Pensee;1;
 1;Alex;?!! Mais c’est quoi ce truc ?;;1;
 1;Natyahs;"Hé ce ""truc"" est un génie, tu sais comme dans les films.";;1;
 1;Alex;Donc j’ai droit à des souhaits ? ;;1;
-1;Natyahs;Absolument tout ce que tu veux... Mais je dois prendre possession de ton corps pour les exaucer. ;;1;
+1;Natyahs;Absolument tout ce que tu veux... ;;1;
+1;Natyahs;Mais je dois prendre possession de ton corps pour les exaucer. ;;1;
 1;Alex;Hmmmm ;;1;
 1;Natyahs;Tu n’as pas un rêve à réaliser ? ;;1;
 1;Alex;Si, mais je ne veux pas perdre le contrôle de mon corps. ;;1;
 1;Natyahs;Ah, on ne peut pas tout avoir, mais c’est comme tu veux. ;;1;
-1;Natyahs;Je vais faire une petite sieste ici. Tant que tu possèdes la bague, je serais dans le coin.;;1;
+1;Natyahs;Je vais faire une petite sieste ici. ;;1;
+1;Natyahs;Tant que tu possèdes la bague, je serais dans le coin.;;1;
 1;Alex;Pourquoi ça ? ;;1;
 1;Natyahs;Je ne peux pas m’en éloigner avec ce corps. T'occupes, c'est un truc de génie.;;1;
 2;Alex;Ah merde ! Faut que je range...;;1;

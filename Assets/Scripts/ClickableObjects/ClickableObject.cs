@@ -18,7 +18,7 @@ public class ClickableObject : MonoBehaviour
     {
         if (!dialogue.Equals("") && !DialoguesManager.instance.textDisplayed)
         {
-            DialoguesManager.instance.SetDialogueBox("Alex", dialogue);
+            DialoguesManager.instance.DisplayThoughOnObject(dialogue);
             ClickableObjetManager.instance.ObjectClicked(this);
         }
         else if(dialogue.Equals(""))

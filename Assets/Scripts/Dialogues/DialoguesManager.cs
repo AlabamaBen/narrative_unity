@@ -8,26 +8,24 @@ public class DialoguesManager : MonoBehaviour {
     private List<DataObject> dialogueSequenceTemp;
     private List<List<DataObject>> allDialogues;
 
-    [Header("Monologue_Pensee_Alex")]
     [SerializeField]
-    private Text nomInterlocuteur;
-    [SerializeField]
-    private Text boiteDialogue;
+    private DisplayMonolog displayMonolog;
+
 
     [Header("Dialogue_Alex_Nat")]
-    public GameObject messageBox_Temp;
+    public GameObject dialogue_Alex_Nat;
+    public GameObject messageBox_Temp_Natyahs;
+    public GameObject messageBox_Temp_Alex;
     public GameObject messagesParent;
-    public List<GameObject> messagesList;
+    private List<GameObject> messagesList;
 
     [HideInInspector]
     public bool startDialogue;
 
     private string stringToDisplay;
-    [HideInInspector]
     public float text_speed = 0.02f;
     [HideInInspector]
     public bool textDisplayed;
-
     public SFXSound talk_sound;
 
     public static DialoguesManager instance = null;
@@ -49,30 +47,36 @@ public class DialoguesManager : MonoBehaviour {
         startDialogue = false;
         dialogueSequenceTemp = LoadDialoguesManager.instance.dialogueSequenceTemp;
         allDialogues = LoadDialoguesManager.instance.allDialogues;
-
-        // Create a
-        GameObject currentMsg = Instantiate(messageBox_Temp);
+        messagesList = new List<GameObject>();
+        /*
+        GameObject currentMsg = Instantiate(messageBox_Temp_Alex);
         currentMsg.transform.SetParent(messagesParent.transform);
-        currentMsg.transform.position = messageBox_Temp.transform.position;
+        currentMsg.transform.position = messageBox_Temp_Alex.transform.position;
         currentMsg.transform.localScale = Vector3.one;
         currentMsg.SetActive(true);
         messagesList.Add(currentMsg);
+        StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(),"Salut Ca va?", 0.02F));*/
+
     }
 
     private void Update()
     {
-        if (Input.anyKeyDown)
+        /*
+        if (Input.anyKeyDown && !textDisplayed)
         {
             foreach(GameObject msg in messagesList)
             {
-                msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position + Vector3.up * 70;
+                msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position + Vector3.up * 100;
             }
-            GameObject currentMsg = Instantiate(messageBox_Temp);
+
+            GameObject currentMsg = Instantiate(messageBox_Temp_Natyahs);
             currentMsg.transform.SetParent(messagesParent.transform);
-            currentMsg.transform.position = messageBox_Temp.transform.position;
+            currentMsg.transform.position = messageBox_Temp_Natyahs.transform.position;
             currentMsg.transform.localScale = Vector3.one;
             currentMsg.SetActive(true);
+            //currentMsg.GetComponentInChildren<Text>().text = "Salut";
             messagesList.Add(currentMsg);
+            StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(), "Salut Ca va ?", 0.02F));
 
             if (messagesList.Count > 5)
             {
@@ -80,26 +84,43 @@ public class DialoguesManager : MonoBehaviour {
                 messagesList.Remove(msgToDestroy);
                 Destroy(msgToDestroy);
             }
-        }
+        }*/
     }
-
-    public void ClickOnNextDialogue()
+    #region Monolog Manager
+    public void ClickOnNextMonolog()
     {
-        if (startDialogue&& !textDisplayed)
+        if (displayMonolog.animator.GetBool("openMonolog"))
         {
-            GameManager.instance.dialoguesSeqFinished = DisplayNextSequenceDialogues();
+            displayMonolog.animator.SetBool("openMonolog", false);
+
+            if (startDialogue && !textDisplayed)
+            {
+                StartCoroutine(WaitCloseMonologAndDisplayNextSequenceMonolog());
+            }
         }
     }
 
-    public bool DisplayNextSequenceDialogues()
+    private IEnumerator WaitCloseMonologAndDisplayNextSequenceMonolog()
+    {
+        yield return new WaitForSeconds(2f);
+        GameManager.instance.dialoguesSeqFinished = DisplayNextSequenceMonolog();
+    }
+
+    public void DisplayThoughOnObject(string thought)
+    {
+        displayMonolog.SetMonolog(thought);
+    }
+    #endregion
+
+    public bool DisplayNextSequenceMonolog()
     {
         bool sequenceIsFinished = false;
         if (LoadDialoguesManager.sequenceIndex < allDialogues.Count)
         {
             //Debug.Log("sequenceIndex " + sequenceIndex);
             //Debug.Log("dialogueIndex " + dialogueIndex);
-            nomInterlocuteur.text = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].character;
-            StartCoroutine(AnimateText(allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue, 0.02F));
+            //nomInterlocuteur.text = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].character;
+            StartCoroutine(displayMonolog.AnimateTextMonolog(allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue, 0.02F));
             //boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
 
             if (LoadDialoguesManager.dialogueIndex < allDialogues[LoadDialoguesManager.sequenceIndex].Count-1)
@@ -120,18 +141,76 @@ public class DialoguesManager : MonoBehaviour {
         return sequenceIsFinished;
     }
 
-    public void SetDialogueBox(string _nomInterlocuteur, string _boiteDialogue)
+    public bool DisplayNextSequenceDialog()
     {
-        if (!textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
+        bool sequenceIsFinished = false;
+        if (LoadDialoguesManager.sequenceIndex < allDialogues.Count)
         {
-            nomInterlocuteur.text = _nomInterlocuteur;
-            //StartCoroutine(AnimateText(_boiteDialogue, 0.02F));
-            StartCoroutine(AnimateText(_boiteDialogue, text_speed));
+            dialogue_Alex_Nat.SetActive(true);
+            //Debug.Log("sequenceIndex " + sequenceIndex);
+            //Debug.Log("dialogueIndex " + dialogueIndex);
+            string nomInterlocuteur = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].character;
+            string dialogue = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue;
+            SlideDialog(nomInterlocuteur, dialogue);
+            //boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
 
+            if (LoadDialoguesManager.dialogueIndex < allDialogues[LoadDialoguesManager.sequenceIndex].Count - 1)
+            {
+                LoadDialoguesManager.dialogueIndex++;
+            }
+            else
+            {
+                LoadDialoguesManager.sequenceIndex++;
+                LoadDialoguesManager.dialogueIndex = 0;
+                sequenceIsFinished = true;
+            }
+        }
+        else
+        {
+            Debug.Log("Fin des dialogues");
+        }
+        return sequenceIsFinished;
+    }
+
+    private void SlideDialog(string interlocuteur, string text)
+    {
+        foreach (GameObject msg in messagesList)
+        {
+            msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position + Vector3.up * 100;
+        }
+
+        GameObject currentMsg = null;
+        if (interlocuteur.Equals("Natyahs"))
+        {
+            currentMsg = Instantiate(messageBox_Temp_Natyahs);
+            currentMsg.transform.position = messageBox_Temp_Natyahs.transform.position;
+        }
+        else if (interlocuteur.Equals("Alex"))
+        {
+            currentMsg = Instantiate(messageBox_Temp_Alex);
+            currentMsg.transform.position = messageBox_Temp_Alex.transform.position;
+        }
+        else
+        {
+            Debug.Log("Error in character name");
+            return;
+        }
+
+        currentMsg.transform.SetParent(messagesParent.transform);
+        currentMsg.transform.localScale = Vector3.one;
+        currentMsg.SetActive(true);
+        messagesList.Add(currentMsg);
+        StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(), text, 0.02F));
+
+        if (messagesList.Count > 5)
+        {
+            GameObject msgToDestroy = messagesList[0];
+            messagesList.Remove(msgToDestroy);
+            Destroy(msgToDestroy);
         }
     }
-    
-    IEnumerator AnimateText(string strComplete,float speed)
+
+    IEnumerator AnimateTextDialog(Text textBox, string strComplete, float speed)
     {
         textDisplayed = true;
         int i = 0;
@@ -139,11 +218,10 @@ public class DialoguesManager : MonoBehaviour {
         while (i < strComplete.Length)
         {
             stringToDisplay += strComplete[i++];
-            boiteDialogue.text = stringToDisplay;
+            textBox.text = stringToDisplay;
             talk_sound.PlayTheSound();
             yield return new WaitForSeconds(speed);
         }
         textDisplayed = false;
     }
-
 }
