@@ -10,9 +10,10 @@ public class DisplayDialogue : MonoBehaviour {
     public GameObject message_List_Panel;
     public List<GameObject> messagesList;
     private string stringToDisplay; // dynamic string that is displayed
-    public float text_speed = 0.02f;
-    [Header("SFX sound")]
+    [Header("SFX sound param")]
     public SFXSound_Voice talk_sound;
+    [SerializeField]
+    private float text_speed = 0.02f;
 
     private void Awake()
     {
@@ -64,7 +65,7 @@ public class DisplayDialogue : MonoBehaviour {
         currentMsg.transform.localScale = Vector3.one;
         currentMsg.SetActive(true);
         messagesList.Add(currentMsg);
-        StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(), text, 0.02F));
+        StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(), text, text_speed));
 
         if (messagesList.Count > 5)
         {

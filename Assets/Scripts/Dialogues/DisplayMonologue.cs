@@ -8,13 +8,15 @@ public class DisplayMonologue : MonoBehaviour {
     [Header("Monologue_Pensee_Alex")]
     [SerializeField]
     private Text boiteDialogue;
-    [SerializeField]
-    private float monolog_speed = 0.02f;
 
     [HideInInspector]
     public Animator animator;
     private string stringToDisplay;
+
+    [Header("SFX sound param")]
     public SFXSound_Voice talk_sound;
+    [SerializeField]
+    private float text_speed = 0.02f;
 
     private void Start()
     {
@@ -26,7 +28,7 @@ public class DisplayMonologue : MonoBehaviour {
         animator.SetBool("openMonolog", false);
         if (!SpeechManager.instance.textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
         {
-            StartCoroutine(AnimateTextMonolog(_boiteDialogue, monolog_speed));
+            StartCoroutine(AnimateTextMonolog(_boiteDialogue, text_speed));
 
         }
     }
