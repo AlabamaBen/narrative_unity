@@ -13,7 +13,8 @@ public class DisplayMonolog : MonoBehaviour {
     [SerializeField]
     private float monolog_speed = 0.02f;
 
-    private Animator animator;
+    [HideInInspector]
+    public Animator animator;
     private string stringToDisplay;
     public SFXSound talk_sound;
 
@@ -21,6 +22,7 @@ public class DisplayMonolog : MonoBehaviour {
     {
         animator = this.GetComponent<Animator>();
     }
+
     public void SetMonolog(string _boiteDialogue)
     {
         if (!DialoguesManager.instance.textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
@@ -32,7 +34,6 @@ public class DisplayMonolog : MonoBehaviour {
 
     public IEnumerator AnimateTextMonolog(string strComplete, float speed)
     {
-        animator.Rebind();
         animator.SetBool("openMonolog",true);
         DialoguesManager.instance.textDisplayed = true;
         int i = 0;
@@ -46,7 +47,6 @@ public class DisplayMonolog : MonoBehaviour {
         }
         // animator.SetTrigger("closeMonolog");
         DialoguesManager.instance.textDisplayed = false;
-        //animator.SetBool("openMonolog", false);
     }
 
 

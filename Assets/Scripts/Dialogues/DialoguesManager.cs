@@ -89,10 +89,21 @@ public class DialoguesManager : MonoBehaviour {
     #region Monolog Manager
     public void ClickOnNextMonolog()
     {
-        if (startDialogue && !textDisplayed)
+        if (displayMonolog.animator.GetBool("openMonolog"))
         {
-            GameManager.instance.dialoguesSeqFinished = DisplayNextSequenceMonolog();
+            displayMonolog.animator.SetBool("openMonolog", false);
+
+            if (startDialogue && !textDisplayed)
+            {
+                StartCoroutine(WaitCloseMonologAndDisplayNextSequenceMonolog());
+            }
         }
+    }
+
+    private IEnumerator WaitCloseMonologAndDisplayNextSequenceMonolog()
+    {
+        yield return new WaitForSeconds(2f);
+        GameManager.instance.dialoguesSeqFinished = DisplayNextSequenceMonolog();
     }
 
     public void DisplayThoughOnObject(string thought)

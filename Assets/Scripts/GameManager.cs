@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
                 {
                     if (!DialoguesManager.instance.startDialogue)
                     {
+                        DialoguesManager.instance.DisplayNextSequenceMonolog();
                         DialoguesManager.instance.startDialogue = true;
                     }
                 }
