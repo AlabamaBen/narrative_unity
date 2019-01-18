@@ -1268,9 +1268,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 6060f8e147b2ad448a6d02832df1d71e, type: 3}
+  - {fileID: 8300000, guid: 874749073d2080940b91c1aace1b1657, type: 3}
+  - {fileID: 8300000, guid: 2f54f72f95e5f3a4e8b26f6f57bec8fa, type: 3}
+  Talk_Rate: 2
 --- !u!114 &114724113262477274
 MonoBehaviour:
   m_ObjectHideFlags: 1
