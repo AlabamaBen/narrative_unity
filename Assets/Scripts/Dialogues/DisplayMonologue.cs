@@ -46,6 +46,8 @@ public class DisplayMonologue : MonoBehaviour {
             talk_sound.PlayTheSound();
             yield return new WaitForSeconds(speed);
         }
+
+        talk_sound.StopTheSound();
         // animator.SetTrigger("closeMonolog");
         SpeechManager.instance.textDisplayed = false;
     }

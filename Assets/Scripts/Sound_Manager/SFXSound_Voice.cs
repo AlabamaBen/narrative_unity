@@ -2,33 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFXSound_Voice : MonoBehaviour {
+public class SFXSound_Voice : MonoBehaviour
+{
 
     public AudioClip[] theSounds;
 
-    public int Talk_Rate = 2; 
-
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
     }
-
-    private int count = 0 ; 
 
     public void PlayTheSound()
     {
-
-        count++; 
-
-        if(count % Talk_Rate == 0)
+        if (!GetComponent<AudioSource>().isPlaying)
         {
             int index = Random.Range(0, theSounds.Length - 1);
             GetComponent<AudioSource>().clip = theSounds[index];
             GetComponent<AudioSource>().Play();
         }
-
-        //if(!GetComponent<AudioSource>().isPlaying)
-        //{
-
-        ////}
     }
+
+    public void StopTheSound()
+    {
+        GetComponent<AudioSource>().Stop();
+    }
+
 }
