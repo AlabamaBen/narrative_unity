@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224355381541242360}
   - component: {fileID: 222027670670843616}
+  - component: {fileID: 114527439008812738}
   m_Layer: 5
   m_Name: Dialogue_Alex_Nat
   m_TagString: Untagged
@@ -1051,6 +1052,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114527439008812738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280720140608556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282bc6d79b19ac54b973309149f5563e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue_Alex_Nat: {fileID: 1280720140608556}
+  messageBox_Temp_Natyahs: {fileID: 1746408486376402}
+  messageBox_Temp_Alex: {fileID: 1391922430584352}
+  message_List_Panel: {fileID: 1456674022218982}
+  text_speed: 0.02
+  talk_sound: {fileID: 114668481297826792}
 --- !u!114 &114561975091865914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1181,13 +1199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3de60e17d6f50540932b85867ee3b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayMonolog: {fileID: 114913114934612154}
-  dialogue_Alex_Nat: {fileID: 1280720140608556}
-  messageBox_Temp_Natyahs: {fileID: 1746408486376402}
-  messageBox_Temp_Alex: {fileID: 1391922430584352}
-  messagesParent: {fileID: 1456674022218982}
-  text_speed: 0.02
-  talk_sound: {fileID: 114668481297826792}
+  displayMonologue: {fileID: 114913114934612154}
+  displayDialogue: {fileID: 114527439008812738}
   startDialogue: 0
   textDisplayed: 0
 --- !u!114 &114667740962801842

@@ -4,32 +4,20 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialoguesManager : MonoBehaviour
+public class SpeechManager : MonoBehaviour
 {
     private List<DataObject> dialogueSequenceTemp;
     private List<List<DataObject>> allDialogues;
-
-    [HideInInspector]
-    public DisplayMonolog displayMonolog;
-
-
-    [Header("Dialogue_Alex_Nat")]
-    public GameObject dialogue_Alex_Nat;
-    public GameObject messageBox_Temp_Natyahs;
-    public GameObject messageBox_Temp_Alex;
-    public GameObject messagesParent;
-    private List<GameObject> messagesList;
-    private string stringToDisplay; // dynamic string that is displayed
-    public float text_speed = 0.02f;
-    [Header("SFX sound")]
-    public SFXSound_Voice talk_sound;
+    
+    public DisplayMonologue displayMonologue;
+    public DisplayDialogue displayDialogue;
 
     [HideInInspector]
     public bool startDialogue;
     [HideInInspector]
     public bool textDisplayed; // boolean that indicates if the text has finished typing (for both monolog and dialog)
     
-    public static DialoguesManager instance = null;
+    public static SpeechManager instance = null;
     private bool buttonMonologAntiSpam;
 
     private void Awake()
@@ -49,7 +37,6 @@ public class DialoguesManager : MonoBehaviour
         startDialogue = false;
         dialogueSequenceTemp = LoadDialoguesManager.instance.dialogueSequenceTemp;
         allDialogues = LoadDialoguesManager.instance.allDialogues;
-        messagesList = new List<GameObject>();
     }
 
     private void Update()
@@ -86,13 +73,15 @@ public class DialoguesManager : MonoBehaviour
             }
         }*/
     }
+
     #region Monolog Manager
+
     public void ClickOnNextMonolog()
     {
-        if (!buttonMonologAntiSpam && displayMonolog.animator.GetBool("openMonolog") && !textDisplayed)
+        if (!buttonMonologAntiSpam && displayMonologue.animator.GetBool("openMonolog") && !textDisplayed)
         {
             buttonMonologAntiSpam = true;
-            displayMonolog.animator.SetBool("openMonolog", false);
+            displayMonologue.animator.SetBool("openMonolog", false);
 
             if (startDialogue)
             {
@@ -115,7 +104,7 @@ public class DialoguesManager : MonoBehaviour
 
     public void DisplayThoughOnObject(string thought)
     {
-        displayMonolog.SetMonolog(thought);
+        displayMonologue.SetMonolog(thought);
     }
 
     public bool DisplayNextSequenceMonolog()
@@ -126,7 +115,43 @@ public class DialoguesManager : MonoBehaviour
             //Debug.Log("sequenceIndex " + sequenceIndex);
             //Debug.Log("dialogueIndex " + dialogueIndex);
             //nomInterlocuteur.text = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].character;
-            StartCoroutine(displayMonolog.AnimateTextMonolog(allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue, 0.02F));
+            StartCoroutine(displayMonologue.AnimateTextMonolog(allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue, 0.02F));
+            //boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
+
+            if (LoadDialoguesManager.dialogueIndex < allDialogues[LoadDialoguesManager.sequenceIndex].Count - 1)
+            {
+                LoadDialoguesManager.dialogueIndex++;
+            }
+            else
+            {
+                LoadDialoguesManager.sequenceIndex++;
+                LoadDialoguesManager.dialogueIndex = 0;
+                sequenceIsFinished = true;
+            }
+        }
+        else
+        {
+            Debug.Log("Fin des dialogues");
+        }
+        return sequenceIsFinished;
+    }
+
+    #endregion
+
+
+    #region Dialogue Manager
+
+    public bool DisplayNextSequenceDialogue()
+    {
+        bool sequenceIsFinished = false;
+        if (LoadDialoguesManager.sequenceIndex < allDialogues.Count)
+        {
+            displayDialogue.dialogue_Alex_Nat.SetActive(true);
+            //Debug.Log("sequenceIndex " + sequenceIndex);
+            //Debug.Log("dialogueIndex " + dialogueIndex);
+            string nomInterlocuteur = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].character;
+            string dialogue = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue;
+            displayDialogue.SlideDialogue(nomInterlocuteur, dialogue);
             //boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
 
             if (LoadDialoguesManager.dialogueIndex < allDialogues[LoadDialoguesManager.sequenceIndex].Count - 1)
@@ -148,90 +173,4 @@ public class DialoguesManager : MonoBehaviour
     }
     #endregion
 
-
-    public bool DisplayNextSequenceDialog()
-    {
-        bool sequenceIsFinished = false;
-        if (LoadDialoguesManager.sequenceIndex < allDialogues.Count)
-        {
-            dialogue_Alex_Nat.SetActive(true);
-            //Debug.Log("sequenceIndex " + sequenceIndex);
-            //Debug.Log("dialogueIndex " + dialogueIndex);
-            string nomInterlocuteur = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].character;
-            string dialogue = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue;
-            SlideDialog(nomInterlocuteur, dialogue);
-            //boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
-
-            if (LoadDialoguesManager.dialogueIndex < allDialogues[LoadDialoguesManager.sequenceIndex].Count - 1)
-            {
-                LoadDialoguesManager.dialogueIndex++;
-            }
-            else
-            {
-                LoadDialoguesManager.sequenceIndex++;
-                LoadDialoguesManager.dialogueIndex = 0;
-                sequenceIsFinished = true;
-            }
-        }
-        else
-        {
-            Debug.Log("Fin des dialogues");
-        }
-        return sequenceIsFinished;
-    }
-
-    private void SlideDialog(string interlocuteur, string text)
-    {
-        foreach (GameObject msg in messagesList)
-        {
-            msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position + Vector3.up * 100;
-        }
-
-        GameObject currentMsg = null;
-        if (interlocuteur.Equals("Natyahs"))
-        {
-            currentMsg = Instantiate(messageBox_Temp_Natyahs);
-            currentMsg.transform.position = messageBox_Temp_Natyahs.transform.position;
-        }
-        else if (interlocuteur.Equals("Alex"))
-        {
-            currentMsg = Instantiate(messageBox_Temp_Alex);
-            currentMsg.transform.position = messageBox_Temp_Alex.transform.position;
-        }
-        else
-        {
-            Debug.Log("Error in character name");
-            return;
-        }
-
-        currentMsg.transform.SetParent(messagesParent.transform);
-        currentMsg.transform.localScale = Vector3.one;
-        currentMsg.SetActive(true);
-        messagesList.Add(currentMsg);
-        StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(), text, 0.02F));
-
-        if (messagesList.Count > 5)
-        {
-            GameObject msgToDestroy = messagesList[0];
-            messagesList.Remove(msgToDestroy);
-            Destroy(msgToDestroy);
-        }
-    }
-
-    IEnumerator AnimateTextDialog(Text textBox, string strComplete, float speed)
-    {
-        textDisplayed = true;
-        int i = 0;
-        stringToDisplay = "";
-        while (i < strComplete.Length)
-        {
-            stringToDisplay += strComplete[i++];
-            textBox.text = stringToDisplay;
-
-            talk_sound.PlayTheSound();
-
-            yield return new WaitForSeconds(speed);
-        }
-        textDisplayed = false;
-    }
 }

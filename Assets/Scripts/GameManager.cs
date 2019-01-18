@@ -46,19 +46,19 @@ public class GameManager : MonoBehaviour {
             case 0: // Intro
                 if (!dialoguesSeqFinished)
                 {
-                    if (!DialoguesManager.instance.startDialogue)
+                    if (!SpeechManager.instance.startDialogue)
                     {
-                        DialoguesManager.instance.DisplayNextSequenceMonolog();
-                        DialoguesManager.instance.startDialogue = true;
+                        SpeechManager.instance.DisplayNextSequenceMonolog();
+                        SpeechManager.instance.startDialogue = true;
                     }
                 }
                 else
                 {
-                    DialoguesManager.instance.startDialogue = false;
-                    if (!DialoguesManager.instance.displayMonolog.animator.GetBool("openMonolog")) // if player has closed last thought (open Monolog closed)
+                    SpeechManager.instance.startDialogue = false;
+                    if (!SpeechManager.instance.displayMonologue.animator.GetBool("openMonolog")) // if player has closed last thought (open Monolog closed)
                     {
-                        //Debug.Log("INTRO FINISHED");
-                        step++;
+                        // TEST
+                        step=3;
                         dialoguesSeqFinished = false;
 
                         // Init next step
@@ -115,22 +115,22 @@ public class GameManager : MonoBehaviour {
             case 5:
                 if (!dialoguesSeqFinished)
                 {
-                    if (!DialoguesManager.instance.startDialogue && DialoguesManager.instance.dialogue_Alex_Nat!=null)
+                    if (!SpeechManager.instance.startDialogue && SpeechManager.instance.displayDialogue.dialogue_Alex_Nat!=null && SpeechManager.instance.displayDialogue.messagesList != null) // NEED TO FIND BETTER SOLUTION
                     {
                         blockInput = true;
                         // Display first line of dialogue
-                        DialoguesManager.instance.DisplayNextSequenceDialog();
-                        DialoguesManager.instance.startDialogue = true;
+                        SpeechManager.instance.DisplayNextSequenceDialogue();
+                        SpeechManager.instance.startDialogue = true;
                         Invoke("waitAndUnblockInput", 1f);
                     }
-                    if (!blockInput && DialoguesManager.instance.startDialogue && Input.anyKeyDown && !DialoguesManager.instance.textDisplayed) // Player click to display next dialog
+                    if (!blockInput && SpeechManager.instance.startDialogue && Input.anyKeyDown && !SpeechManager.instance.textDisplayed) // Player click to display next dialog
                     {
-                        dialoguesSeqFinished = DialoguesManager.instance.DisplayNextSequenceDialog();
+                        dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
                     }
                 }
                 else
                 {
-                    DialoguesManager.instance.startDialogue = false;
+                    SpeechManager.instance.startDialogue = false;
                     step++;
                     dialoguesSeqFinished = false;
                     sceneLoaded = false;

@@ -16,9 +16,9 @@ public class ClickableObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!dialogue.Equals("") && !DialoguesManager.instance.textDisplayed)
+        if (!dialogue.Equals("") && !SpeechManager.instance.textDisplayed)
         {
-            DialoguesManager.instance.DisplayThoughOnObject(dialogue);
+            SpeechManager.instance.DisplayThoughOnObject(dialogue);
             ClickableObjetManager.instance.ObjectClicked(this);
         }
         else if(dialogue.Equals(""))

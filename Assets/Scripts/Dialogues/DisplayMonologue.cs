@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DisplayMonolog : MonoBehaviour {
+public class DisplayMonologue : MonoBehaviour {
 
     [Header("Monologue_Pensee_Alex")]
-    [SerializeField]
-    private Text nomInterlocuteur;
     [SerializeField]
     private Text boiteDialogue;
     [SerializeField]
@@ -26,7 +24,7 @@ public class DisplayMonolog : MonoBehaviour {
     public void SetMonolog(string _boiteDialogue)
     {
         animator.SetBool("openMonolog", false);
-        if (!DialoguesManager.instance.textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
+        if (!SpeechManager.instance.textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
         {
             StartCoroutine(AnimateTextMonolog(_boiteDialogue, monolog_speed));
 
@@ -36,7 +34,7 @@ public class DisplayMonolog : MonoBehaviour {
     public IEnumerator AnimateTextMonolog(string strComplete, float speed)
     {
         animator.SetBool("openMonolog",true);
-        DialoguesManager.instance.textDisplayed = true;
+        SpeechManager.instance.textDisplayed = true;
         int i = 0;
         stringToDisplay = "";
         while (i < strComplete.Length)
@@ -47,7 +45,7 @@ public class DisplayMonolog : MonoBehaviour {
             yield return new WaitForSeconds(speed);
         }
         // animator.SetTrigger("closeMonolog");
-        DialoguesManager.instance.textDisplayed = false;
+        SpeechManager.instance.textDisplayed = false;
     }
 
 
