@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
                     if (!SpeechManager.instance.displayMonologue.animator.GetBool("openMonolog")) // if player has closed last thought (open Monolog closed)
                     {
                         // TEST
-                        step=3;
+                        step++;
                         dialoguesSeqFinished = false;
 
                         // Init next step
