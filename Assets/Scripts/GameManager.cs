@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public bool dialoguesSeqFinished;
 
     private bool sceneLoaded;
+    private bool blockInput = false;
 
 
     // Constant from DialoguesManager
@@ -116,11 +117,13 @@ public class GameManager : MonoBehaviour {
                 {
                     if (!DialoguesManager.instance.startDialogue && DialoguesManager.instance.dialogue_Alex_Nat!=null)
                     {
+                        blockInput = true;
                         // Display first line of dialogue
                         DialoguesManager.instance.DisplayNextSequenceDialog();
                         DialoguesManager.instance.startDialogue = true;
+                        Invoke("waitAndUnblockInput", 1f);
                     }
-                    if (DialoguesManager.instance.startDialogue && Input.anyKeyDown && !DialoguesManager.instance.textDisplayed) // Player click to display next dialog
+                    if (!blockInput && DialoguesManager.instance.startDialogue && Input.anyKeyDown && !DialoguesManager.instance.textDisplayed) // Player click to display next dialog
                     {
                         dialoguesSeqFinished = DialoguesManager.instance.DisplayNextSequenceDialog();
                     }
@@ -158,5 +161,10 @@ public class GameManager : MonoBehaviour {
         {
             yield return null;
         }
+    }
+
+    private void waitAndUnblockInput()
+    {
+        blockInput = false;
     }
 }
