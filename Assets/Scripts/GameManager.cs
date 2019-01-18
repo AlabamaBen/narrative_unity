@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour {
                 }
                 else
                 {
-                    if (Ring.Cleaned)
+                    if (Ring.Game_End)
                     {
                         Debug.Log("minigame_1 finished");
                         step++;

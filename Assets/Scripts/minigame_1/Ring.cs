@@ -29,6 +29,8 @@ public class Ring : MonoBehaviour {
 
     public SFXSound SFX_Wipe;
     public SFXSound SFX_Cleaned;
+    public SFXSound SFX_Steam;
+
 
     public SpriteRenderer sprite_cat;
 
@@ -102,6 +104,7 @@ public class Ring : MonoBehaviour {
 
                 break;
             case Ring_State.End:
+                Game_End = true;
                 break;
 
 
@@ -123,6 +126,8 @@ public class Ring : MonoBehaviour {
             Glow.enabled = false;
             state = Ring_State.opened;
 
+            SFX_Steam.PlayTheSound();
+
             fire.Play();
 
             foreach (D2FogsPE fog in get_Smokes.Fogs)
@@ -135,7 +140,7 @@ public class Ring : MonoBehaviour {
     }
 
     [HideInInspector]
-    public static bool Cleaned = false; 
+    public static bool Game_End = false; 
 
     Vector2 last_mouse_position; 
     private void OnMouseDrag()
@@ -156,7 +161,6 @@ public class Ring : MonoBehaviour {
 
             if(dirt.color.a * 255 < 1f)
             {
-                Cleaned = true;
                 state = Ring_State.cleaned;
                 SFX_Cleaned.PlayTheSound();
             }

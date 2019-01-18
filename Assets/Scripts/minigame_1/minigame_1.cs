@@ -20,21 +20,25 @@ public class minigame_1 : MonoBehaviour {
 
 
     public float amplitude;
-    public float length; 
+    public float length;
+
+    bool Opened = false; 
 
     private void OnMouseDown()
     {
-        if (!shakeOn && progress_bar.value < Target)
+        if (!shakeOn && progress_bar.value <= Target && !Opened)
         {
-            //Debug.Log("Click");
-            Shake(amplitude, length);
-            progress_bar.value++;
             if (progress_bar.value == Target)
             {
                 SFX_Open.PlayTheSound();
-                //Debug.Log("Open");
                 GetComponent<Animator>().SetTrigger("Open");
                 ring.Opening();
+                Opened = true;
+            }
+            else
+            {
+                Shake(amplitude, length);
+                progress_bar.value++;
             }
         }
     }
