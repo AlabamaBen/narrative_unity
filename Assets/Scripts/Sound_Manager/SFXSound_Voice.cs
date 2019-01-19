@@ -6,20 +6,47 @@ public class SFXSound_Voice : MonoBehaviour
 {
 
     public AudioClip[] theSounds;
+    public float delay = 0.2f; 
+
 
     // Use this for initialization
     void Start()
     {
+        cooldown = 0f; 
     }
+
+    private void Update()
+    {
+        cooldown -= Time.deltaTime;
+    }
+
+    private float cooldown; 
 
     public void PlayTheSound()
     {
-        if (!GetComponent<AudioSource>().isPlaying)
+        Debug.Log("Play");
+        if(cooldown < 0 )
         {
-            int index = Random.Range(0, theSounds.Length - 1);
-            GetComponent<AudioSource>().clip = theSounds[index];
-            GetComponent<AudioSource>().Play();
+            foreach (AudioSource audioSource in GetComponents<AudioSource>())
+            {
+                if (!audioSource.isPlaying)
+                {
+                    int index = Random.Range(0, theSounds.Length - 1);
+                    audioSource.clip = theSounds[index];
+                    audioSource.Play();
+                    cooldown = delay;
+                    break;
+                }
+            }
         }
+
+
+        //if (!GetComponent<AudioSource>().isPlaying)
+        //{
+        //    int index = Random.Range(0, theSounds.Length - 1);
+        //    GetComponent<AudioSource>().clip = theSounds[index];
+        //    GetComponent<AudioSource>().Play();
+        //}
     }
 
     public void StopTheSound()

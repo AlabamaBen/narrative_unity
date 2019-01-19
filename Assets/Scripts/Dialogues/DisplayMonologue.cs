@@ -29,7 +29,6 @@ public class DisplayMonologue : MonoBehaviour {
         if (!SpeechManager.instance.textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
         {
             StartCoroutine(AnimateTextMonolog(_boiteDialogue, text_speed));
-
         }
     }
 
@@ -39,15 +38,14 @@ public class DisplayMonologue : MonoBehaviour {
         SpeechManager.instance.textDisplayed = true;
         int i = 0;
         stringToDisplay = "";
+        talk_sound.PlayTheSound();
         while (i < strComplete.Length)
         {
             stringToDisplay += strComplete[i++];
             boiteDialogue.text = stringToDisplay;
-            talk_sound.PlayTheSound();
             yield return new WaitForSeconds(speed);
         }
 
-        talk_sound.StopTheSound();
         // animator.SetTrigger("closeMonolog");
         SpeechManager.instance.textDisplayed = false;
     }
