@@ -59,8 +59,6 @@ public class PhoneManager : MonoBehaviour {
     
     public void ClickOnMessageButton()
     {
-
-        Debug.Log("step" + step);
         switch (step)
         {
             case 0:
@@ -106,14 +104,14 @@ public class PhoneManager : MonoBehaviour {
                 switch (substep)
                 {
                     case 0:
-                        screen.sprite = screenSprites[substep];
+                        screen.sprite = screenSprites[2+substep];
                         screen.gameObject.SetActive(true);
                         DesactivateAllButtons();
                         buttonToDesactivate[1].SetActive(true);
                         substep++;
                         break;
                     case 1:
-                        screen.sprite = screenSprites[substep];
+                        screen.sprite = screenSprites[2 + substep];
                         DesactivateAllButtons();
                         buttonToDesactivate[2].SetActive(true);
                         substep++;

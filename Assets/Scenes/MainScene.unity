@@ -323,6 +323,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114906601258740382, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: screenSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 224361697218919470, guid: edeba378bc5fad347b168ae488557f4d,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -413,6 +418,98 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114911157163181946, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2a8fe9ecba6622b40a19d670ed099f13,
+        type: 3}
+    - target: {fileID: 114561975091865914, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7957527eaf573ed479b168a352de40f7,
+        type: 3}
+    - target: {fileID: 114648080438677548, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a00c864bd15490f40b52da64bb1bb4a7,
+        type: 3}
+    - target: {fileID: 114648080438677548, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283135630530632, guid: edeba378bc5fad347b168ae488557f4d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224733693213790710, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -66
+      objectReference: {fileID: 0}
+    - target: {fileID: 224733693213790710, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0050219
+      objectReference: {fileID: 0}
+    - target: {fileID: 224733693213790710, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 359.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 224733693213790710, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 116.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906601258740382, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: screenSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 035a47e9f114aa34e97c0566e260419d,
+        type: 3}
+    - target: {fileID: 114906601258740382, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: screenSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7957527eaf573ed479b168a352de40f7,
+        type: 3}
+    - target: {fileID: 114732851283886258, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d13385ea254be645b4f9c46d0400f3e,
+        type: 3}
+    - target: {fileID: 114732851283886258, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224457328488176040, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -9.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224457328488176040, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906601258740382, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: screenSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4d6bb617036b9044ab03830983215224,
+        type: 3}
+    - target: {fileID: 114906601258740382, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: screenSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0466ae6d72569ad4684775da0b3d75f3,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edeba378bc5fad347b168ae488557f4d, type: 2}
   m_IsPrefabAsset: 0
