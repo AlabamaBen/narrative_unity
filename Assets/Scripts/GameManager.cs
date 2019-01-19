@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
         Scene m_Scene;
         switch (step)
         {
-            case 0: // Intro
+            case 0: // Intro - 2 pensees défilent
                 if (!dialoguesSeqFinished)
                 {
                     if (!SpeechManager.instance.startDialogue)
@@ -70,8 +70,8 @@ public class GameManager : MonoBehaviour {
                     }
                 }
                 break;
-            case 1: // Smartphone
-                if(PhoneManager.instance.phoneGameFinished)
+            case 1: // Message de Lucie - Smartphone
+                if (PhoneManager.instance.phoneGameFinished)
                 {
                     // Init next step
                     ClickableObjetManager.instance.startPAndClick = true;
@@ -80,14 +80,14 @@ public class GameManager : MonoBehaviour {
                     PhoneManager.instance.phoneGameFinished = false;
                 }
                 break;
-            case 2:
+            case 2: // Click sur la boite mystérieuse de la soiree d'hier
                 if (ClickableObjetManager.instance.finishedPAndCStep)
                 {
                     step++;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
                 }
                 break;
-            case 3:
+            case 3: // Lancement mini jeu boite
                 m_Scene = SceneManager.GetActiveScene();
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour {
                     }
                 }
                 break;
-            case 4:
+            case 4: // Reload de la scene principale
                 m_Scene = SceneManager.GetActiveScene();
                 if (m_Scene.name != "MainScene" && !sceneLoaded)
                 {
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour {
                     step++;
                 }
                 break;
-            case 5:
+            case 5: // 1er dialogue Natyahs et Alex
                 if (!dialoguesSeqFinished)
                 {
                     if (!SpeechManager.instance.startDialogue && SpeechManager.instance.displayDialogue.dialogue_Alex_Nat!=null && SpeechManager.instance.displayDialogue.messagesList != null ) // NEED TO FIND BETTER SOLUTION
@@ -148,14 +148,14 @@ public class GameManager : MonoBehaviour {
                     // Init next step
                 }
                 break;
-            case 6:
-                if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0)) { // Current animation (Fadeout Dialogues) finished
+            case 6: // Message de Maman qui arrive
+                if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
+                { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
                     SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
                     // Init next step
                     PhoneManager.instance.StartPhone();
                 }
-
                 break;
         }
     }

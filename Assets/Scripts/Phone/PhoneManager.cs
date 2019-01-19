@@ -87,15 +87,18 @@ public class PhoneManager : MonoBehaviour {
                         substep++;
                         break;
                     case 3:
-                        boiteEnvoi.text = "";
-                        smsObj.SetActive(true);
-                        smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
+                        if (!textDisplayed)
+                        {
+                            boiteEnvoi.text = "";
+                            smsObj.SetActive(true);
+                            smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
 
-                        StartCoroutine(LaunchAnimationPhone(false, 2f));
-                        DesactivateAllButtons();
-                        phoneGameFinished = true;
-                        substep = 0;
-                        step++;
+                            StartCoroutine(LaunchAnimationPhone(false, 2f));
+                            DesactivateAllButtons();
+                            phoneGameFinished = true;
+                            substep = 0;
+                            step++;
+                        }
                         break;
                 }
                 break;
@@ -123,15 +126,18 @@ public class PhoneManager : MonoBehaviour {
                         substep++;
                         break;
                     case 3:
-                        boiteEnvoi.text = "";
-                        smsObj.SetActive(true);
-                        smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
+                        if (!textDisplayed)
+                        {
+                            boiteEnvoi.text = "";
+                            smsObj.SetActive(true);
+                            smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
 
-                        StartCoroutine(LaunchAnimationPhone(false, 2f));
-                        DesactivateAllButtons();
-                        phoneGameFinished = true;
-                        substep = 0;
-                        step++;
+                            StartCoroutine(LaunchAnimationPhone(false, 2f));
+                            DesactivateAllButtons();
+                            phoneGameFinished = true;
+                            substep = 0;
+                            step++;
+                        }
                         break;
                 }
                 break;

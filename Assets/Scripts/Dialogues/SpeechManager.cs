@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SpeechManager : MonoBehaviour
 {
-    private List<DataObject> dialogueSequenceTemp;
     private List<List<DataObject>> allDialogues;
     
     public DisplayMonologue displayMonologue;
@@ -42,7 +41,6 @@ public class SpeechManager : MonoBehaviour
     private void Start()
     {
         startDialogue = false;
-        dialogueSequenceTemp = LoadDialoguesManager.instance.dialogueSequenceTemp;
         allDialogues = LoadDialoguesManager.instance.allDialogues;
     }
     
