@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PhoneManager : MonoBehaviour {
 
     public static PhoneManager instance = null;
-    private Animator animator;
+    [HideInInspector]
+    public Animator animator;
     private static int step = 0;
     private int substep = 0;
 
@@ -132,14 +133,19 @@ public class PhoneManager : MonoBehaviour {
 
                             StartCoroutine(LaunchAnimationPhone(false, 2f));
                             DesactivateAllButtons();
-                            phoneGameFinished = true;
-                            substep = 0;
-                            step++;
+                            Invoke("FinishPhoneGame", 1.75F);
                         }
                         break;
                 }
                 break;
         }
+    }
+
+    private void FinishPhoneGame()
+    {
+        phoneGameFinished = true;
+        substep = 0;
+        step++;
     }
 
     private IEnumerator LaunchAnimationPhone(bool phoneOpened, float delay)

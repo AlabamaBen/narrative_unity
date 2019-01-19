@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour {
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
                     //TEST, next line to remove 
-                    //Ring.Game_End = true;
+                    Ring.Game_End = true;
 
                     sceneLoaded = true;
                     StartCoroutine(LoadScene("minigame_1",2f));
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour {
                     step++;
                 }
                 break;
-            case 5: // 1er dialogue Natyahs et Alex
+            case 5: //Debut 1er dialogue Natyahs et Alex
                 if (!dialoguesSeqFinished)
                 {
                     if (!SpeechManager.instance.startDialogue && SpeechManager.instance.displayDialogue.dialogue_Alex_Nat!=null && SpeechManager.instance.displayDialogue.messagesList != null ) // NEED TO FIND BETTER SOLUTION
@@ -148,13 +148,52 @@ public class GameManager : MonoBehaviour {
                     // Init next step
                 }
                 break;
-            case 6: // Message de Maman qui arrive
+            case 6: // Fin de dialogue entre Natyahs et Alex
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
                     SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
                     // Init next step
                     PhoneManager.instance.StartPhone();
+                    step++;
+                }
+                break;
+            case 7: // Message de Lucie - Smartphone
+                if (PhoneManager.instance.phoneGameFinished)
+                {
+                    // Init next step
+                    ClickableObjetManager.instance.startPAndClick = true;
+                    ClickableObjetManager.instance.finishedPAndCStep = false;
+                    step++;
+                    PhoneManager.instance.phoneGameFinished = false;
+                    dialoguesSeqFinished = false;
+                }
+                break;
+            case 8: // Debut dialogue rangement Natyahs et Alex
+                if (!dialoguesSeqFinished)
+                {
+                    if (!SpeechManager.instance.startDialogue)
+                    {
+                        blockInput = true;
+                        blockMovementOnGround = true;
+                        // Display first line of dialogue
+                        SpeechManager.instance.DisplayFirstSequence();
+
+                        Invoke("waitAndUnblockInput", 1f);
+                    }
+                    else if (!blockInput && SpeechManager.instance.startDialogue && Input.anyKeyDown && !SpeechManager.instance.textDisplayed) // Player click to display next dialog
+                    {
+                        dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
+                    }
+                }
+                break;
+                case 9: // Fin de dialogue entre Natyahs et Alex
+                if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
+                { // Current animation (Fadeout Dialogues) finished
+                    dialoguesSeqFinished = true;
+                    SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
+                    // Init next step
+                    step++;
                 }
                 break;
         }
