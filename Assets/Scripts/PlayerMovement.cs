@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour {
                 animator.SetBool("Walking", false);
             }
 
+            Vector2 direction = (transform.position - target).normalized;
+
             //Debug.Log("x : " + (transform.position - target).x);
 
             if ((transform.position - target).x > 0.1f && facing_right)
@@ -43,6 +45,25 @@ public class PlayerMovement : MonoBehaviour {
                 transform.localScale = new Vector2(transform.localScale.x * -1f, transform.localScale.y);
                 facing_right = true;
             }
+
+            float angle = Vector2.Angle(Vector2.up, direction); 
+
+            //Back
+            if( angle < 45f)
+            {
+                animator.SetInteger("Direction", 2);
+            }
+            //Side
+            if ( angle > 45 && angle < 135)
+            {
+                animator.SetInteger("Direction", 0);
+            }
+            //Front
+            if (angle > 135)
+            {
+                animator.SetInteger("Direction", 1);
+            }
+
         }
     }
 
