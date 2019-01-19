@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
                     if (!SpeechManager.instance.displayMonologue.animator.GetBool("openMonolog")) // if player has closed last thought (open Monolog closed)
                     {
                         // TEST
-                        //step=3;
+                        //step=5;
                         step++;
 
                         dialoguesSeqFinished = false;
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour {
                 }
                 else
                 {
-                    if (!SpeechManager.instance.textDisplayed) // Player click to display next dialog
+                    if (!SpeechManager.instance.textDisplayed) // Player click to end dialog
                     {
                         SpeechManager.instance.HideDialog();
                         blockMovementOnGround = false;
@@ -185,6 +185,18 @@ public class GameManager : MonoBehaviour {
                     {
                         dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
                     }
+                }
+                else
+                {
+                    if (!SpeechManager.instance.textDisplayed) // Player click to end dialog
+                    {
+                        SpeechManager.instance.HideDialog();
+                        blockMovementOnGround = false;
+                        step++;
+                        dialoguesSeqFinished = false;
+                    }
+
+                    // Init next step
                 }
                 break;
                 case 9: // Fin de dialogue entre Natyahs et Alex

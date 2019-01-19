@@ -133,7 +133,7 @@ public class PhoneManager : MonoBehaviour {
 
                             StartCoroutine(LaunchAnimationPhone(false, 2f));
                             DesactivateAllButtons();
-                            Invoke("FinishPhoneGame", 1.75F);
+                            Invoke("FinishPhoneGame", 2.2F);
                         }
                         break;
                 }
