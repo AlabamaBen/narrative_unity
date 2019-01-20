@@ -24,7 +24,7 @@ public class SFXSound_Voice : MonoBehaviour
 
     public void PlayTheSound()
     {
-        Debug.Log("Play");
+        //Debug.Log("Play");
         if(cooldown < 0 )
         {
             foreach (AudioSource audioSource in GetComponents<AudioSource>())

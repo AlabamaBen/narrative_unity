@@ -41,7 +41,6 @@ public class ClickableObject : MonoBehaviour
 
     IEnumerator SpriteBlink()
     {
-        Debug.Log("SpriteBlink");
         while (blinking)
         {
             if (this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled == true)
@@ -53,7 +52,6 @@ public class ClickableObject : MonoBehaviour
                 this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;   //make changes
             }
             yield return new WaitForSeconds(1F);
-            Debug.Log("Sending");
         }
     }
 

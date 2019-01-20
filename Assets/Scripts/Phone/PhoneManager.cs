@@ -95,13 +95,12 @@ public class PhoneManager : MonoBehaviour {
                             StartCoroutine(LaunchAnimationPhone(false, 2f));
                             DesactivateAllButtons();
                             Invoke("FinishPhoneGame", 2.5F);
-                            substep = 0;
-                            step++;
                         }
                         break;
                 }
                 break;
             case 1:
+                Debug.Log(substep);
                 switch (substep)
                 {
                     case 0:

@@ -453,7 +453,7 @@ MonoBehaviour:
   isClicked: 0
   dialogue: "Faut vraiment que j\u2019arr\xEAte de manger ces trucs"
   blinking: 0
-  blinkingSpeed: 0
+  blinkingSpeed: 0.2
 --- !u!114 &114391746224583996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,7 +468,7 @@ MonoBehaviour:
   isClicked: 0
   dialogue: "Lucie et sa lubie des c\xF4nes de chantier."
   blinking: 0
-  blinkingSpeed: 0
+  blinkingSpeed: 0.2
 --- !u!114 &114409538123521830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -483,7 +483,7 @@ MonoBehaviour:
   isClicked: 0
   dialogue: "Ah la fameuse boite \u2026"
   blinking: 0
-  blinkingSpeed: 0
+  blinkingSpeed: 0.2
 --- !u!114 &114543055951551416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -510,7 +510,7 @@ MonoBehaviour:
   isClicked: 0
   dialogue: "Oh \xE7a pourrait en faire une table"
   blinking: 0
-  blinkingSpeed: 0
+  blinkingSpeed: 0.2
 --- !u!212 &212285346729789010
 SpriteRenderer:
   m_ObjectHideFlags: 1
