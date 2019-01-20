@@ -44,3 +44,6 @@ TagManager:
   - name: Dirt
     uniqueID: 4271490019
     locked: 0
+  - name: Foreground
+    uniqueID: 3851342389
+    locked: 0
