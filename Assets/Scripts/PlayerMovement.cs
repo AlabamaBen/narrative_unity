@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject pointer;
     private Vector3 target;
     private float spriteOffset;
+    private float init_scale; 
 
     public Animator animator;
 
@@ -19,8 +20,14 @@ public class PlayerMovement : MonoBehaviour {
 
     private bool facing_right = true; 
 
-	// Update is called once per frame
-	void Update () {
+    void toogle_direction()
+    {
+        transform.localScale = new Vector2(transform.localScale.x * -1f, transform.localScale.y);
+        facing_right = !facing_right;
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (isMoving)
         {
             animator.SetBool("Walking", true);
@@ -29,39 +36,50 @@ public class PlayerMovement : MonoBehaviour {
             {
                 isMoving = false;
                 animator.SetBool("Walking", false);
-            }
 
-            Vector2 direction = (transform.position - target).normalized;
+                transform.localScale = new Vector2(-1f * transform.localScale.x, transform.localScale.y);
 
-            //Debug.Log("x : " + (transform.position - target).x);
+                //if(facing_right)
+                //{
+                //    transform.localScale = new Vector2(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+                //}
+                //else
+                //{
+                //    transform.localScale = new Vector2(1f * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+                //}
+            }
+            else
+            {
+                Vector2 direction = (transform.position - target).normalized;
 
-            if ((transform.position - target).x > 0.1f && facing_right)
-            {
-                transform.localScale = new Vector2(transform.localScale.x * -1f, transform.localScale.y);
-                facing_right = false;
-            }
-            if ((transform.position - target).x < 0.1f && !facing_right)
-            {
-                transform.localScale = new Vector2(transform.localScale.x * -1f, transform.localScale.y);
-                facing_right = true;
-            }
+                //Debug.Log("x : " + (transform.position - target).x);
 
-            float angle = Vector2.Angle(Vector2.up, direction); 
+                if ((transform.position - target).x > 0.1f)
+                {
+                    transform.localScale = new Vector2(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+                }
+                if ((transform.position - target).x < 0.1f)
+                {
+                    transform.localScale = new Vector2(1f * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+                }
 
-            //Back
-            if( angle < 45f)
-            {
-                animator.SetInteger("Direction", 2);
-            }
-            //Side
-            if ( angle > 45 && angle < 135)
-            {
-                animator.SetInteger("Direction", 0);
-            }
-            //Front
-            if (angle > 135)
-            {
-                animator.SetInteger("Direction", 1);
+                float angle = Vector2.Angle(Vector2.up, direction);
+
+                //Back
+                if (angle < 45f)
+                {
+                    animator.SetInteger("Direction", 2);
+                }
+                //Side
+                if (angle > 45 && angle < 135)
+                {
+                    animator.SetInteger("Direction", 0);
+                }
+                //Front
+                if (angle > 135)
+                {
+                    animator.SetInteger("Direction", 1);
+                }
             }
 
         }

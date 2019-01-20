@@ -12,7 +12,8 @@ public class DisplayDialogue : MonoBehaviour {
     private string stringToDisplay; // dynamic string that is displayed
     public Animator animator;
     [Header("SFX sound param")]
-    public SFXSound_Voice talk_sound;
+    public SFXSound_Voice talk_sound_Alex;
+    public SFXSound_Voice talk_sound_Natyahs;
     [SerializeField]
     private float text_speed = 0.02f;
 
@@ -32,7 +33,7 @@ public class DisplayDialogue : MonoBehaviour {
     }
 
 
-    IEnumerator AnimateTextDialog(Text textBox, string strComplete, float speed)
+    IEnumerator AnimateTextDialog(Text textBox, string strComplete, float speed, string interlocuteur)
     {
         SpeechManager.instance.textDisplayed = true;
         int i = 0;
@@ -42,7 +43,19 @@ public class DisplayDialogue : MonoBehaviour {
             stringToDisplay += strComplete[i++];
             textBox.text = stringToDisplay;
 
-            talk_sound.PlayTheSound();
+            if (interlocuteur.Equals("Natyahs"))
+            {
+                talk_sound_Natyahs.PlayTheSound();
+            }
+            else if (interlocuteur.Equals("Alex"))
+            {
+                talk_sound_Alex.PlayTheSound();
+            }
+            else
+            {
+                Debug.Log("Error in character name");
+            }
+
 
             yield return new WaitForSeconds(speed);
         }
@@ -81,7 +94,7 @@ public class DisplayDialogue : MonoBehaviour {
         currentMsg.transform.localScale = Vector3.one;
         currentMsg.SetActive(true);
         messagesList.Add(currentMsg);
-        StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(), text, text_speed));
+        StartCoroutine(AnimateTextDialog(currentMsg.GetComponentInChildren<Text>(), text, text_speed, interlocuteur));
 
         if (messagesList.Count > 5)
         {
