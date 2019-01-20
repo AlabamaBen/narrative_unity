@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     private bool blockInput = false;
 
     public static bool blockMovementOnGround = false;
+    public GameObject curtains_Panel;
 
 
     // Constant from DialoguesManager
@@ -99,6 +100,8 @@ public class GameManager : MonoBehaviour {
                     Ring.Game_End = true;
 
                     sceneLoaded = true;
+                    curtains_Panel.SetActive(true);
+                    curtains_Panel.GetComponent<Animator>().SetBool("fadeIn", true);
                     StartCoroutine(LoadScene("minigame_1",2f));
                 }
                 else

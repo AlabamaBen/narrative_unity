@@ -472,6 +472,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1522627011181172, guid: c73505bbc5837ca4587821031bfe1519,
     type: 2}
   m_PrefabInternal: {fileID: 951455897}
+--- !u!1 &1025418931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635990285567250, guid: edeba378bc5fad347b168ae488557f4d,
+    type: 2}
+  m_PrefabInternal: {fileID: 917496362}
 --- !u!1001 &1093938711
 Prefab:
   m_ObjectHideFlags: 0
@@ -558,6 +563,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114122880501882794, guid: 4a667c12886a6184485d9c97414fa146,
+        type: 2}
+      propertyPath: curtains_Panel
+      value: 
+      objectReference: {fileID: 1025418931}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a667c12886a6184485d9c97414fa146, type: 2}
   m_IsPrefabAsset: 0
