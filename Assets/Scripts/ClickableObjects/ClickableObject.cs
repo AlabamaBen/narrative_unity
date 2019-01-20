@@ -22,14 +22,23 @@ public class ClickableObject : MonoBehaviour
         isClicked = false;
         blinking = false;
         prefab = this.gameObject;
+        isInterractable = false;
     }
 
     private void OnMouseDown()
     {
-        if(isInterractable)
+        if (isInterractable && !isClicked)
+        {
+            isClicked = true;
             ClickableObjetManager.instance.ObjectClicked(this);
+            Invoke("waitAndUnblockInput", 0.5f);
+        }
     }
-    
+    private void waitAndUnblockInput()
+    {
+        isClicked = false;
+    }
+
     #region SpriteOutline
     public void ObjectBlink()
     {

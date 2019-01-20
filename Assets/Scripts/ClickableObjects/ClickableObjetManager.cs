@@ -36,10 +36,6 @@ public class ClickableObjetManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        clickableObjets = new List<ClickableObject>();
-
-        SetActivableObjects(phase);
-
         finishedPAndCStep = true;
         startPAndClick = false;
     }
@@ -70,12 +66,14 @@ public class ClickableObjetManager : MonoBehaviour
             case 0:
                 startPAndClick = true;
                 finishedPAndCStep = false;
+                SetActivableObjects(phase);
                 BlinkAllObjects();
                 break;
             case 1:
                 SetActivableObjects(phase);
                 startPAndClick = true;
                 finishedPAndCStep = false;
+                SetActivableObjects(phase);
                 BlinkAllObjects();
                 break;
         }
@@ -83,6 +81,7 @@ public class ClickableObjetManager : MonoBehaviour
 
     public void ObjectClicked(ClickableObject obj)
     {
+        // Debug.Log("ObjectClicked "+phase);
         switch (phase)
         {
             case 0:
@@ -99,6 +98,12 @@ public class ClickableObjetManager : MonoBehaviour
                         startPAndClick = false;
 
                         // Set next set
+
+                        // Deactivate all objects in each set.
+                        foreach (Transform tr in pointAndClickSet.transform)
+                        {
+                            tr.gameObject.GetComponent<ClickableObject>().isInterractable = false;
+                        }
                         clickableObjets.Clear();
                         foreach (GameObject nextObj in objectCollections[phase + 1].gameObjectList)
                         {
@@ -114,6 +119,7 @@ public class ClickableObjetManager : MonoBehaviour
                 {
                     if (obj.gameObject.activeSelf)
                     {
+                        obj.StopBlinking();
                         clickableObjets.Remove(obj.GetComponent<ClickableObject>());
                         obj.gameObject.SetActive(false);
                     }
@@ -121,7 +127,6 @@ public class ClickableObjetManager : MonoBehaviour
                     // If all objects are clicked, end mini game
                     if (clickableObjets.Count == 0)
                     {
-                        StopBlinkAllObjects();
                         phase++;
 
                         SetActivableObjects(phase);
@@ -134,22 +139,22 @@ public class ClickableObjetManager : MonoBehaviour
                 {
                     if (obj.gameObject.activeSelf)
                     {
+                        obj.StopBlinking();
                         clickableObjets.Remove(obj.GetComponent<ClickableObject>());
-                        obj.gameObject.SetActive(false);
-                    }
-
-                    // If all objects are clicked, end mini game
-                    if (clickableObjets.Count == 0)
-                    {
                         Debug.Log("END MINIGAME");
-                        StopBlinkAllObjects();
-                        finishedPAndCStep = true;
                         startPAndClick = false;
+                        objectCollections[phase].gameObjectList[0].GetComponent<Animator>().SetBool("renverse", true);
+                        Invoke("EndPhase3Minigame", 2F);
                         phase++;
                     }
                 }
                 break;
         }
+    }
+
+    private void EndPhase3Minigame()
+    {
+        finishedPAndCStep = true;
     }
 
     private void BlinkAllObjects()
@@ -160,6 +165,7 @@ public class ClickableObjetManager : MonoBehaviour
         }
     }
 
+    // NOt used
     private void StopBlinkAllObjects()
     {
         foreach (ClickableObject obj in clickableObjets)

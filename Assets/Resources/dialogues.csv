@@ -1,15 +1,9 @@
 Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue)
-0;Alex;(Bâillement),(Étirement) Aaaah ma tête ...pffffff… Quelle soirée hier !;Pensee;1;
-0;Alex;Il est quelle heure ?;Pensee;1;
-1;Alex;?!! Mais c’est quoi ce truc ? ;;1;
-1;Natyahs;"Hé ce ""truc"" est un génie, tu sais comme dans les films.";;1;
-1;Alex;Donc j’ai droit à des souhaits ? ;;1;
-1;Natyahs;Absolument tout ce que tu veux... ;;1;
-1;Natyahs;Mais je dois prendre possession de ton corps pour les exaucer. ;;1;
-2;Alex;Ah merde ! Faut que je range...;;1;
-2;Natyahs;Ou souhaiter une chambre rangée.;;1;
-2;Alex;Bien essayé, mais je vais garder mon corps ce coup-ci.;;1;
-3;Alex;J’ai un devoir à rendre avec Lucie demain à 8h30 !;;1;
-3;Natyahs;Serait-ce un voeu ?;;1;
-3;Alex;Il te faut combien de temps,;;1;
-3;Alex;pour me fournir un ordinateur qui fonctionne ?;;1;
+0;Alex; Quelle soirée hier !;Pensee;1;
+0;Alex;(Bâillement);Pensee;1;
+1;Alex;?!! Mais c’est ;;1;
+1;Natyahs;Absolument ;;1;
+2;Alex;Ah .;;1;
+2;Natyahs;Ou ;;1;
+3;Alex;J’ai !;;1;
+3;Natyahs;Seru ?;;1;

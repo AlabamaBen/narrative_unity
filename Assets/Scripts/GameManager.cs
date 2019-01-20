@@ -166,8 +166,6 @@ public class GameManager : MonoBehaviour {
                 if (PhoneManager.instance.phoneGameFinished)
                 {
                     // Init next step
-                    ClickableObjetManager.instance.startPAndClick = true;
-                    ClickableObjetManager.instance.finishedPAndCStep = false;
                     step++;
                     PhoneManager.instance.phoneGameFinished = false;
                     dialoguesSeqFinished = false;
@@ -198,20 +196,30 @@ public class GameManager : MonoBehaviour {
                         blockMovementOnGround = false;
                         step++;
                         dialoguesSeqFinished = false;
+                        Invoke("waitAndUnblockInput", 2f);
+                        blockInput = true;
                     }
 
                     // Init next step
                 }
                 break;
                 case 9: // Fin de dialogue entre Natyahs et Alex
-                if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
+                if (!blockInput && !dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
                     SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
 
+                    Debug.Log("StartClickableObject");
                     // Init next step
                     ClickableObjetManager.instance.StartClickableObject();
                     step++;
+                }
+                break;
+            case 10: // Click sur verrre eau
+                if (ClickableObjetManager.instance.finishedPAndCStep)
+                {
+                    step++;
+                    ClickableObjetManager.instance.finishedPAndCStep = false;
                 }
                 break;
         }
