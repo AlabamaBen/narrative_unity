@@ -1,9 +1,10 @@
 Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue)
-0;Alex; Quelle soirée hier !;Pensee;1;
-0;Alex;(Bâillement);Pensee;1;
-1;Alex;?!! Mais c’est ;;1;
-1;Natyahs;Absolument ;;1;
-2;Alex;Ah .;;1;
-2;Natyahs;Ou ;;1;
-3;Alex;J’ai !;;1;
-3;Natyahs;Seru ?;;1;
+0;Alex;Aa!;Pensee;1;;alex_neutre
+0;Alex;Aa!;Pensee;1;;alex_colere
+1;Alex;?!! Mais ;;1;;alex_colere
+1;Natyahs;Absolument ;;1;;natyahs_fache
+1;Natyahs;Absolument ;;1;;natyahs_mignon
+2;Alex;Ah .;;1;;alex_colere
+2;Natyahs;Ou ;;1;;
+3;Alex;J’ai !;;1;;alex_neutre
+3;Natyahs;Seru ?;;1;;natyahs_mignon

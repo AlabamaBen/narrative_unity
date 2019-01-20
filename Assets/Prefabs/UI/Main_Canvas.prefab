@@ -1389,7 +1389,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 818b97af1ab912d4b946ef69a7d95b54, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd4865500e05a864c87e600671d55e5b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1823,6 +1823,17 @@ MonoBehaviour:
   animator: {fileID: 95688054593915764}
   talk_sound: {fileID: 114645944854044460}
   text_speed: 0.02
+  alex: {fileID: 114112830235632566}
+  natyahs: {fileID: 114586643617330002}
+  allSprites:
+  - img_name: alex_colere
+    sprite: {fileID: 21300000, guid: dc79b98231ef57640b3474a22aaf1872, type: 3}
+  - img_name: alex_neutre
+    sprite: {fileID: 21300000, guid: fd4865500e05a864c87e600671d55e5b, type: 3}
+  - img_name: natyahs_fache
+    sprite: {fileID: 21300000, guid: d0d466ee1d01dbe4e871b4fe16884935, type: 3}
+  - img_name: natyahs_mignon
+    sprite: {fileID: 21300000, guid: 51a7473291be1ee4593a295d553a1319, type: 3}
 --- !u!114 &114561975091865914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1921,7 +1932,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7a53f34d0f84fcf44aed56d1f270c5fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 51a7473291be1ee4593a295d553a1319, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

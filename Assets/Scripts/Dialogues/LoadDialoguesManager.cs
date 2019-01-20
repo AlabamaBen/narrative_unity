@@ -81,7 +81,8 @@ public class LoadDialoguesManager : MonoBehaviour {
             //Separating columns to array
             string[] rowData = CSVParser.Split(line);
 
-            DataObject tempObject = new DataObject(rowData[0], rowData[1], rowData[2], rowData[3], rowData[4], rowData[5]);
+            DataObject tempObject = new DataObject(rowData[0], rowData[1], rowData[2], rowData[3], rowData[4], rowData[5], rowData[6]);
+            // Debug.Log("rowData 6 " + rowData[6]);
             if (int.Parse(rowData[0]) == compteur)
             {
                 dialogueSequenceTemp.Add(tempObject); // first column is the key name

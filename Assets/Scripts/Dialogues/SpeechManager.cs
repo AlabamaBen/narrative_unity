@@ -118,7 +118,8 @@ public class SpeechManager : MonoBehaviour
         {
             string nomInterlocuteur = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].character;
             string dialogue = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].dialogue;
-            displayDialogue.SlideDialogue(nomInterlocuteur, dialogue);
+            string spriteName = allDialogues[LoadDialoguesManager.sequenceIndex][LoadDialoguesManager.dialogueIndex].imgName;
+            displayDialogue.SlideDialogue(nomInterlocuteur, dialogue, spriteName);
             //boiteDialogue.text = allDialogues[sequenceIndex][dialogueIndex].dialogue;
 
             if (LoadDialoguesManager.dialogueIndex < allDialogues[LoadDialoguesManager.sequenceIndex].Count - 1)

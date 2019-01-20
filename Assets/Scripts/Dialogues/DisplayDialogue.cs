@@ -8,13 +8,18 @@ public class DisplayDialogue : MonoBehaviour {
     public GameObject messageBox_Temp_Natyahs;
     public GameObject messageBox_Temp_Alex;
     public GameObject message_List_Panel;
-    public List<GameObject> messagesList;
+    public List<GameObject> messagesList; 
     private string stringToDisplay; // dynamic string that is displayed
     public Animator animator;
     [Header("SFX sound param")]
     public SFXSound_Voice talk_sound;
     [SerializeField]
     private float text_speed = 0.02f;
+
+    [Header("Dialogue param")]
+    public Image alex;
+    public Image natyahs;
+    public List<SpriteData> allSprites;
 
     private void Awake()
     {
@@ -44,7 +49,7 @@ public class DisplayDialogue : MonoBehaviour {
         SpeechManager.instance.textDisplayed = false;
     }
 
-    public void SlideDialogue(string interlocuteur, string text)
+    public void SlideDialogue(string interlocuteur, string text, string spriteName)
     {
         foreach (GameObject msg in messagesList)
         {
@@ -56,11 +61,15 @@ public class DisplayDialogue : MonoBehaviour {
         {
             currentMsg = Instantiate(messageBox_Temp_Natyahs);
             currentMsg.transform.position = messageBox_Temp_Natyahs.transform.position;
+
+            ReplaceSprite(spriteName, natyahs);
         }
         else if (interlocuteur.Equals("Alex"))
         {
             currentMsg = Instantiate(messageBox_Temp_Alex);
             currentMsg.transform.position = messageBox_Temp_Alex.transform.position;
+
+            ReplaceSprite(spriteName, alex);
         }
         else
         {
@@ -97,6 +106,19 @@ public class DisplayDialogue : MonoBehaviour {
             messagesList.RemoveAt(0);
             Destroy(temp);
             yield return new WaitForSeconds(speed);
+        }
+    }
+
+    private void ReplaceSprite(string _name,Image spriteToReplace)
+    {
+        Debug.Log("spr._name : " + _name);
+        foreach (SpriteData spr in allSprites)
+        {
+            if (spr.img_name != "" && spr.img_name.Equals(_name))
+            {
+                Debug.Log("oui");
+                spriteToReplace.sprite = spr.sprite;
+            }
         }
     }
 
