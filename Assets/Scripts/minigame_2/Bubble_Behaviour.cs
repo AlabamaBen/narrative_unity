@@ -12,8 +12,6 @@ public class Bubble_Behaviour : MonoBehaviour {
 
     public float speed = 10f;
 
-    public Sheet_Behaviour sheet_Behaviour; 
-
     Rigidbody2D rb;
 
     [HideInInspector]
@@ -46,7 +44,15 @@ public class Bubble_Behaviour : MonoBehaviour {
         if (rb.velocity.SqrMagnitude() > 200f)
         {
             rb.velocity = new Vector2(0, 0);
-            rb.rotation = 0f;
+            rb.angularVelocity = 0f;
+
+            rb.AddForce(new Vector2(speed * Random.value, speed * Random.value));
+            rb.AddTorque(speed / 2 * Random.Range(-1, 1));
+        }
+        if(rb.angularVelocity > 45f)
+        {
+            rb.velocity = new Vector2(0, 0);
+            rb.angularVelocity = 0f;
 
             rb.AddForce(new Vector2(speed * Random.value, speed * Random.value));
             rb.AddTorque(speed / 2 * Random.Range(-1, 1));
@@ -57,7 +63,7 @@ public class Bubble_Behaviour : MonoBehaviour {
     {
         if(to_hit)
         {
-            minigame2_Behavior.Bubble_Hit(); 
+            minigame2_Behavior.Bubble_Hit(this.gameObject); 
         }
     }
 }

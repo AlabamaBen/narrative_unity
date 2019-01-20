@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4080331653080170}
   - component: {fileID: 212537942861776916}
   - component: {fileID: 60048479549980272}
+  - component: {fileID: 58663484666096364}
   m_Layer: 0
   m_Name: Bubble_Sprite
   m_TagString: Untagged
@@ -158,13 +159,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58663484666096364
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843840343325408}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.09, y: 0.15}
+  serializedVersion: 2
+  m_Radius: 0.51
 --- !u!60 &60048479549980272
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1843840343325408}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -253,7 +269,8 @@ MonoBehaviour:
   textmesh: {fileID: 102780519711202076}
   Text: Pomme
   speed: 300
-  sheet_Behaviour: {fileID: 0}
+  to_hit: 0
+  minigame2_Behavior: {fileID: 0}
 --- !u!212 &212537942861776916
 SpriteRenderer:
   m_ObjectHideFlags: 1

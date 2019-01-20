@@ -45,7 +45,6 @@ public class DisplayMonologue : MonoBehaviour {
             boiteDialogue.text = stringToDisplay;
             yield return new WaitForSeconds(speed);
         }
-
         // animator.SetTrigger("closeMonolog");
         SpeechManager.instance.textDisplayed = false;
     }
