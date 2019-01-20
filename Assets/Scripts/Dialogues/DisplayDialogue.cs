@@ -99,4 +99,5 @@ public class DisplayDialogue : MonoBehaviour {
             yield return new WaitForSeconds(speed);
         }
     }
+
 }

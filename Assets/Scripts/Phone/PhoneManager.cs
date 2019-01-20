@@ -94,7 +94,7 @@ public class PhoneManager : MonoBehaviour {
 
                             StartCoroutine(LaunchAnimationPhone(false, 2f));
                             DesactivateAllButtons();
-                            phoneGameFinished = true;
+                            Invoke("FinishPhoneGame", 2.5F);
                             substep = 0;
                             step++;
                         }

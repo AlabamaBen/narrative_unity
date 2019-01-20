@@ -29,13 +29,35 @@ public class ClickableObjetManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        clickableObjets = new List<ClickableObject>();
+
         foreach (GameObject obj in pointAndClickSet)
         {
             obj.SetActive(false);
         }
         pointAndClickSet[0].SetActive(true);
+
+        foreach (Transform child in pointAndClickSet[0].transform)
+        {
+            clickableObjets.Add(child.GetComponent<ClickableObject>());
+        }
+
         finishedPAndCStep = true;
         startPAndClick = false;
+    }
+
+    public void StartClickableObject()
+    {
+        switch (phase)
+        {
+            case 0:
+                startPAndClick = true;
+                finishedPAndCStep = false;
+                BlinkAllObjects();
+                break;
+            case 1:
+                break;
+        }
     }
     
     public void ObjectClicked(ClickableObject obj)
@@ -45,6 +67,7 @@ public class ClickableObjetManager : MonoBehaviour {
             case 0:
                 if (startPAndClick && !finishedPAndCStep && obj.gameObject.name == "Boite")
                 {
+                    StopBlinkAllObjects();
                     finishedPAndCStep = true;
                     startPAndClick = false;
                     phase++;
@@ -52,6 +75,22 @@ public class ClickableObjetManager : MonoBehaviour {
                 break;
             case 1:
                 break;
+        }
+    }
+    
+    private void BlinkAllObjects()
+    {
+        foreach (ClickableObject obj in clickableObjets)
+        {
+            obj.ObjectBlink();
+        }
+    }
+    
+    private void StopBlinkAllObjects()
+    {
+        foreach (ClickableObject obj in clickableObjets)
+        {
+            obj.StopBlinking();
         }
     }
 }

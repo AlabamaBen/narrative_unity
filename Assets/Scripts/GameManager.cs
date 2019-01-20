@@ -73,11 +73,11 @@ public class GameManager : MonoBehaviour {
             case 1: // Message de Lucie - Smartphone
                 if (PhoneManager.instance.phoneGameFinished)
                 {
-                    // Init next step
-                    ClickableObjetManager.instance.startPAndClick = true;
-                    ClickableObjetManager.instance.finishedPAndCStep = false;
-                    step++;
                     PhoneManager.instance.phoneGameFinished = false;
+
+                    // Init next step
+                    ClickableObjetManager.instance.StartClickableObject();
+                    step++;
                 }
                 break;
             case 2: // Click sur la boite mystérieuse de la soiree d'hier
