@@ -38,13 +38,13 @@ public class ClickableObjetManager : MonoBehaviour
     {
         clickableObjets = new List<ClickableObject>();
 
-        SetActivableObjects();
+        SetActivableObjects(phase);
 
         finishedPAndCStep = true;
         startPAndClick = false;
     }
 
-    public void SetActivableObjects()
+    public void SetActivableObjects(int _phase)
     {
         clickableObjets = new List<ClickableObject>();
 
@@ -55,12 +55,13 @@ public class ClickableObjetManager : MonoBehaviour
         }
 
         // Activate object from 1st step
-        foreach (GameObject obj in objectCollections[phase].gameObjectList)
+        foreach (GameObject obj in objectCollections[_phase].gameObjectList)
         {
             obj.GetComponent<ClickableObject>().isInterractable = true;
             clickableObjets.Add(obj.GetComponent<ClickableObject>());
         }
     }
+
 
     public void StartClickableObject()
     {
@@ -72,7 +73,7 @@ public class ClickableObjetManager : MonoBehaviour
                 BlinkAllObjects();
                 break;
             case 1:
-                SetActivableObjects();
+                SetActivableObjects(phase);
                 startPAndClick = true;
                 finishedPAndCStep = false;
                 BlinkAllObjects();
@@ -109,6 +110,26 @@ public class ClickableObjetManager : MonoBehaviour
                 }
                 break;
             case 1:
+                if (!SpeechManager.instance.textDisplayed && startPAndClick && !finishedPAndCStep) // !dialogue.Equals("")
+                {
+                    if (obj.gameObject.activeSelf)
+                    {
+                        clickableObjets.Remove(obj.GetComponent<ClickableObject>());
+                        obj.gameObject.SetActive(false);
+                    }
+
+                    // If all objects are clicked, end mini game
+                    if (clickableObjets.Count == 0)
+                    {
+                        StopBlinkAllObjects();
+                        phase++;
+
+                        SetActivableObjects(phase);
+                        BlinkAllObjects();
+                    }
+                }
+                break;
+            case 2:
                 if (!SpeechManager.instance.textDisplayed && startPAndClick && !finishedPAndCStep) // !dialogue.Equals("")
                 {
                     if (obj.gameObject.activeSelf)
