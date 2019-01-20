@@ -37,10 +37,14 @@ public class GameManager : MonoBehaviour {
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
+       
+        // TEST
+        //step=5;
+        //ClickableObjetManager.phase = 1;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
         Scene m_Scene;
         switch (step)
@@ -204,7 +208,9 @@ public class GameManager : MonoBehaviour {
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
                     SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
+
                     // Init next step
+                    ClickableObjetManager.instance.StartClickableObject();
                     step++;
                 }
                 break;

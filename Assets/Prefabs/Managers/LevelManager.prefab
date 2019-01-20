@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b884047932c354d97a74e346e26cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointAndClickSet:
-  - {fileID: 0}
+  pointAndClickSet: {fileID: 0}
   finishedPAndCStep: 0
   startPAndClick: 0

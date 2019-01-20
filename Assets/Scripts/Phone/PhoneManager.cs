@@ -100,7 +100,6 @@ public class PhoneManager : MonoBehaviour {
                 }
                 break;
             case 1:
-                Debug.Log(substep);
                 switch (substep)
                 {
                     case 0:

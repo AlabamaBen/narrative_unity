@@ -5,6 +5,10 @@ using UnityEngine;
 public class ClickableObject : MonoBehaviour
 {
     [HideInInspector]
+    public GameObject prefab;
+    [HideInInspector]
+    public bool isInterractable;
+    [HideInInspector]
     public bool isClicked;
     // public bool hideAfterClick;
     public string dialogue;
@@ -17,19 +21,13 @@ public class ClickableObject : MonoBehaviour
     {
         isClicked = false;
         blinking = false;
+        prefab = this.gameObject;
     }
 
     private void OnMouseDown()
     {
-        if (!dialogue.Equals("") && !SpeechManager.instance.textDisplayed)
-        {
-            SpeechManager.instance.DisplayThoughOnObject(dialogue);
+        if(isInterractable)
             ClickableObjetManager.instance.ObjectClicked(this);
-        }
-        else if(dialogue.Equals(""))
-        {
-            this.gameObject.SetActive(false);
-        }
     }
     
     #region SpriteOutline
@@ -63,7 +61,7 @@ public class ClickableObject : MonoBehaviour
             this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;  //make changes
         }
     }
-    #endregion
 
+    #endregion
 
 }
