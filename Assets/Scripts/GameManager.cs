@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour {
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
                     //TEST, next line to remove 
-                    Ring.Game_End = true;
+                    //Ring.Game_End = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
@@ -270,18 +270,17 @@ public class GameManager : MonoBehaviour {
         curtains_Panel.GetComponent<SpriteRenderer>().color = newColor;
     }
 
-    private void CurtainsFadeOut()
+    public void CurtainsFadeOut()
     {
-        Debug.Log("CurtainsFadeOut");
         Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
         newColor.a = 255;
         curtains_Panel.GetComponent<SpriteRenderer>().color = newColor;
         curtains_Panel.SetActive(true);
         curtains_Panel.GetComponent<Animator>().SetBool("fadeIn", false);
-        Invoke("DeActivateCurtains", 15F);
+        Invoke("DeActivateCurtains", 1F);
     }
 
-    private void DeActivateCurtains()
+    public void DeActivateCurtains()
     {
         Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
         newColor.a = 0;
