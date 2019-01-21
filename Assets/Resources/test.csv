@@ -1,0 +1,29 @@
+Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue);Nom_image
+0;Alex;(Bâillement),(Étirement) Aaaah ma tête ...pffffff… Quelle soirée hier !;Pensee;1;;alex_neutre
+0;Alex;Il est quelle heure ?;Pensee;1;;alex_neutre
+1;Alex;?!! Mais c’est quoi ce truc ?;;1;;alex_colere
+1;Natyahs;"Hé ce ""truc"" est un génie, tu sais comme dans les films.";;1;;natyahs_fache
+1;Alex;Donc j’ai droit à des souhaits ?;;1;;alex_neutre
+1;Natyahs;Ce serait un gachi de mon pouvoir, mais si tu le souhaites …;;1;;natyahs_mignon
+1;Natyahs;Ce serait un gachi de mon pouvoir, mais si tu le souhaites …;;1;;natyahs_mignon
+2;Alex;Ah merde ! Faut que je range...;;1;;
+2;Natyahs;Ou souhaiter une chambre rangée.;;1;;natyahs_fache
+2;Natyahs;Ce serait un gachi de mon pouvoir, mais si tu le souhaites …;;1;;natyahs_mignon
+3;Alex;Non, non, nooooon …. Alleeeeez. ;;1;;
+3;Natyahs;Besoin de quelque chose ?;;1;;
+3;Alex;Un ordinateur qui fonctionne !;;1;;
+4;Alex;Qu’est-ce que t’as fait de mon ordinateur ?;;1;;
+4;Alex;Mon devoir ?;;1;;
+4;Alex;J’ai besoin du devoir !!!;;1;;
+5;Alex;Où est mon devoir ?;;1;;
+5;Alex;J’ai besoin du devoir !!!;;1;;
+6;Natyahs;Tu voulais un ordinateur qui fonctionnait non ?;;1;;
+6;Natyahs;Excuse moi, je pensais bien faire.;;1;;
+7;Alex;Je vais jamais y arriver... ;;1;;
+7;Alex;Il me reste une heure et 5 pages à écrire … ;;1;;
+7;Alex;Lucie va me tuer …;;1;;
+7;Natyahs;Laisse moi réparer ma bêtise.;;1;;
+8;Alex;Convocation pour suspicion de tricherie… ;;1;;
+8;Alex;Lucie et moi devons passer un oral...;;1;;
+8;Alex;Pour prouver que nous avons bien écrit notre devoir…;;1;;
+8;Alex;Natyahs ? Qu’est-ce que t’as fait ?;;1;;

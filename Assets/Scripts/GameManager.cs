@@ -99,17 +99,21 @@ public class GameManager : MonoBehaviour {
                     //TEST, next line to remove 
                     Ring.Game_End = true;
 
+                    CurtainsFadeIn();
                     sceneLoaded = true;
-                    curtains_Panel.SetActive(true);
-                    curtains_Panel.GetComponent<Animator>().SetBool("fadeIn", true);
                     StartCoroutine(LoadScene("minigame_1",2f));
+                }
+
+                if(m_Scene.name == "minigame_1" && curtains_Panel.GetComponent<Animator>().GetBool("fadeIn"))
+                {
+                    CurtainsFadeOut();
                 }
                 else
                 {
                     if (Ring.Game_End)
                     {
+                        CurtainsFadeIn();
                         step++;
-                        sceneLoaded = false;
                     }
                 }
                 break;
@@ -117,6 +121,7 @@ public class GameManager : MonoBehaviour {
                 m_Scene = SceneManager.GetActiveScene();
                 if (m_Scene.name != "MainScene" && !sceneLoaded)
                 {
+                    CurtainsFadeOut();
                     sceneLoaded = true;
                     //StartCoroutine(LoadScene("MainScene", 0f));
                     StartCoroutine(LoadYourAsyncScene("MainScene"));
@@ -232,6 +237,7 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        sceneLoaded = false;
     }
 
     IEnumerator LoadYourAsyncScene(string sceneName)
@@ -253,5 +259,33 @@ public class GameManager : MonoBehaviour {
     private void waitAndUnblockInput()
     {
         blockInput = false;
+    }
+
+    private void CurtainsFadeIn()
+    {
+        curtains_Panel.SetActive(true);
+        curtains_Panel.GetComponent<Animator>().SetBool("fadeIn", true);
+        Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
+        newColor.a = 0;
+        curtains_Panel.GetComponent<SpriteRenderer>().color = newColor;
+    }
+
+    private void CurtainsFadeOut()
+    {
+        Debug.Log("CurtainsFadeOut");
+        Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
+        newColor.a = 255;
+        curtains_Panel.GetComponent<SpriteRenderer>().color = newColor;
+        curtains_Panel.SetActive(true);
+        curtains_Panel.GetComponent<Animator>().SetBool("fadeIn", false);
+        Invoke("DeActivateCurtains", 15F);
+    }
+
+    private void DeActivateCurtains()
+    {
+        Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
+        newColor.a = 0;
+        curtains_Panel.GetComponent<SpriteRenderer>().color = newColor;
+        curtains_Panel.SetActive(false);
     }
 }

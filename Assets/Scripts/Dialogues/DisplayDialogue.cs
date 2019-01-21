@@ -124,12 +124,10 @@ public class DisplayDialogue : MonoBehaviour {
 
     private void ReplaceSprite(string _name,Image spriteToReplace)
     {
-        Debug.Log("spr._name : " + _name);
         foreach (SpriteData spr in allSprites)
         {
             if (spr.img_name != "" && spr.img_name.Equals(_name))
             {
-                Debug.Log("oui");
                 spriteToReplace.sprite = spr.sprite;
             }
         }
