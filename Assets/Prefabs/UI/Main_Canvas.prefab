@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2035,8 +2035,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theSounds:
   - {fileID: 8300000, guid: 9553b3dac5d8c484b98249585f80de96, type: 3}
-  - {fileID: 8300000, guid: 93df0d494c2307f41a3f770a77178ec7, type: 3}
-  - {fileID: 8300000, guid: ea0975534158d944c8805abea5089970, type: 3}
   delay: 0.15
 --- !u!114 &114648080438677548
 MonoBehaviour:
@@ -2219,11 +2217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theSounds:
   - {fileID: 8300000, guid: b27022fb581eca44198ea3e2dd9718ff, type: 3}
-  - {fileID: 8300000, guid: 8480d3d32b0169d449ce36ffd1f427d4, type: 3}
-  - {fileID: 8300000, guid: 93df0d494c2307f41a3f770a77178ec7, type: 3}
-  - {fileID: 8300000, guid: 83e354b900632cd4697a35e6724359b3, type: 3}
-  - {fileID: 8300000, guid: aa311d7a2487df246bdaac57df9fc7c2, type: 3}
-  delay: 0.13
+  delay: 0.15
 --- !u!114 &114793021756640392
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1360,7 +1360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &690951082
 Prefab:
@@ -1445,6 +1445,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd4c2637d40687429fe9598c96a1b03, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &772077522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114607756786283600, guid: fd926b47c7864fc438991f7a6967a585,
+    type: 2}
+  m_PrefabInternal: {fileID: 1904395653}
+  m_Script: {fileID: 11500000, guid: 18259f09bd6aca34b93b0b9edf9a1e65, type: 3}
 --- !u!1 &784047824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1959,7 +1965,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4011467258521920, guid: b1fe5ac29a989464aa880d01bf255fbf, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114110701093755492, guid: b1fe5ac29a989464aa880d01bf255fbf,
         type: 2}
@@ -3635,11 +3641,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114073445097780566, guid: edeba378bc5fad347b168ae488557f4d,
+    - target: {fileID: 114282806318386096, guid: edeba378bc5fad347b168ae488557f4d,
         type: 2}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 772077522}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edeba378bc5fad347b168ae488557f4d, type: 2}
   m_IsPrefabAsset: 0
