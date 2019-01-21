@@ -16,6 +16,8 @@ public class ClickableObjetManager : MonoBehaviour
     public bool finishedPAndCStep;
     public bool startPAndClick;
 
+    public GameObject verre_eau;
+
     public PlayerMovement playerMovement;
 
     // Use this for initialization
@@ -132,11 +134,15 @@ public class ClickableObjetManager : MonoBehaviour
                 {
                     if (obj.gameObject.activeSelf)
                     {
-                        obj.StopBlinking();
-                        clickableObjets.Remove(obj.GetComponent<ClickableObject>());
-                        Debug.Log("END MINIGAME");
+                        playerMovement.GoAndDestroy(obj);
+                        //obj.StopBlinking();
+                        //obj.gameObject.SetActive(false);
+                        //clickableObjets.Remove(obj.GetComponent<ClickableObject>());
+
                         startPAndClick = false;
-                        objectCollections[phase].gameObjectList[0].GetComponent<Animator>().SetBool("renverse", true);
+
+                        verre_eau.GetComponent<Animator>().SetBool("renverse", true);
+
                         Invoke("EndPhase3Minigame", 2F);
                         phase++;
                     }
@@ -153,7 +159,7 @@ public class ClickableObjetManager : MonoBehaviour
         clickableObjets.Remove(obj.GetComponent<ClickableObject>());
         obj.gameObject.SetActive(false);
         // If all objects are clicked, end mini game
-        if (clickableObjets.Count == 0)
+        if (clickableObjets.Count == 0 && phase == 1)
         {
             phase++;
 

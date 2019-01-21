@@ -54,4 +54,5 @@ MonoBehaviour:
   pointAndClickSet: {fileID: 0}
   finishedPAndCStep: 0
   startPAndClick: 0
+  verre_eau: {fileID: 0}
   playerMovement: {fileID: 0}

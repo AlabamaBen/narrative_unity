@@ -17,8 +17,11 @@ public class Cinematics : MonoBehaviour
     {
         //Check if instance already exists
         if (instance == null)
+        {
             //if not, set instance to this
             instance = this;
+            InitCinematics();
+        }
         //If instance already exists and it's not this:
         else if (instance != this)
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
@@ -26,10 +29,10 @@ public class Cinematics : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    void InitCinematics()
     {
         images = new List<Image>();
-        foreach (Transform tr in this.transform)
+        foreach (Transform tr in this.transform.GetChild(0))
         {
             Image img = tr.GetComponent<Image>();
             img.enabled = false;
@@ -38,7 +41,6 @@ public class Cinematics : MonoBehaviour
         compteur = 0;
         blockInput = false;
         startCinematic = false;
-        this.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -84,7 +86,7 @@ public class Cinematics : MonoBehaviour
         {
             startCinematic = false;
             // Fade out BG
-            StartCoroutine(FadeImage(true, this.GetComponent<Image>()));
+            StartCoroutine(FadeImage(true, this.transform.GetChild(0).GetComponent<Image>()));
             foreach (Image img in images)
             {
                 StartCoroutine(FadeImage(true, img));
@@ -104,7 +106,7 @@ public class Cinematics : MonoBehaviour
                 img.color = new Color(1, 1, 1, i);
                 yield return null;
             }
-            this.gameObject.SetActive(false);
+            this.transform.GetChild(0).gameObject.SetActive(false);
         }
         // fade from transparent to opaque
         else
@@ -122,8 +124,9 @@ public class Cinematics : MonoBehaviour
 
     public void DisplayCinematic(int index)
     {
-        this.gameObject.SetActive(true);
-        StartCoroutine(FadeImage(false, this.GetComponent<Image>()));
+        this.transform.GetChild(0).gameObject.SetActive(true);
+        InitCinematics();
+        StartCoroutine(FadeImage(false, this.transform.GetChild(0).GetComponent<Image>()));
         StartCoroutine(FadeVignette(false, compteur));
         startCinematic = true;
         blockInput = true;

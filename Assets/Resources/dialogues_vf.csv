@@ -1,8 +1,8 @@
 Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue);Nom_image
-0;Alex;(Bâillement),(Étirement) Aaaah ma tête ...pffffff… Quelle soirée hier !;Pensee;1;;alex_neutre
+0;Alex;Aaaah ma tête ...pffffff… Quelle soirée hier !;Pensee;1;;alex_neutre
 0;Alex;Il est quelle heure ?;Pensee;1;;alex_neutre
 1;Alex;?!! Mais c’est quoi ce truc ?;;1;;alex_neutre
-1;Natyahs;Hé ce "truc" est un génie, tu sais comme dans les films.;;1;;
+1;Natyahs;"Hé ce ""truc"" est un génie, tu sais comme dans les films.";;1;;
 1;Alex;Donc j’ai droit à des souhaits ?;;1;;
 1;Natyahs;Absolument tout ce que tu veux... ;;1;;
 1;Natyahs;Mais je dois prendre possession de ton corps\\pour les exaucer.;;1;;
@@ -34,8 +34,6 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 4;Alex;Qu’est-ce que t’as fait de mon ordinateur ?;;1;;
 4;Alex;Mon devoir ?;;1;;
 4;Alex;J’ai besoin du devoir !!!;;1;;
-5;Alex;Où est mon devoir ?;;1;;
-5;Alex;J’ai besoin du devoir !!!;;1;;
 6;Natyahs;Tu voulais un ordinateur qui fonctionnait non ?;;1;;
 6;Natyahs;Excuse moi, je pensais bien faire.;;1;;
 6;Alex;Ok, bon, il me reste 18 h avant l’heure du rendu.;;1;;
@@ -56,20 +54,20 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 7;Alex;Bon ok.;;1;;
 7;Alex;Rends un devoir pour nous, et fais en sorte qu’il soit bon.;;1;;
 7;Alex;Très bon même !;;1;;
-8;Alex;Convocation pour suspicion de tricherie… ;;1;;
-8;Alex;Lucie et moi devons passer un oral...;;1;;
-8;Alex;Pour prouver que nous avons bien écrit notre devoir…;;1;;
-8;Alex;Natyahs ? Qu’est-ce que t’as fait ?;;1;;
-8;Natyahs;Ton devoir. Et je l’ai bien fait, comme tu me l’as demandé.;;1;;
-8;Alex;Ok, il faut que tu m’aides à réviser;;1;;
-8;Alex;et à retenir ce que tu as écrit ?;;1;;
+8;Alex;NATYAHS ! Qu’est-ce que t’as fait ?;;1;;
+8;Natyahs;Qu'est ce qu'il se passe ?;;1;;
+8;Alex;Fait pas l'innocent !//Je suis convoquée avec Lucie pour suspicion de tricherie… ;;1;;
+8;Alex;On doit passer un oral,//pour prouver que nous avons bien écrit notre devoir.;;1;;
+8;Natyahs;Je n'ai fait que ton devoir, comme tu me l’as demandé.;;1;;
+8;Alex;Bon... ;;1;;
+8;Alex;Il faut que tu m’aides à réviser et à retenir ce que tu as écrit.;;1;;
 8;Natyahs;Tu veux apprendre les 120 pages de ton devoir ?;;1;;
 8;Alex;120 PAGES ?;;1;;
 8;Alex;Mais qu’est-ce qui t’a pris ? Il fallait en faire une vingtaine !;;1;;
 8;Natyahs;Oh …;;1;;
 8;Alex;Comment je fais maintenant ?;;1;;
-8;Natyahs;Je peux t’aider à arranger les choses.;;1;;
-8;Natyahs;Même si c’est bien en delà de mes capactiés …;;1;;
+8;Alex;A cause de toi, je vais perdre ma meilleure amie//et mon diplôme !;;1;;
+8;Natyahs;Je peux t’aider à arranger les choses,//mais il va falloir que tu fasses un choix.;;1;;
 8;Alex;De combien de temps as-tu besoin ?;;1;;
 8;Alex;Une journée je pense.;;1;;
 8;Alex;De toutes manières, perdu pour perdu…;;1;;
@@ -86,26 +84,18 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 9;Natyahs;J’ai pourtant exaucé ton voeu …;;1;;
 9;Natyahs;J’ai rendu un devoir pour vous,;;1;;
 9;Natyahs;et j’ai fait en sorte qu’il soit bon.;;1;;
-9;Alex;Mais pas en plagiant !!! Pourquoi tu as plagié ?;;1;;
-9;Natyahs;Comment voulais-tu que j'écrive un devoir ;;1;;
-9;Natyahs;sur l’Egypte sous Ptolémé,;;1;;
-9;Natyahs;alors que je n’étais encore que … ;;1;;
-9;Natyahs;ce que tu appellerais, un chaton.;;1;;
-9;Natyahs;C’était certes pas très joli à voir … ;;1;;
-9;Natyahs;Mais mes souvenirs sont beaucoup trop flous,;;1;;
-9;Natyahs;j’avais besoin d’un petit coup de pouce.;;1;;
 9;Alex;Quoi ? mais qu’est-ce que tu racontes ? ;;1;;
 9;Natyahs;Je n’ai fait qu’exaucer ton voeux,;;1;;
 9;Natyahs;tu pourrais être un peu plus reconnaissante …;;1;;
-9;Alex;à cause de toi, je vais perdre ma meilleure amie;;1;;
+9;Alex;;;1;;
 9;Alex;et mon diplome !;;1;;
 ;;;;1;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
 x;x;Taille max pour dialogue …........................................................x;;1;;
+;;;;1;;
+;;;;1;;
+;;;;1;;
+;;;;1;;
+;;;;1;;
+;;;;1;;
+;;;;1;;
+;;;;1;;
