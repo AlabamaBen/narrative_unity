@@ -227,7 +227,7 @@ public class GameManager : MonoBehaviour {
                 {
                     step++;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
-                    // 
+                    // init next step
                     dialoguesSeqFinished = false;
                 }
                 break;
