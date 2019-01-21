@@ -6,7 +6,7 @@ public class ClickableObject : MonoBehaviour
 {
     [HideInInspector]
     public GameObject prefab;
-    [HideInInspector]
+    //[HideInInspector]
     public bool isInterractable;
     [HideInInspector]
     public bool isClicked;
@@ -27,6 +27,7 @@ public class ClickableObject : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Debug.Log("CLicked");
         if (isInterractable && !isClicked)
         {
             isClicked = true;

@@ -35,6 +35,7 @@ public class DisplayDialogue : MonoBehaviour {
 
     IEnumerator AnimateTextDialog(Text textBox, string strComplete, float speed, string interlocuteur)
     {
+        strComplete = strComplete.Replace("NEWLINE", "\n");
         SpeechManager.instance.textDisplayed = true;
         int i = 0;
         stringToDisplay = "";

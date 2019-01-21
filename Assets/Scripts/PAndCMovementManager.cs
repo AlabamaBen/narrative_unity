@@ -8,20 +8,31 @@ using UnityEngine.EventSystems;
 public class PAndCMovementManager : MonoBehaviour {
     [SerializeField]
     private PlayerMovement playerMovement;
+    private bool monologueUiCliked;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        monologueUiCliked = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    private void OnMouseDown()
+    public void OnMonologueUI()
     {
-        if (!GameManager.blockMovementOnGround && !EventSystem.current.IsPointerOverGameObject()) // Do not move when clicking on a UI button
+        monologueUiCliked = true;
+    }
+
+    private void OnMouseDown()
+    { 
+        if (monologueUiCliked)
+        {
+            playerMovement.Move();
+            monologueUiCliked = false;
+        }
+        else if (!GameManager.blockMovementOnGround && !EventSystem.current.IsPointerOverGameObject()) // Do not move when clicking on a UI button
         {
             playerMovement.Move();
         }
