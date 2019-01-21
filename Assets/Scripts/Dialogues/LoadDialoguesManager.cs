@@ -40,7 +40,7 @@ public class LoadDialoguesManager : MonoBehaviour {
         allDialogues = new List<List<DataObject>>();
 
         //Get the path of the Game data folder
-        string m_Path = Application.dataPath + "/Resources/test.csv";
+        string m_Path = Application.dataPath + "/Resources/dialogues.csv";
 
         //Output the Game data path to the console
         //Debug.Log("Path : " + m_Path);
