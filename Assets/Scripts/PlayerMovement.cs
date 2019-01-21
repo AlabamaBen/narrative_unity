@@ -14,7 +14,9 @@ public class PlayerMovement : MonoBehaviour {
 
     Vector2 init_scale;
 
-    public float scale_offset = 0.7f; 
+    public float scale_offset = 0.7f;
+
+    public ClickableObjetManager clickableObjetManager;
 
     // Use this for initialization
     void Start () {
@@ -88,21 +90,67 @@ public class PlayerMovement : MonoBehaviour {
             }
 
         }
+        if(blocked)
+        {
+            Debug.Log("Distance Target : " + (target_obj.hit_position.position - transform.position).sqrMagnitude);
+            if(target_obj != null)
+            {
+                Debug.Log("Blocked on : " + target_obj.gameObject.name);
+
+
+                if ((target_obj.hit_position.position - transform.position).sqrMagnitude < 0.1f)
+                {
+                    clickableObjetManager.Destroy_Object(target_obj);
+                    target_obj = null;
+                    blocked = false;
+                }
+            }
+            else
+            {
+                Debug.Log("Unblock : " + target_obj.gameObject.name);
+                blocked = false;
+            }
+
+        }
 
         float positiony =  (top.position.y - transform.position.y) / (top.position.y - bottom.position.y);
 
         transform.localScale = new Vector2((init_scale.x * Mathf.Sign(transform.localScale.x) * positiony) + scale_offset * Mathf.Sign(transform.localScale.x) , (init_scale.y * positiony) + scale_offset * Mathf.Sign(transform.localScale.y));
     }
 
+    bool blocked = false;
+    ClickableObject target_obj; 
+
+    public void GoAndDestroy(ClickableObject obj)
+    {
+        if (!blocked)
+        {
+            target = obj.hit_position.position;
+
+            if (!isMoving)
+            {
+                isMoving = true;
+            }
+            pointer.transform.position = target;
+            blocked = true;
+
+            target_obj = obj;
+        }
+
+    }
+
     public void Move()
     {
-        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        target.z = transform.position.z;
-
-        if (!isMoving)
+        if (!blocked)
         {
-            isMoving = true;
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            target.z = transform.position.z;
+
+            if (!isMoving)
+            {
+                isMoving = true;
+            }
+            pointer.transform.position = target;
         }
-        pointer.transform.position = target;
     }
 }

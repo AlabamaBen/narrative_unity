@@ -921,6 +921,11 @@ Prefab:
       propertyPath: bottom
       value: 
       objectReference: {fileID: 1904395654}
+    - target: {fileID: 114595611123263888, guid: 4aa9fe1da2189134e9b5bf77a842c798,
+        type: 2}
+      propertyPath: clickableObjetManager
+      value: 
+      objectReference: {fileID: 1770834522}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aa9fe1da2189134e9b5bf77a842c798, type: 2}
   m_IsPrefabAsset: 0
@@ -1404,43 +1409,6 @@ Prefab:
     - target: {fileID: 1542284296621198, guid: 5fd4c2637d40687429fe9598c96a1b03, type: 2}
       propertyPath: m_Name
       value: pointAndClickSet
-      objectReference: {fileID: 0}
-    - target: {fileID: 95436060076627504, guid: 5fd4c2637d40687429fe9598c96a1b03,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212828268667743818, guid: 5fd4c2637d40687429fe9598c96a1b03,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212525491608667532, guid: 5fd4c2637d40687429fe9598c96a1b03,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212525491608667532, guid: 5fd4c2637d40687429fe9598c96a1b03,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 6db78daaecfa5d34f970247a04bbd0ed,
-        type: 3}
-    - target: {fileID: 4989528616611256, guid: 5fd4c2637d40687429fe9598c96a1b03, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4989528616611256, guid: 5fd4c2637d40687429fe9598c96a1b03, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.099475
-      objectReference: {fileID: 0}
-    - target: {fileID: 4989528616611256, guid: 5fd4c2637d40687429fe9598c96a1b03, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 4989528616611256, guid: 5fd4c2637d40687429fe9598c96a1b03, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.195747
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd4c2637d40687429fe9598c96a1b03, type: 2}
@@ -1972,6 +1940,11 @@ Prefab:
       propertyPath: pointAndClickSet
       value: 
       objectReference: {fileID: 1621022844}
+    - target: {fileID: 114110701093755492, guid: b1fe5ac29a989464aa880d01bf255fbf,
+        type: 2}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1607794020}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1fe5ac29a989464aa880d01bf255fbf, type: 2}
   m_IsPrefabAsset: 0
@@ -2304,6 +2277,14 @@ Prefab:
     - target: {fileID: 1560066844860666, guid: 4a667c12886a6184485d9c97414fa146, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362245107685056, guid: 4a667c12886a6184485d9c97414fa146, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362245107685056, guid: 4a667c12886a6184485d9c97414fa146, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a667c12886a6184485d9c97414fa146, type: 2}
@@ -3649,6 +3630,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edeba378bc5fad347b168ae488557f4d, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1770834522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114110701093755492, guid: b1fe5ac29a989464aa880d01bf255fbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1093938711}
+  m_Script: {fileID: 11500000, guid: 83b884047932c354d97a74e346e26cbb, type: 3}
 --- !u!1 &1797925353
 GameObject:
   m_ObjectHideFlags: 0

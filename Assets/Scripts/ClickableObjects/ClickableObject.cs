@@ -17,6 +17,9 @@ public class ClickableObject : MonoBehaviour
     public bool blinking = false;
     public float blinkingSpeed;
 
+    public Transform hit_position;
+
+
     private void Awake()
     {
         isClicked = false;
