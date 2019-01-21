@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4297904354728512}
   - component: {fileID: 212392886628469114}
   - component: {fileID: 114391746224583996}
-  - component: {fileID: 60229840889410822}
+  - component: {fileID: 60456754506160392}
   m_Layer: 0
   m_Name: Vetement
   m_TagString: Untagged
@@ -449,7 +449,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459015240634182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3, y: -6.3, z: 0}
+  m_LocalPosition: {x: -7.89, y: -4.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4254485050209760}
@@ -744,7 +744,7 @@ PolygonCollider2D:
       - {x: 0.71, y: 0.675}
       - {x: 0.57, y: 0.60499996}
       - {x: -0.19, y: 0.615}
---- !u!60 &60229840889410822
+--- !u!60 &60456754506160392
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1225,7 +1225,6 @@ MonoBehaviour:
     - {fileID: 1961414020894744}
     - {fileID: 1415268467954064}
     - {fileID: 1365105548686104}
-    - {fileID: 1067057747107424}
   - gameObjectList:
     - {fileID: 1922737759530932}
 --- !u!212 &212199483075132246

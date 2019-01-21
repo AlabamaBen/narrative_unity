@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
        
         // TEST
-        //step=5;
+        step=10;
         //ClickableObjetManager.phase = 1;
     }
 
@@ -232,6 +232,13 @@ public class GameManager : MonoBehaviour {
                 }
                 break;
             case 11: // Fin de la cinematique 2
+                if (Cinematics.instance.endCinematic)
+                {
+                    //Cinematics.instance.DisplayText("");
+                    CurtainsFadeIn();
+                    step++;
+                    Invoke("CurtainsFadeOut", 1F);
+                }
                 break;
                 /*
                 //dialoguesSeqFinished = false;
@@ -317,6 +324,7 @@ public class GameManager : MonoBehaviour {
 
     public void CurtainsFadeOut()
     {
+        Debug.Log("CurtainsFadeOut");
         Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
         newColor.a = 255;
         curtains_Panel.GetComponent<SpriteRenderer>().color = newColor;
@@ -327,6 +335,7 @@ public class GameManager : MonoBehaviour {
 
     public void DeActivateCurtains()
     {
+        Debug.Log("DeActivateCurtains");
         Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
         newColor.a = 0;
         curtains_Panel.GetComponent<SpriteRenderer>().color = newColor;

@@ -8,7 +8,8 @@ public class Cinematics : MonoBehaviour
     private List<Image> images;
     private int compteur;
     private bool blockInput;
-    private bool startCinematic;
+    public bool startCinematic;
+    public bool endCinematic;
     public float speed;
 
     public static Cinematics instance = null;
@@ -41,6 +42,7 @@ public class Cinematics : MonoBehaviour
         compteur = 0;
         blockInput = false;
         startCinematic = false;
+        endCinematic = false;
     }
 
     private void Update()
@@ -86,11 +88,11 @@ public class Cinematics : MonoBehaviour
         {
             startCinematic = false;
             // Fade out BG
-            StartCoroutine(FadeImage(true, this.transform.GetChild(0).GetComponent<Image>()));
             foreach (Image img in images)
             {
                 StartCoroutine(FadeImage(true, img));
             }
+            StartCoroutine(FadeImage(true, this.transform.GetChild(0).GetComponent<Image>()));
         }
     }
 
@@ -107,6 +109,7 @@ public class Cinematics : MonoBehaviour
                 yield return null;
             }
             this.transform.GetChild(0).gameObject.SetActive(false);
+            endCinematic = true;
         }
         // fade from transparent to opaque
         else
@@ -135,5 +138,11 @@ public class Cinematics : MonoBehaviour
     private void WaitAndUnblockInput()
     {
         blockInput = false;
+    }
+
+    public void DisplayText(string msg)
+    {
+        this.transform.GetChild(1).gameObject.SetActive(true);
+        this.transform.GetChild(1).GetComponent<Text>().text = msg;
     }
 }
