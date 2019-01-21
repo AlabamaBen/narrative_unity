@@ -155,7 +155,7 @@ public class Ring : MonoBehaviour {
             dirt.color = new Color(dirt.color.r, dirt.color.g, dirt.color.b, dirt.color.a - 0.01f);
 
 
-            Debug.Log((int)(dirt.color.a * 255));
+            //Debug.Log((int)(dirt.color.a * 255));
             if ((int)(dirt.color.a * 255) % 11 == 0 )
             {
                 SFX_Wipe.PlayTheSound();

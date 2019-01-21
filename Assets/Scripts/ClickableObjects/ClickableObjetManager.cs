@@ -16,6 +16,8 @@ public class ClickableObjetManager : MonoBehaviour
     public bool finishedPAndCStep;
     public bool startPAndClick;
 
+    public PlayerMovement playerMovement;
+
     // Use this for initialization
     void Awake()
     {
@@ -119,19 +121,10 @@ public class ClickableObjetManager : MonoBehaviour
                 {
                     if (obj.gameObject.activeSelf)
                     {
-                        obj.StopBlinking();
-                        clickableObjets.Remove(obj.GetComponent<ClickableObject>());
-                        obj.gameObject.SetActive(false);
+                        Debug.Log("GO and Destroy : " + obj.gameObject.name);
+                        playerMovement.GoAndDestroy(obj);
                     }
 
-                    // If all objects are clicked, end mini game
-                    if (clickableObjets.Count == 0)
-                    {
-                        phase++;
-
-                        SetActivableObjects(phase);
-                        BlinkAllObjects();
-                    }
                 }
                 break;
             case 2:
@@ -150,6 +143,24 @@ public class ClickableObjetManager : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void Destroy_Object(ClickableObject obj)
+    {
+        Debug.Log("Destroy_Object : " + obj.gameObject.name);
+
+        obj.StopBlinking();
+        clickableObjets.Remove(obj.GetComponent<ClickableObject>());
+        obj.gameObject.SetActive(false);
+        // If all objects are clicked, end mini game
+        if (clickableObjets.Count == 0)
+        {
+            phase++;
+
+            SetActivableObjects(phase);
+            BlinkAllObjects();
+        }
+
     }
 
     private void EndPhase3Minigame()
