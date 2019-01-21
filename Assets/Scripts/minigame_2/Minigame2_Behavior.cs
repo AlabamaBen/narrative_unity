@@ -6,7 +6,7 @@ public class Minigame2_Behavior : MonoBehaviour {
 
 
     public TextMesh Tracked_Display;
-    //public TextMesh CountDown_Display;
+    public TextMesh CountDown_Display;
     public float CountDown;
     public GameObject bubble_prefabs;
     public Transform topleft, botomright;
@@ -37,9 +37,15 @@ public class Minigame2_Behavior : MonoBehaviour {
 
     int count = 0;
 
+    public float timer_lenght = 30;
+
+    float timer = 0; 
+
 
     // Use this for initialization
     void Start () {
+
+        timer = timer_lenght; 
 
         int i = Random.Range(0, words.Count - 1);
 
@@ -57,6 +63,8 @@ public class Minigame2_Behavior : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        timer -= Time.deltaTime;
+        CountDown_Display.text = ""+(int)timer; 
 		
 	}
 

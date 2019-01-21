@@ -8,14 +8,19 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject pointer;
     private Vector3 target;
     private float spriteOffset;
-    private float init_scale; 
 
+    public Transform top, bottom; 
     public Animator animator;
+
+    Vector2 init_scale;
+
+    public float scale_offset = 0.7f; 
 
     // Use this for initialization
     void Start () {
         spriteOffset = 0; //this.GetComponent<SpriteRenderer>().size.y * this.transform.localScale.y / 4;
         // spriteOffset = 5f; //this.GetComponent<SpriteRenderer>().size.y/2;
+        init_scale = transform.localScale; 
     }
 
     private bool facing_right = true; 
@@ -83,6 +88,10 @@ public class PlayerMovement : MonoBehaviour {
             }
 
         }
+
+        float positiony =  (top.position.y - transform.position.y) / (top.position.y - bottom.position.y);
+
+        transform.localScale = new Vector2((init_scale.x * Mathf.Sign(transform.localScale.x) * positiony) + scale_offset * Mathf.Sign(transform.localScale.x) , (init_scale.y * positiony) + scale_offset * Mathf.Sign(transform.localScale.y));
     }
 
     public void Move()
