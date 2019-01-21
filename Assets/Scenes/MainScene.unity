@@ -511,8 +511,54 @@ AudioHighPassFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 165174215}
   m_Enabled: 1
-  m_CutoffFrequency: 5000
+  m_CutoffFrequency: 350
   m_HighpassResonanceQ: 1
+--- !u!164 &165174217
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 165174215}
+  m_Enabled: 1
+  m_DryLevel: 0
+  m_Room: -1000
+  m_RoomHF: -454
+  m_DecayTime: 0.4
+  m_DecayHFRatio: 0.83
+  m_ReflectionsLevel: -1646
+  m_ReverbLevel: 53
+  m_ReverbDelay: 0.003
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 3
+--- !u!169 &165174218
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 165174215}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.09090909
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &293510770
 Prefab:
   m_ObjectHideFlags: 0
@@ -1300,6 +1346,11 @@ Prefab:
       propertyPath: musicList.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 811b601e0d44c584b8a93d7f12bd847e, type: 3}
+    - target: {fileID: 82377491050677130, guid: f4914ac355b39bf4ab0ddcf6f1071df9,
+        type: 2}
+      propertyPath: m_Pitch
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4914ac355b39bf4ab0ddcf6f1071df9, type: 2}
   m_IsPrefabAsset: 0
@@ -2208,9 +2259,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1347367823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 0ed9b6803884e454287ba822567fa870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theSound: {fileID: 8300000, guid: 8e297f98d1cd9404fa17afe9688a2f6c, type: 3}
 --- !u!114 &1347367826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3330,7 +3382,7 @@ Prefab:
     - target: {fileID: 114073445097780566, guid: edeba378bc5fad347b168ae488557f4d,
         type: 2}
       propertyPath: m_RaycastTarget
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edeba378bc5fad347b168ae488557f4d, type: 2}
