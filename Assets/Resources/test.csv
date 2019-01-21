@@ -2,7 +2,7 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 0;Alex;(Bâillement),(Étirement) Aaaah ma tête ...pffffff… Quelle soirée hier !;Pensee;1;;alex_neutre
 0;Alex;Il est quelle heure ?;Pensee;1;;alex_neutre
 1;Alex;?!! Mais c’est quoi ce truc ?;;1;;alex_colere
-1;Natyahs;Hé ce truc est un génie,\n tu sais comme dans les films.;;1;;natyahs_fache
+1;Natyahs;Hé ce truc est un génie,\\tu sais comme dans les films.;;1;;natyahs_fache
 1;Alex;Donc j’ai droit à des souhaits ?;;1;;alex_neutre
 1;Natyahs;Ce serait un gachi de mon pouvoir, mais si tu le souhaites …;;1;;natyahs_mignon
 2;Alex;Ah merde ! Faut que je range...;;1;;

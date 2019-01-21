@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour {
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
                     //TEST, next line to remove 
-                    //Ring.Game_End = true;
+                    Ring.Game_End = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
@@ -228,9 +228,13 @@ public class GameManager : MonoBehaviour {
                     step++;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
                     // init next step
-                    dialoguesSeqFinished = false;
+                    Cinematics.instance.DisplayCinematic(2);
                 }
                 break;
+            case 11: // Fin de la cinematique 2
+                break;
+                /*
+                //dialoguesSeqFinished = false;
             case 11: //Debut dialogue Natyahs et Alex catastrophe
                 if (!dialoguesSeqFinished)
                 {
@@ -270,7 +274,7 @@ public class GameManager : MonoBehaviour {
                     // Init next step
                     step++;
                 }
-                break;
+                break;*/
         }
     }
     

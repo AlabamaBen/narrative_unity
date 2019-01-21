@@ -22,17 +22,12 @@ public class PAndCMovementManager : MonoBehaviour {
 
     public void OnMonologueUI()
     {
-        monologueUiCliked = true;
+        playerMovement.Move();
     }
 
     private void OnMouseDown()
     { 
-        if (monologueUiCliked)
-        {
-            playerMovement.Move();
-            monologueUiCliked = false;
-        }
-        else if (!GameManager.blockMovementOnGround && !EventSystem.current.IsPointerOverGameObject()) // Do not move when clicking on a UI button
+        if (!GameManager.blockMovementOnGround && !EventSystem.current.IsPointerOverGameObject()) // Do not move when clicking on a UI button
         {
             playerMovement.Move();
         }

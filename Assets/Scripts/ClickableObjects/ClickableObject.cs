@@ -27,7 +27,6 @@ public class ClickableObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("CLicked");
         if (isInterractable && !isClicked)
         {
             isClicked = true;
