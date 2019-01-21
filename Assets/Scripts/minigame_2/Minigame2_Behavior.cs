@@ -11,6 +11,7 @@ public class Minigame2_Behavior : MonoBehaviour {
     public GameObject bubble_prefabs;
     public Transform topleft, botomright;
     public Sheet_Behaviour sheet_Behaviour;
+    public Djin_Intervention djin_Intervention;
 
 
     List<string> words = new List<string>
@@ -58,7 +59,22 @@ public class Minigame2_Behavior : MonoBehaviour {
         Pop_Bubble(words[(i - 1) % (words.Count - 1)], false);
         Pop_Bubble(words[(i + 1) % (words.Count - 1)], false);
 
+        Invoke("Open_Intervention", 2); 
 
+    }
+
+    void Close_Intervention()
+    {
+        djin_Intervention.Disappear();
+        Invoke("Open_Intervention", 4);
+    }
+
+    void Open_Intervention()
+    {
+        djin_Intervention.transform.position = new Vector2(djin_Intervention.transform.position.x, Random.Range(botomright.position.y, topleft.position.y));
+        djin_Intervention.Appear();
+        djin_Intervention.Display_Text("Oulala ça a l'ai compliqué ça. T'as l'air de bien galérer");
+        Invoke("Close_Intervention", 5);
     }
 
     // Update is called once per frame
