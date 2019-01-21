@@ -97,14 +97,14 @@ public class GameManager : MonoBehaviour {
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
                     //TEST, next line to remove 
-                    //Ring.Game_End = true;
+                    Ring.Game_End = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
                     StartCoroutine(LoadScene("minigame_1",2f));
                 }
 
-                if(m_Scene.name == "minigame_1" && curtains_Panel.GetComponent<Animator>().GetBool("fadeIn"))
+                if(m_Scene.name == "minigame_1" && curtains_Panel.GetComponent<Animator>().gameObject.activeSelf && curtains_Panel.GetComponent<Animator>().GetBool("fadeIn"))
                 {
                     CurtainsFadeOut();
                 }
@@ -216,8 +216,7 @@ public class GameManager : MonoBehaviour {
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
                     SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
-
-                    Debug.Log("StartClickableObject");
+                    
                     // Init next step
                     ClickableObjetManager.instance.StartClickableObject();
                     step++;
@@ -228,6 +227,48 @@ public class GameManager : MonoBehaviour {
                 {
                     step++;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
+                    // 
+                    dialoguesSeqFinished = false;
+                }
+                break;
+            case 11: //Debut dialogue Natyahs et Alex catastrophe
+                if (!dialoguesSeqFinished)
+                {
+                    if (!SpeechManager.instance.startDialogue) 
+                    {
+                        blockInput = true;
+                        blockMovementOnGround = true;
+                        // Display first line of dialogue
+                        SpeechManager.instance.DisplayFirstSequence();
+
+                        Invoke("waitAndUnblockInput", 1f);
+                    }
+                    else if (!blockInput && SpeechManager.instance.startDialogue && Input.anyKeyDown && !SpeechManager.instance.textDisplayed) // Player click to display next dialog
+                    {
+                        dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
+                    }
+                }
+                else
+                {
+                    if (!SpeechManager.instance.textDisplayed) // Player click to end dialog
+                    {
+                        SpeechManager.instance.HideDialog();
+                        blockMovementOnGround = false;
+                        step++;
+                        dialoguesSeqFinished = false;
+                        sceneLoaded = false;
+                    }
+
+                    // Init next step
+                }
+                break;
+            case 12: // Fin de dialogue entre Natyahs et Alex
+                if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
+                { // Current animation (Fadeout Dialogues) finished
+                    dialoguesSeqFinished = true;
+                    SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
+                    // Init next step
+                    step++;
                 }
                 break;
         }
