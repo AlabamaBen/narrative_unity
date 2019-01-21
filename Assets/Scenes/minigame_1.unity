@@ -1390,7 +1390,8 @@ RectTransform:
 --- !u!1 &1280220292
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1716537699911072, guid: 25a307f0f20baa248b8bc0da7baa99d4,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -1410,14 +1411,16 @@ GameObject:
 --- !u!81 &1280220293
 AudioListener:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 81790721557658820, guid: 25a307f0f20baa248b8bc0da7baa99d4,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1280220292}
   m_Enabled: 1
 --- !u!20 &1280220294
 Camera:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 20599779778281352, guid: 25a307f0f20baa248b8bc0da7baa99d4,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1280220292}
   m_Enabled: 1
@@ -1457,7 +1460,8 @@ Camera:
 --- !u!4 &1280220295
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4477458114134126, guid: 25a307f0f20baa248b8bc0da7baa99d4,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1280220292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1470,7 +1474,8 @@ Transform:
 --- !u!114 &1280220296
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 114865733563791736, guid: 25a307f0f20baa248b8bc0da7baa99d4,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1280220292}
   m_Enabled: 0
@@ -1487,7 +1492,8 @@ MonoBehaviour:
 --- !u!114 &1280220297
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 114152772032503442, guid: 25a307f0f20baa248b8bc0da7baa99d4,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1280220292}
   m_Enabled: 0
@@ -1504,7 +1510,8 @@ MonoBehaviour:
 --- !u!114 &1280220298
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 114164659076079972, guid: 25a307f0f20baa248b8bc0da7baa99d4,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1280220292}
   m_Enabled: 1
