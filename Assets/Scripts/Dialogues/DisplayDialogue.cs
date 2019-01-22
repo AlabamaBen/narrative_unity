@@ -109,7 +109,9 @@ public class DisplayDialogue : MonoBehaviour {
 
     public void DestroyAllDialogues()
     {
-        StartCoroutine(DestroyLastDialog(0.75F));
+        // End Dialogue Fade out last 3sec
+        float speed = 2.75F / messagesList.Count;
+        StartCoroutine(DestroyLastDialog(speed));
     }
 
 

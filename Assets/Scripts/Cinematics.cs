@@ -7,12 +7,13 @@ public class Cinematics : MonoBehaviour
 {
     public List<GameObject> planches;
     public GameObject legend;
+    public GameObject antre;
     private List<Image> images;
     private int compteur;
     private bool blockInput;
     public bool startCinematic;
     public bool endCinematic;
-    public float speed;
+    public float speedAnimation;
     private int plancheIndex;
 
     public static Cinematics instance = null;
@@ -49,8 +50,8 @@ public class Cinematics : MonoBehaviour
         startCinematic = true;
         blockInput = true;
 
-        StartCoroutine(FadeImage(false, planches[index].GetComponent<Image>(), index));
-        StartCoroutine(FadeVignette(false, compteur, index));
+        StartCoroutine(FadeImageBgPlanche(false, planches[index].GetComponent<Image>(), index, speedAnimation));
+        StartCoroutine(FadeVignette(false, compteur, index, speedAnimation));
 
     }
 
@@ -59,11 +60,11 @@ public class Cinematics : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !blockInput && startCinematic)
         {
             blockInput = true;
-            StartCoroutine(FadeVignette(false, compteur, plancheIndex));
+            StartCoroutine(FadeVignette(false, compteur, plancheIndex, speedAnimation));
         }
     }
 
-    IEnumerator FadeVignette(bool fadeAway, int imgIndex, int plancheIndex)
+    IEnumerator FadeVignette(bool fadeAway, int imgIndex, int plancheIndex, float speed)
     {
         if (compteur < images.Count)
         {
@@ -99,13 +100,13 @@ public class Cinematics : MonoBehaviour
             // Fade out BG
             foreach (Image img in images)
             {
-                StartCoroutine(FadeImage(true, img,plancheIndex));
+                StartCoroutine(FadeImageBgPlanche(true, img,plancheIndex, speedAnimation));
             }
-            StartCoroutine(FadeImage(true, planches[plancheIndex].GetComponent<Image>(), plancheIndex));
+            StartCoroutine(FadeImageBgPlanche(true, planches[plancheIndex].GetComponent<Image>(), plancheIndex, speedAnimation));
         }
     }
 
-    IEnumerator FadeImage(bool fadeAway,Image img,int index)
+    IEnumerator FadeImageBgPlanche(bool fadeAway,Image img,int index, float speed)
     {
         // fade from opaque to transparent
         if (fadeAway)
@@ -134,6 +135,37 @@ public class Cinematics : MonoBehaviour
         }
     }
 
+    IEnumerator FadeINandOutImage(bool fadeAway, Image img, float speed, GameObject objToDeactivate)
+    {
+        // fade from opaque to transparent
+        if (fadeAway)
+        {
+            // loop over 1 second backwards
+            for (float i = 1; i >= 0; i -= Time.deltaTime * speed)
+            {
+                // set color with i as alpha
+                img.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+            objToDeactivate.SetActive(false);
+            endCinematic = true;
+        }
+        // fade from transparent to opaque
+        else
+        {
+            img.enabled = true;
+            // loop over 0.5 second
+            for (float i = 0; i <= 1; i += Time.deltaTime * speed)
+            {
+                // set color with i as alpha
+                img.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+            StartCoroutine(FadeINandOutImage(true, img, speed, antre));
+        }
+    }
+
+
     public void DisplayCinematic(int index)
     {
         planches[index].SetActive(true);
@@ -149,5 +181,17 @@ public class Cinematics : MonoBehaviour
     {
         legend.SetActive(true);
         legend.GetComponent<Text>().text = msg;
+    }
+
+    public void DisplayAntre(float delay,float transparency)
+    {
+        endCinematic = false;
+        antre.SetActive(true);
+        Image antreImg = antre.GetComponent<Image>();
+        Color transparencyColor = antreImg.color;
+        transparencyColor.a = transparency;
+        antreImg.color = transparencyColor;
+        StartCoroutine(FadeINandOutImage(false, antreImg, delay,antre));
+
     }
 }

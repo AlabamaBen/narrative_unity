@@ -41,7 +41,8 @@ public class GameManager : MonoBehaviour {
 
         // TEST
         //Cinematics.instance.DisplayCinematic(2);
-        //step=12;
+        //step=17;
+        //dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
     }
 
@@ -312,12 +313,11 @@ public class GameManager : MonoBehaviour {
                     step++;
                 }
                 break;
-            case 17: //Suite dialogue Natyahs et Alex catastrophe
+            case 17: //Dialogue Natyahs et Alex voeu PC
                 if (!dialoguesSeqFinished)
                 {
                     if (!SpeechManager.instance.startDialogue)
                     {
-                        Debug.Log("dialogue catastrophe pc");
                         blockInput = true;
                         blockMovementOnGround = true;
                         // Display first line of dialogue
@@ -342,13 +342,89 @@ public class GameManager : MonoBehaviour {
                     
                 }
                 break;
-            case 18: // Fin de dialogue entre Natyahs et Alex catastrophe
+            case 18: // Fin de dialogue Natyahs et Alex voeu PC
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
                     SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
 
 
+                    // Init next step
+                    blockInput = true;
+                    CurtainsFadeIn();
+                    Invoke("waitAndUnblockInput", 2f);
+                    step++;
+                }
+                break;
+            case 19: // Fin Blink antre
+                if (!blockInput)
+                {
+                    Cinematics.instance.DisplayAntre(5f, 0.3f);
+                    step++;
+                }
+                break;
+            case 20: // Fin de la cinematique 2
+                if (Cinematics.instance.endCinematic)
+                {
+                    blockInput = true;
+                    CurtainsFadeOut();
+                    Invoke("waitAndUnblockInput", 1f);
+                    step++;
+                }
+                break;
+            case 21: // Fin de la cinematique 2
+                if (!blockInput)
+                {
+                    blockInput = true;
+                    dialoguesSeqFinished = false;
+                    SpeechManager.instance.displayMonologue.SetMonolog("C'était quoi cette vision ?");
+                    step++;
+                    Invoke("waitAndUnblockInput", 1.5f);
+                }
+                break;
+            case 22: 
+                if (!blockInput)
+                {
+                    SpeechManager.instance.displayMonologue.SetMonolog("C'était quoi cette vision ?");
+                    step++;
+                }
+                break;
+            case 23: //Debut dialogue Natyahs et Alex 
+                if (!dialoguesSeqFinished && !blockInput)
+                {
+                    if (!SpeechManager.instance.startDialogue)
+                    {
+                        blockInput = true;
+                        blockMovementOnGround = true;
+                        // Display first line of dialogue
+                        SpeechManager.instance.DisplayFirstSequence();
+
+                        Invoke("waitAndUnblockInput", 1f);
+                    }
+                    else if (!blockInput && SpeechManager.instance.startDialogue && Input.anyKeyDown && !SpeechManager.instance.textDisplayed) // Player click to display next dialog
+                    {
+                        dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
+                    }
+                }
+                else if (dialoguesSeqFinished)
+                {
+                    if (!SpeechManager.instance.textDisplayed) // Player click to end dialog
+                    {
+                        SpeechManager.instance.HideDialog();
+                        blockMovementOnGround = false;
+                        dialoguesSeqFinished = false;
+                        step++;
+                    }
+
+                    // Init next step
+                }
+                break;
+            case 24: // Fin de dialogue entre Natyahs et Alex
+                if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
+                { // Current animation (Fadeout Dialogues) finished
+                    dialoguesSeqFinished = true;
+
+                    Debug.Log("Fin du jeu");
                     // Init next step
                     step++;
                 }
