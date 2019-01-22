@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour {
 
         // TEST
         //Cinematics.instance.DisplayCinematic(2);
-        step=17;
-        dialoguesSeqFinished = false;
+        //step=17;
+        //dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
     }
 
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour {
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
                     //TEST, next line to remove 
-                    Ring.Game_End = true;
+                    //Ring.Game_End = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
