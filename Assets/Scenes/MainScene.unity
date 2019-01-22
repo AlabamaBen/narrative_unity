@@ -167,7 +167,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f18a5216cecf79e45a868e3f35b6aff1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 0.5
   m_Pitch: 0.6
   Loop: 1
   Mute: 0
@@ -480,13 +480,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 1
   m_Pitch: 0.7
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 64
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -578,9 +578,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicList:
   - {fileID: 8300000, guid: 811b601e0d44c584b8a93d7f12bd847e, type: 3}
+  - {fileID: 8300000, guid: 99dbd5c50cbbe3f4785bc63237b80ffd, type: 3}
   - {fileID: 8300000, guid: ced8b46c6d01e5743b8f5ea82672cb25, type: 3}
-  - {fileID: 8300000, guid: 4f7cd8e0c000e6045a7a2327fe78cd4e, type: 3}
-  - {fileID: 8300000, guid: 9f1924f8b30a6d24eb7cf47ec3bc81b2, type: 3}
+  - {fileID: 8300000, guid: ced8b46c6d01e5743b8f5ea82672cb25, type: 3}
 --- !u!1001 &293510770
 Prefab:
   m_ObjectHideFlags: 0
@@ -1224,16 +1224,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114645944854044460, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: theSounds.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114772679387247444, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: theSounds.Array.size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 224361697218919470, guid: edeba378bc5fad347b168ae488557f4d,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1329,51 +1319,6 @@ Prefab:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 772077522}
-    - target: {fileID: 114645944854044460, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: theSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: f8b06c140df775c4981c73f577fcbaf2, type: 3}
-    - target: {fileID: 114645944854044460, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: theSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5136fdc6fe1448f4c9ac60a7ec87f246, type: 3}
-    - target: {fileID: 114645944854044460, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: theSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: e2302fbfec555cc4db0d72291c45296b, type: 3}
-    - target: {fileID: 114772679387247444, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: theSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: d5fa3c8f020727842b6bfa259b496687, type: 3}
-    - target: {fileID: 114772679387247444, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: theSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: b1408118e740127498bd88c748115fff, type: 3}
-    - target: {fileID: 114772679387247444, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: theSounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8b32d8b729b24414aa9393b0f6b27994, type: 3}
-    - target: {fileID: 114772679387247444, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: theSounds.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 47b475866bb4eef4a9f4b2413c50a4c8, type: 3}
-    - target: {fileID: 114772679387247444, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: theSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 148e6022908f02c418f985cc4261b93d, type: 3}
-    - target: {fileID: 114772679387247444, guid: edeba378bc5fad347b168ae488557f4d,
-        type: 2}
-      propertyPath: delay
-      value: 0.13
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edeba378bc5fad347b168ae488557f4d, type: 2}
   m_IsPrefabAsset: 0
