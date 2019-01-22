@@ -407,12 +407,12 @@ GameObject:
   - component: {fileID: 222821360832794220}
   - component: {fileID: 114516490763789392}
   m_Layer: 5
-  m_Name: Bg
+  m_Name: Planche1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1540626064130404
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,12 +3194,12 @@ MonoBehaviour:
   animator: {fileID: 0}
   screen: {fileID: 114561975091865914}
   screenSprites:
-  - {fileID: 21300000, guid: 035a47e9f114aa34e97c0566e260419d, type: 3}
-  - {fileID: 21300000, guid: 7957527eaf573ed479b168a352de40f7, type: 3}
-  - {fileID: 21300000, guid: 4d6bb617036b9044ab03830983215224, type: 3}
-  - {fileID: 21300000, guid: 0466ae6d72569ad4684775da0b3d75f3, type: 3}
-  - {fileID: 21300000, guid: 28e4987db6cf13b4da7be39c6ef7fb45, type: 3}
-  - {fileID: 21300000, guid: c3ab76e39c3b7b94e83b930d325c4bce, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   buttonToDesactivate:
   - {fileID: 1281619853509172}
   - {fileID: 1947483027787672}
