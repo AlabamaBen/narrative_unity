@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     public bool dialoguesSeqFinished;
 
     private bool sceneLoaded;
-    private bool blockInput = false;
+    public bool blockInput = false;
 
     public static bool blockMovementOnGround = false;
     public GameObject curtains_Panel;
@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour {
 
         // TEST
         //Cinematics.instance.DisplayCinematic(2);
-        //step=17;
-        //dialoguesSeqFinished = false;
+        step=17;
+        dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
     }
 
@@ -356,7 +356,8 @@ public class GameManager : MonoBehaviour {
                     step++;
                 }
                 break;
-            case 19: // Fin Blink antre
+            // TO REDO
+            case 19: // Blink antre
                 if (!blockInput)
                 {
                     Cinematics.instance.DisplayAntre(5f, 0.3f);
@@ -376,8 +377,6 @@ public class GameManager : MonoBehaviour {
                 if (!blockInput)
                 {
                     blockInput = true;
-                    dialoguesSeqFinished = false;
-                    SpeechManager.instance.displayMonologue.SetMonolog("C'était quoi cette vision ?");
                     step++;
                     Invoke("waitAndUnblockInput", 1.5f);
                 }
@@ -385,13 +384,15 @@ public class GameManager : MonoBehaviour {
             case 22: 
                 if (!blockInput)
                 {
+                    blockInput = true;
                     SpeechManager.instance.displayMonologue.SetMonolog("C'était quoi cette vision ?");
                     step++;
                 }
                 break;
             case 23: //Debut dialogue Natyahs et Alex 
-                if (!dialoguesSeqFinished && !blockInput)
+                if (!dialoguesSeqFinished && !blockInput && !SpeechManager.instance.textDisplayed)
                 {
+                    Debug.Log("Debut Dialogue");
                     if (!SpeechManager.instance.startDialogue)
                     {
                         blockInput = true;
@@ -406,8 +407,9 @@ public class GameManager : MonoBehaviour {
                         dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
                     }
                 }
-                else if (dialoguesSeqFinished)
+                else if (dialoguesSeqFinished && !blockInput)
                 {
+                    Debug.Log("dialoguesSeqFinished");
                     if (!SpeechManager.instance.textDisplayed) // Player click to end dialog
                     {
                         SpeechManager.instance.HideDialog();
@@ -417,6 +419,12 @@ public class GameManager : MonoBehaviour {
                     }
 
                     // Init next step
+                }
+                else
+                {
+                    Debug.Log("dialoguesSeqFinished" + dialoguesSeqFinished);
+                    Debug.Log("blockInput" + blockInput);
+                    Debug.Log("SpeechManager.instance.textDisplayed" + SpeechManager.instance.textDisplayed);
                 }
                 break;
             case 24: // Fin de dialogue entre Natyahs et Alex

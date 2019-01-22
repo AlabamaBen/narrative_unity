@@ -59,6 +59,14 @@ public class SpeechManager : MonoBehaviour
             }
             Invoke("EnablebuttonMonologAntiSpam", 1f);
         }
+
+        // TO REDO (Not clean)
+        else if (GameManager.step == 22)
+        {
+            GameManager.instance.dialoguesSeqFinished = false;
+            GameManager.instance.blockInput = false;
+            SpeechManager.instance.textDisplayed = false;
+        }
     }
 
     private void EnablebuttonMonologAntiSpam()
@@ -74,7 +82,7 @@ public class SpeechManager : MonoBehaviour
 
     public void DisplayThoughOnObject(string thought)
     {
-        displayMonologue.SetMonolog(thought);
+        displayMonologue.SetMonologPAncC(thought);
     }
 
     public bool DisplayNextSequenceMonolog()

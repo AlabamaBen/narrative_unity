@@ -23,14 +23,22 @@ public class DisplayMonologue : MonoBehaviour {
         animator = this.GetComponent<Animator>();
     }
 
-    public void SetMonolog(string _boiteDialogue)
+    public void SetMonologPAncC(string _boiteDialogue)
     {
-        animator.SetBool("openMonolog", false);
         if (!SpeechManager.instance.textDisplayed && ClickableObjetManager.instance.startPAndClick && !ClickableObjetManager.instance.finishedPAndCStep)
         {
+            animator.SetBool("openMonolog", false);
             StartCoroutine(AnimateTextMonolog(_boiteDialogue, text_speed));
         }
     }
+
+
+    public void SetMonolog(string _boiteDialogue)
+    {
+        animator.SetBool("openMonolog", false);
+        StartCoroutine(AnimateTextMonolog(_boiteDialogue, text_speed));
+    }
+
 
     public IEnumerator AnimateTextMonolog(string strComplete, float speed)
     {
@@ -45,7 +53,7 @@ public class DisplayMonologue : MonoBehaviour {
             boiteDialogue.text = stringToDisplay;
             yield return new WaitForSeconds(speed);
         }
-        // animator.SetTrigger("closeMonolog");
+        // animator.SetTrigger("closeMonolog"); 
         SpeechManager.instance.textDisplayed = false;
     }
 }

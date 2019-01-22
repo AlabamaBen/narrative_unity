@@ -9,8 +9,9 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 3;Alex;Alleeeeez. ;;1;;alex_panique
 4;Alex;Bon... J’ai pas le choix … OK;;1;;alex_suspicieu
 4;Natyahs;Alors mets la bague.;;1;;natyahs_propose
-5;Natyahs;Tu pourrais souhaiter que je fasse ton devoir.;;1;;natyahs_propose
-5;Alex;Ca ira pour cette fois.;;1;;alex_colere
+5;Alex;Qu’est-ce que t’as fait de mon ordinateur ?;;1;;alex_choc
+5;Alex;Mon devoir ? J’ai besoin de mon devoir !!!;;1;;alex_colere
+5;Alex;Allez je m'y met.;;1;;alex_neutre
 6;Alex;Bon ok.;;1;;alex_reflechi
 6;Alex;Rends un devoir pour nous, et fais en sorte qu’il soit bon. Très bon même !;;1;;alex_neutre
 7;Alex;Quel choix ?;;1;;alex_suspicieu
