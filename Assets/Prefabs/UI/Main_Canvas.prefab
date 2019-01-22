@@ -2717,13 +2717,37 @@ MonoBehaviour:
   natyahs: {fileID: 114586643617330002}
   allSprites:
   - img_name: alex_colere
-    sprite: {fileID: 21300000, guid: dc79b98231ef57640b3474a22aaf1872, type: 3}
+    sprite: {fileID: 21300000, guid: 9cd451c3295b8e0459c8998820046bf9, type: 3}
   - img_name: alex_neutre
-    sprite: {fileID: 21300000, guid: fd4865500e05a864c87e600671d55e5b, type: 3}
-  - img_name: natyahs_fache
-    sprite: {fileID: 21300000, guid: d0d466ee1d01dbe4e871b4fe16884935, type: 3}
+    sprite: {fileID: 21300000, guid: 1de886d08ff3b0143b245eb2434d070c, type: 3}
+  - img_name: alex_doute
+    sprite: {fileID: 21300000, guid: 8fdb72b062ac8e742874dbf9931d1bdd, type: 3}
+  - img_name: alex_panique
+    sprite: {fileID: 21300000, guid: 45b9e7771d2a4054e9a1f69c5044424f, type: 3}
+  - img_name: alex_reflechi
+    sprite: {fileID: 21300000, guid: db21209a49293e9419cde44a71a2a396, type: 3}
+  - img_name: alex_rigole
+    sprite: {fileID: 21300000, guid: d81c351c33715f644aa130003a0ccdee, type: 3}
+  - img_name: alex_suspicieu
+    sprite: {fileID: 21300000, guid: 22fba5d9897091f418e834c8427337fd, type: 3}
+  - img_name: natyahs_betise
+    sprite: {fileID: 21300000, guid: d458dc2a09c60084da7dc79dfa57298a, type: 3}
   - img_name: natyahs_mignon
-    sprite: {fileID: 21300000, guid: 51a7473291be1ee4593a295d553a1319, type: 3}
+    sprite: {fileID: 21300000, guid: 16dcf06bb6be3414288e9a2c4fdb42ea, type: 3}
+  - img_name: natyahs_epaule
+    sprite: {fileID: 21300000, guid: 40e426daa088c8447833e003e40f38e6, type: 3}
+  - img_name: natyahs_interet
+    sprite: {fileID: 21300000, guid: 3663c6a4a6c582e4695d0160f93203f5, type: 3}
+  - img_name: natyahs_mignon
+    sprite: {fileID: 21300000, guid: 17da1a41c763e5140a26a35ae18625b4, type: 3}
+  - img_name: natyahs_neutre
+    sprite: {fileID: 21300000, guid: b5cc773eb298b07408a3669df7c626c0, type: 3}
+  - img_name: natyahs_propose
+    sprite: {fileID: 21300000, guid: d37b6d39ae84ef340b441900ca6cbad2, type: 3}
+  - img_name: natyahs_sourcil
+    sprite: {fileID: 21300000, guid: 9d444f8fedfe9c64e92582a1f4891604, type: 3}
+  - img_name: natyahs_surpris
+    sprite: {fileID: 21300000, guid: a2c1ce6ca9603474d8d4872241641849, type: 3}
 --- !u!114 &114541174669475586
 MonoBehaviour:
   m_ObjectHideFlags: 1

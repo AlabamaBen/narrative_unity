@@ -65,26 +65,3 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 7;Natyahs;Je peux t’aider à arranger les choses,//mais il va falloir que tu fasses un choix.;;1;;natyahs_propose
 7;Alex;Quel choix ?;;1;;alex_suspicieu
 7;Natyahs;Ta meilleure amie ou ton diplôme.//Et j'ai besoin de ton corps pour une journée.;;1;;natyahs_betise
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-;;;;;;
-x;x;Taille max pour dialogue …........................................................x;;;;
