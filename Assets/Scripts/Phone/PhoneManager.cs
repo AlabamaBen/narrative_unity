@@ -29,6 +29,7 @@ public class PhoneManager : MonoBehaviour {
     private GameObject panel_Choix_sms;
     private int choix;
 
+    [Header("SoundSFX")]
     public bool phoneGameFinished = false;
     // Use this for initialization
     void Awake()
