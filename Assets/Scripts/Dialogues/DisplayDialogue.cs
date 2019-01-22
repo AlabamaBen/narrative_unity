@@ -130,6 +130,7 @@ public class DisplayDialogue : MonoBehaviour {
             if (spr.img_name != "" && spr.img_name.Equals(_name))
             {
                 spriteToReplace.sprite = spr.sprite;
+                spriteToReplace.enabled = true;
             }
         }
     }

@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
         // TEST
-        //Cinematics.instance.DisplayCinematic(2);
-        //step=12;
+        Cinematics.instance.DisplayCinematic(2);
+        step=12;
         //ClickableObjetManager.phase = 1;
     }
 
@@ -236,8 +236,6 @@ public class GameManager : MonoBehaviour {
             case 11: // Fin de la cinematique 2
                 if (Cinematics.instance.endCinematic)
                 {
-                    //Cinematics.instance.DisplayText("");
-                    //CurtainsFadeIn();
                     //init next step
                     Cinematics.instance.endCinematic = false;
                     Cinematics.instance.DisplayCinematic(2);
@@ -249,14 +247,23 @@ public class GameManager : MonoBehaviour {
                 {
                     blockInput = true;
                     //Cinematics.instance.DisplayText("");
-                    //CurtainsFadeIn();
                     blockMovementOnGround = false;
                     dialoguesSeqFinished = false;
                     step++;
-                    Invoke("waitAndUnblockInput", 1f);
+                    Invoke("waitAndUnblockInput", 1.75f);
+                    CurtainsFadeIn();
                 }
                 break;
-            case 13: //Debut dialogue Natyahs et Alex catastrophe
+            case 13: // Fin de la cinematique 2
+                if (!blockInput)
+                {
+                    blockInput = true;
+                    CurtainsFadeOut();
+                    Invoke("waitAndUnblockInput", 1f);
+                    step++;
+                }
+                break;
+            case 14: //Debut dialogue Natyahs et Alex catastrophe
                 if (!dialoguesSeqFinished && !blockInput)
                 {
                     if (!SpeechManager.instance.startDialogue) 
@@ -286,7 +293,7 @@ public class GameManager : MonoBehaviour {
                     // Init next step
                 }
                 break;
-            case 14: // Fin de dialogue entre Natyahs et Alex
+            case 15: // Fin de dialogue entre Natyahs et Alex
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
@@ -295,7 +302,7 @@ public class GameManager : MonoBehaviour {
                     step++;
                 }
                 break;
-            case 15: // Message de Lucie - Smartphone
+            case 16: // Message de Lucie - Smartphone
                 if (PhoneManager.instance.phoneGameFinished)
                 {
                     // Init next step
@@ -304,7 +311,7 @@ public class GameManager : MonoBehaviour {
                     step++;
                 }
                 break;
-            case 16: //Suite dialogue Natyahs et Alex catastrophe
+            case 17: //Suite dialogue Natyahs et Alex catastrophe
                 if (!dialoguesSeqFinished)
                 {
                     if (!SpeechManager.instance.startDialogue)
@@ -334,7 +341,7 @@ public class GameManager : MonoBehaviour {
                     
                 }
                 break;
-            case 17: // Fin de dialogue entre Natyahs et Alex
+            case 18: // Fin de dialogue entre Natyahs et Alex
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
@@ -378,7 +385,6 @@ public class GameManager : MonoBehaviour {
 
     private void CurtainsFadeIn()
     {
-        curtains_Panel.SetActive(true);
         curtains_Panel.GetComponent<Animator>().SetBool("fadeIn", true);
         Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
         newColor.a = 0;
@@ -402,6 +408,5 @@ public class GameManager : MonoBehaviour {
         Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
         newColor.a = 0;
         curtains_Panel.GetComponent<SpriteRenderer>().color = newColor;
-        curtains_Panel.SetActive(false);
     }
 }
