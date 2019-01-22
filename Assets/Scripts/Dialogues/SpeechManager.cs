@@ -60,7 +60,6 @@ public class SpeechManager : MonoBehaviour
             // TO REDO (Not clean)
             else if (GameManager.step == 23)
             {
-                Debug.Log("step 23");
                 GameManager.instance.dialoguesSeqFinished = false;
                 GameManager.instance.blockInput = false;
             }

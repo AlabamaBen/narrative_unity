@@ -1086,7 +1086,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   isInterractable: 0
   isClicked: 0
-  dialogue: "Faut vraiment que j\u2019arr\xEAte de manger ces trucs"
+  dialogue: "Faut vraiment que j\u2019arr\xEAte de manger ces trucs."
   blinking: 0
   blinkingSpeed: 0.2
   hit_position: {fileID: 4326264137586570}
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   isInterractable: 0
   isClicked: 0
-  dialogue: "Oh \xE7a pourrait en faire une table"
+  dialogue: "Oh \xE7a pourrait en faire une table."
   blinking: 0
   blinkingSpeed: 0.2
   hit_position: {fileID: 4854331491270006}
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   isInterractable: 0
   isClicked: 0
-  dialogue: "Faut vraiment que j\u2019arr\xEAte de manger ces trucs"
+  dialogue: "Faut vraiment que j\u2019arr\xEAte de manger ces trucs."
   blinking: 0
   blinkingSpeed: 0.2
   hit_position: {fileID: 4918540888307934}
