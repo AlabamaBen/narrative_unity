@@ -25,6 +25,9 @@ public class PhoneManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject smsObj;
+    [SerializeField]
+    private GameObject panel_Choix_sms;
+    private int choix;
 
     public bool phoneGameFinished = false;
     // Use this for initialization
@@ -46,10 +49,17 @@ public class PhoneManager : MonoBehaviour {
     {
         animator = this.GetComponent<Animator>();
         textDisplayed = false;
+        choix = 0;
     }
 
     public void StartPhone()
     {
+        screen.gameObject.SetActive(false);
+        DesactivateAllButtons();
+        buttonToDesactivate[0].SetActive(true);
+        boiteEnvoi.text = "";
+        smsObj.SetActive(false);
+
         bool phoneOpened = animator.GetBool("phoneOpened");
 
         if (!phoneOpened)
@@ -136,11 +146,61 @@ public class PhoneManager : MonoBehaviour {
                         break;
                 }
                 break;
+            case 2:
+                switch (substep)
+                {
+                    case 0:
+                        screen.sprite = screenSprites[4 + substep];
+                        screen.gameObject.SetActive(true);
+                        DesactivateAllButtons();
+                        buttonToDesactivate[1].SetActive(true);
+                        substep++;
+                        break;
+                    case 1:
+                        screen.sprite = screenSprites[4 + substep];
+                        DesactivateAllButtons();
+                        this.panel_Choix_sms.SetActive(true);
+                        choix = 0;
+                        //buttonToDesactivate[2].SetActive(true);
+                        substep++;
+                        break;
+                    case 2:
+                        string choixMsg = "";
+                        if (choix == 1)
+                        {
+                            choixMsg = "Oui, pas de soucis t’inquiète,\n on va tout déchirer !";
+                            smsTexte.text = choixMsg;
+                            substep++;
+                        }
+                        else if (choix == 2)
+                        {
+                            choixMsg = "Lucie, j’ai eu un soucis \navec mon ordinateur,\nmais t’inquiète,\nle devoir sera là demain\nà 8h30 sans soucis";
+                            smsTexte.text = choixMsg;
+                            substep++;
+                        }
+                        break;
+                    case 3:
+                        smsObj.SetActive(true);
+                        smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
+
+                        StartCoroutine(LaunchAnimationPhone(false, 2f));
+                        DesactivateAllButtons();
+                        Invoke("FinishPhoneGame", 2.2F);
+                        substep++;
+                        break;
+                }
+                break;
         }
+    }
+
+    public void SetChoice(int _choix)
+    {
+        choix = _choix;
     }
 
     private void FinishPhoneGame()
     {
+
         phoneGameFinished = true;
         substep = 0;
         step++;

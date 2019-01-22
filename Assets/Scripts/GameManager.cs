@@ -266,7 +266,6 @@ public class GameManager : MonoBehaviour {
                         blockMovementOnGround = false;
                         step++;
                         dialoguesSeqFinished = false;
-                        sceneLoaded = false;
                     }
 
                     // Init next step
@@ -276,7 +275,6 @@ public class GameManager : MonoBehaviour {
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
-                    SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
                     // Init next step
                     PhoneManager.instance.StartPhone();
                     step++;
