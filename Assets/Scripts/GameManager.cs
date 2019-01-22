@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
         // TEST
-        Cinematics.instance.DisplayCinematic(2);
-        step=12;
+        //Cinematics.instance.DisplayCinematic(2);
+        //step=12;
         //ClickableObjetManager.phase = 1;
     }
 
@@ -65,14 +65,15 @@ public class GameManager : MonoBehaviour {
                     SpeechManager.instance.startDialogue = false;
                     if (!SpeechManager.instance.displayMonologue.animator.GetBool("openMonolog")) // if player has closed last thought (open Monolog closed)
                     {
-                        // TEST
-                        //step=5;
-                        step++;
 
                         dialoguesSeqFinished = false;
 
                         // Init next step
                         PhoneManager.instance.StartPhone();
+
+                        // TEST
+                        step=3;
+                        //step++;
                     }
                 }
                 break;
@@ -341,7 +342,7 @@ public class GameManager : MonoBehaviour {
                     
                 }
                 break;
-            case 18: // Fin de dialogue entre Natyahs et Alex
+            case 18: // Fin de dialogue entre Natyahs et Alex catastrophe
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;

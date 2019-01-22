@@ -18,6 +18,7 @@ public class DisplayDialogue : MonoBehaviour {
     private float text_speed = 0.02f;
 
     [Header("Dialogue param")]
+    public Sprite transparentSprite;
     public Image alex;
     public Image natyahs;
     public List<SpriteData> allSprites;
@@ -75,14 +76,14 @@ public class DisplayDialogue : MonoBehaviour {
         {
             currentMsg = Instantiate(messageBox_Temp_Natyahs);
             currentMsg.transform.position = messageBox_Temp_Natyahs.transform.position;
-
+            
             ReplaceSprite(spriteName, natyahs);
         }
         else if (interlocuteur.Equals("Alex"))
         {
             currentMsg = Instantiate(messageBox_Temp_Alex);
             currentMsg.transform.position = messageBox_Temp_Alex.transform.position;
-
+            
             ReplaceSprite(spriteName, alex);
         }
         else
@@ -130,7 +131,6 @@ public class DisplayDialogue : MonoBehaviour {
             if (spr.img_name != "" && spr.img_name.Equals(_name))
             {
                 spriteToReplace.sprite = spr.sprite;
-                spriteToReplace.enabled = true;
             }
         }
     }

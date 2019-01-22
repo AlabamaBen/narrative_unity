@@ -106,6 +106,7 @@ MonoBehaviour:
   bottom: {fileID: 0}
   animator: {fileID: 95565665572556878}
   scale_offset: 1.1
+  clickableObjetManager: {fileID: 0}
 --- !u!212 &212587583382075424
 SpriteRenderer:
   m_ObjectHideFlags: 1

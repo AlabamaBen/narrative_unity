@@ -4,14 +4,14 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 1;Alex;?!! Mais c’est quoi ce truc ?;;1;;alex_colere
 1;Natyahs;"Hé ce ""truc"" est un génie, tu sais comme dans les films.";;1;;natyahs_fache
 1;Alex;Donc j’ai droit de faire un souhait ?;;1;;
-2;Alex;Ah merde, j'avais oublié ! Faut que je range...;;1;;
-2;Natyahs;Ou souhaiter une chambre rangée.;;1;;
-3;Alex;Non, non, nooooon …. Alleeeeez. ;;1;;
+2;Alex;Ah merde, j'avais oublié ! Faut que je range...;;1;;alex_neutre
+2;Natyahs;Ou souhaiter une chambre rangée.;;1;;natyahs_fache
+3;Alex;Non, non, nooooon …. Alleeeeez. ;;1;;alex_colere
 3;Alex;... !!;;1;;
-4;Alex;Un ordinateur qui fonctionne !;;1;;
+4;Alex;Un ordinateur qui fonctionne !;;1;;alex_colere
 4;Alex;J’ai un devoir à rendre avec Lucie demain à 8h30 !;;1;;
 4;Natyahs;Alors mets la bague.;;1;;
-5;Alex;Qu’est-ce que t’as fait de mon ordinateur ?;;1;;
+5;Alex;Qu’est-ce que t’as fait de mon ordinateur ?;;1;;alex_colere
 5;Alex;Mon devoir ? J’ai besoin de mon devoir !!!;;1;;
 5;Natyahs;Tu voulais un ordinateur qui fonctionnait non ?;;1;;
 6;Alex;Je vais jamais y arriver... ;;1;;
