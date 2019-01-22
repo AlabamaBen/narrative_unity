@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguesSeqFinished: 0
+  blockInput: 0
   curtains_Panel: {fileID: 1560066844860666}
 --- !u!212 &212300598323725840
 SpriteRenderer:
@@ -137,12 +138,12 @@ SpriteRenderer:
   m_SortingLayerID: -443624907
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4ad81bef3c1ca0142b18d96ed13b8c8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9155c58bc20296b4f8602ae4e8500144, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.01, y: 14.26}
+  m_Size: {x: 1.15, y: 5.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
