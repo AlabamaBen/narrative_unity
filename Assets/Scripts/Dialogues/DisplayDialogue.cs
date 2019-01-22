@@ -135,4 +135,10 @@ public class DisplayDialogue : MonoBehaviour {
         }
     }
 
+    public void ResetImages()
+    {
+        alex.sprite = transparentSprite;
+        natyahs.sprite = transparentSprite;
+    }
+
 }

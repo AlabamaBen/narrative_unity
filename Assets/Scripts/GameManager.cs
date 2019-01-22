@@ -72,8 +72,8 @@ public class GameManager : MonoBehaviour {
                         PhoneManager.instance.StartPhone();
 
                         // TEST
-                        step=3;
-                        //step++;
+                        //step=3;
+                        step++;
                     }
                 }
                 break;

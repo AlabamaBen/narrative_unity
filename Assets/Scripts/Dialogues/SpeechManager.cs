@@ -142,6 +142,7 @@ public class SpeechManager : MonoBehaviour
 
     public void DisplayFirstSequence()
     {
+        displayDialogue.ResetImages();
         displayDialogue.dialogue_Alex_Nat.SetActive(true);
         displayDialogue.animator.SetBool("dialogOpened", true);
         Invoke("DisplayNextSequenceDialogue", 1f);

@@ -2712,7 +2712,7 @@ MonoBehaviour:
   talk_sound_Alex: {fileID: 114645944854044460}
   talk_sound_Natyahs: {fileID: 114772679387247444}
   text_speed: 0.02
-  transparentSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  transparentSprite: {fileID: 21300000, guid: 7c4d5ea47e0b590419177bb8fcd894f4, type: 3}
   alex: {fileID: 114112830235632566}
   natyahs: {fileID: 114586643617330002}
   allSprites:
