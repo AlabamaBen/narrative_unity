@@ -117,6 +117,7 @@ public class Minigame2_Behavior : MonoBehaviour {
             CountDown_Display.text = "" + (int)timer;
         }
     }
+     
 
 
     private void Pop_Bubble(string name, bool tracked)

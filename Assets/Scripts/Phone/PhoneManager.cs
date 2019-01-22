@@ -30,6 +30,12 @@ public class PhoneManager : MonoBehaviour {
     private int choix;
 
     [Header("SoundSFX")]
+    public SFXSound SFX_Buzz;
+    public SFXSound SFX_Tap;
+    public SFXSound SFX_Send;
+    public SFXSound SFX_Texting;
+
+
 
 
     public bool phoneGameFinished = false;
@@ -70,6 +76,7 @@ public class PhoneManager : MonoBehaviour {
         if (!phoneOpened)
         {
             StartCoroutine(LaunchAnimationPhone(true, 1f));
+            SFX_Buzz.PlayTheSound();
         }
     }
     
@@ -86,16 +93,19 @@ public class PhoneManager : MonoBehaviour {
                         DesactivateAllButtons();
                         buttonToDesactivate[1].SetActive(true);
                         substep++;
+                        SFX_Tap.PlayTheSound(); 
                         break;
                     case 1:
                         screen.sprite = screenSprites[substep];
                         DesactivateAllButtons();
                         buttonToDesactivate[2].SetActive(true);
                         substep++;
+                        SFX_Tap.PlayTheSound();
                         break;
                     case 2:
                         SetDialogueBox("Haha, Ok ça marche !");
                         smsTexte.text = "Haha, Ok ça marche !";
+                        SFX_Texting.PlayTheSound();
                         DesactivateAllButtons();
                         buttonToDesactivate[3].SetActive(true);
                         substep++;
@@ -108,6 +118,7 @@ public class PhoneManager : MonoBehaviour {
                             smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
 
                             StartCoroutine(LaunchAnimationPhone(false, 2f));
+                            SFX_Send.PlayTheSound();
                             DesactivateAllButtons();
                             Invoke("FinishPhoneGame", 2.5F);
                         }
