@@ -2986,7 +2986,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theSounds:
-  - {fileID: 8300000, guid: 9553b3dac5d8c484b98249585f80de96, type: 3}
+  - {fileID: 8300000, guid: e2302fbfec555cc4db0d72291c45296b, type: 3}
+  - {fileID: 8300000, guid: f8b06c140df775c4981c73f577fcbaf2, type: 3}
+  - {fileID: 8300000, guid: 5136fdc6fe1448f4c9ac60a7ec87f246, type: 3}
   delay: 0.15
 --- !u!114 &114648080438677548
 MonoBehaviour:
@@ -3230,8 +3232,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theSounds:
-  - {fileID: 8300000, guid: b27022fb581eca44198ea3e2dd9718ff, type: 3}
-  delay: 0.15
+  - {fileID: 8300000, guid: 148e6022908f02c418f985cc4261b93d, type: 3}
+  - {fileID: 8300000, guid: d5fa3c8f020727842b6bfa259b496687, type: 3}
+  - {fileID: 8300000, guid: b1408118e740127498bd88c748115fff, type: 3}
+  - {fileID: 8300000, guid: 8b32d8b729b24414aa9393b0f6b27994, type: 3}
+  - {fileID: 8300000, guid: 47b475866bb4eef4a9f4b2413c50a4c8, type: 3}
+  delay: 0.13
 --- !u!114 &114793021756640392
 MonoBehaviour:
   m_ObjectHideFlags: 1
