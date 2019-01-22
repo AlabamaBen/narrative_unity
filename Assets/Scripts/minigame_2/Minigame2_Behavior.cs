@@ -12,7 +12,9 @@ public class Minigame2_Behavior : MonoBehaviour {
     public Transform topleft, botomright;
     public Sheet_Behaviour sheet_Behaviour;
     public Djin_Intervention djin_Intervention;
+    public Animation fade;
 
+    public bool MINIGAME2_END = false; 
 
     List<string> words = new List<string>
     {
@@ -33,7 +35,16 @@ public class Minigame2_Behavior : MonoBehaviour {
         "Anubis",
         "Chadouf",
         "Cobra",
-        "Ennéade"
+        "Ennéade",
+        "Atoum",
+        "Tefnout",
+        "Osiris",
+        "Anubis",
+        "Bastet",
+        "Khnoum",
+        "Sobek",
+        "JilayJôn",
+        "Mout"
     };
 
     List<string> intervention = new List<string>
@@ -56,16 +67,15 @@ public class Minigame2_Behavior : MonoBehaviour {
 
         timer = timer_lenght; 
 
-        int i = Random.Range(0, words.Count - 1);
-
-
         //tracked bubble
-        Pop_Bubble(words[i], true);
-        Tracked_Display.text = words[i];
+        Pop_Bubble(words[count], true);
+        Tracked_Display.text = words[count];
 
         //Fake bubbles
-        Pop_Bubble(words[(i - 1) % (words.Count - 1)], false);
-        Pop_Bubble(words[(i + 1) % (words.Count - 1)], false);
+        Pop_Bubble(words[(count + 1) % (words.Count - 1)], false);
+        Pop_Bubble(words[(count + 2) % (words.Count - 1)], false);
+
+        count++;
 
         Invoke("Open_Intervention", 2); 
 
@@ -83,16 +93,30 @@ public class Minigame2_Behavior : MonoBehaviour {
     {
         djin_Intervention.transform.position = new Vector2(djin_Intervention.transform.position.x, Random.Range(botomright.position.y, topleft.position.y));
         djin_Intervention.Appear();
-        djin_Intervention.Display_Text(intervention[nbr]);
+        djin_Intervention.Display_Text(intervention[nbr % (intervention.Count - 1)]);
         Invoke("Close_Intervention", 5);
+        nbr++;
     }
 
+    
     // Update is called once per frame
     void Update () {
         timer -= Time.deltaTime;
-        CountDown_Display.text = ""+(int)timer; 
-		
-	}
+        CountDown_Display.text = ""+(int)timer;
+
+        if (timer < 0f)
+        {
+            if(!fade.isPlaying)
+            {
+                fade.Play();
+            }
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+            CountDown_Display.text = "" + (int)timer;
+        }
+    }
 
 
     private void Pop_Bubble(string name, bool tracked)
@@ -111,7 +135,7 @@ public class Minigame2_Behavior : MonoBehaviour {
     public void Bubble_Hit(GameObject hited_bubble)
     {
 
-        if(count<5)
+        if(count<7)
         {
             int i = 3 * count; 
 

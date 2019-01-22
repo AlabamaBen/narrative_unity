@@ -73,17 +73,17 @@ public class PlayerMovement : MonoBehaviour {
                 float angle = Vector2.Angle(Vector2.up, direction);
 
                 //Back
-                if (angle < 45f)
+                if (angle < 65f)
                 {
                     animator.SetInteger("Direction", 2);
                 }
                 //Side
-                if (angle > 45 && angle < 135)
+                if (angle > 65f && angle < 115)
                 {
                     animator.SetInteger("Direction", 0);
                 }
                 //Front
-                if (angle > 135)
+                if (angle > 115)
                 {
                     animator.SetInteger("Direction", 1);
                 }
