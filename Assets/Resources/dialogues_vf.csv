@@ -2,71 +2,69 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 0;Alex;Aaaah ma tête ...pffffff… Quelle soirée hier !;Pensee;1;;alex_neutre
 0;Alex;Il est quelle heure ?;Pensee;1;;alex_neutre
 1;Alex;?!! Mais c’est quoi ce truc ?;;1;;alex_neutre
-1;Natyahs;"Hé ce ""truc"" est un génie, tu sais comme dans les films.";;1;;
-1;Alex;Donc j’ai droit de faire un souhait ?;;1;;
-1;Natyahs;Absolument tout ce que tu veux... ;;1;;
-1;Natyahs;Mais je dois prendre possession de ton corps\\pour les exaucer.;;1;;
-1;Alex;Hmmmm;;1;;
-1;Natyahs;Tu n’as pas un rêve à réaliser ?;;1;;
-1;Alex;Si, mais je ne veux pas perdre le contrôle de mon corps.;;1;;
-1;Natyahs;Ah, on ne peut pas tout avoir, mais c’est comme tu veux.;;1;;
-1;Natyahs;Je vais faire une petite sieste ici.;;1;;
-1;Natyahs;Tant que tu possèdes la bague, je serais dans le coin.;;1;;
-1;Alex;Pourquoi ça ?;;1;;
-1;Natyahs;Je ne peux pas m’en éloigner avec ce corps...\\T'occupes, c'est un truc de génie.;;1;;
-2;Alex;Ah merde, j'avais oublié ! Faut que je range...;;1;;
-2;Natyahs;Ou souhaiter une chambre rangée.;;1;;
-2;Natyahs;Ce serait un gachi de mon pouvoir, mais si tu le souhaites…;;1;;
-2;Alex;Bien essayé, mais je vais garder mon corps ce coup-ci.;;1;;
-3;Alex;Non, non, nooooon ….;;1;;
-3;Alex;Alleeeeez. ;;1;;
-4;Natyahs;Besoin de quelque chose ?;;1;;
-4;Alex;!!;;1;;
-4;Alex;Un ordinateur qui fonctionne !;;1;;
-4;Alex;J’ai un devoir à rendre avec Lucie demain à 8h30 !;;1;;
-4;Natyahs;Serait-ce un voeu ?;;1;;
-4;Alex;Il te faut combien de temps pour me fournir//un ordinateur qui fonctionne ?;;1;;
-4;Natyahs;Hmmm 45 min;;1;;
-4;Alex;Bon... J’ai pas le choix … OK;;1;;
-4;Natyahs;Choisi une carte et mets la bague.;;1;;
-4;Alex;Pourquoi une carte ?;;1;;
-4;Natyahs;Pour savoir comment je vais exaucer ton voeux.;;1;;
-5;Alex;Qu’est-ce que t’as fait de mon ordinateur ?;;1;;
-5;Alex;Mon devoir ? J’ai besoin de mon devoir !!!;;1;;
-5;Natyahs;Tu voulais un ordinateur qui fonctionnait non ?;;1;;
-5;Natyahs;Excuse moi, je pensais bien faire.;;1;;
-5;Alex;Ok, bon, il me reste 18 h avant l’heure du rendu.;;1;;
-5;Alex;25 pages en 15 h, ça se fait non ?;;1;;
-5;Natyahs;Tu pourrais souhaiter que je fasse ton devoir.;;1;;
-5;Alex;Ca ira pour cette fois.;;1;;
-6;Alex;Je vais jamais y arriver... ;;1;;
-6;Alex;Il me reste une heure et 11 pages à écrire … ;;1;;
-6;Alex;Lucie va me tuer …;;1;;
-6;Natyahs;Laisse moi réparer ma bêtise.;;1;;
-6;Alex;Pour que tu fasses tout de travers encore une fois ? Non merci !;;1;;
-6;Natyahs;Promis, je ferais très attention cette fois-ci.;;1;;
-6;Natyahs;Demande moi juste exactement ce que tu veux;;1;;
-6;Alex;…;;1;;
-6;Alex;Est-ce que j’ai vraiment le choix ? …;;1;;
-6;Natyahs;On a toujours le choix…;;1;;
-6;Alex;Bon ok.;;1;;
-6;Alex;Rends un devoir pour nous, et fais en sorte qu’il soit bon. Très bon même !;;1;;
-7;Alex;NATYAHS ! Qu’est-ce que t’as fait ?;;1;;
-7;Natyahs;Qu'est ce qu'il se passe encore ?;;1;;
-7;Alex;Fait pas l'innocent !//Je suis convoquée avec Lucie pour suspicion de tricherie… ;;1;;
-7;Alex;On doit passer un oral,//pour prouver que nous avons bien écrit notre devoir.;;1;;
-7;Natyahs;Je n'ai fait que ton devoir, comme tu me l’as demandé.;;1;;
-7;Alex;Bon... ;;1;;
-7;Alex;Il faut que tu m’aides à réviser et à retenir ce que tu as écrit.;;1;;
-7;Natyahs;Tu veux apprendre les 120 pages de ton devoir ?;;1;;
-7;Alex;120 PAGES ?;;1;;
-7;Alex;Mais qu’est-ce qui t’a pris ? Il fallait juste faire les dizaines qui restaient !;;1;;
-7;Natyahs;Oh … j'ai mal compris...;;1;;
-7;Alex;Comment je fais maintenant ?;;1;;
-7;Alex;A cause de toi, je vais perdre ma meilleure pote//et mon diplôme !;;1;;
-7;Natyahs;Je peux t’aider à arranger les choses,//mais il va falloir que tu fasses un choix.;;1;;
-7;Alex;Quel choix ?;;1;;
-7;Natyahs;Ta meilleure amie ou ton diplôme.//Et j'ai besoin de ton corps pour une journée.;;1;;
+1;Natyahs;"Hé ce ""truc"" est un génie, tu sais comme dans les films.";;1;;natyahs_epaule
+1;Alex;Donc j’ai droit de faire un souhait ?;;1;;alex_reflechi
+1;Natyahs;Absolument tout ce que tu veux... ;;1;;natyahs_mignon
+1;Natyahs;Mais je dois prendre possession de ton corps\\pour les exaucer.;;1;;natyahs_propose
+1;Alex;Hmmmm;;1;;alex_suspicieu
+1;Natyahs;Tu n’as pas un rêve à réaliser ?;;1;;natyahs_neutre
+1;Alex;Si, mais je ne veux pas perdre le contrôle de mon corps.;;1;;alex_doute
+1;Natyahs;Ah, on ne peut pas tout avoir, mais c’est comme tu veux.;;1;;natyahs_surpris
+1;Natyahs;Je vais faire une petite sieste ici.;;1;;natyahs_interet
+1;Natyahs;Tant que tu possèdes la bague, je serais dans le coin.;;1;;natyahs_ennui
+1;Alex;Pourquoi ça ?;;1;;alex_choc
+1;Natyahs;Je ne peux pas m’en éloigner avec ce corps...\\T'occupes, c'est un truc de génie.;;1;;natyahs_interet
+2;Alex;Ah mince, j'avais oublié ! Faut que je range...;;1;;alex_panique
+2;Natyahs;Ou souhaiter une chambre rangée.;;1;;natyahs_interet
+2;Natyahs;Ce serait un gachi de mon pouvoir, mais si tu le souhaites…;;1;;natyahs_epaule
+2;Alex;Bien essayé, mais je vais garder mon corps ce coup-ci.;;1;;alex_rigole
+3;Alex;Non, non, nooooon ….;;1;;alex_choc
+3;Alex;Alleeeeez. ;;1;;alex_panique
+4;Natyahs;Besoin de quelque chose ?;;1;;natyahs_propose
+4;Alex;!!;;1;;alex_choc
+4;Alex;Un ordinateur qui fonctionne !;;1;;alex_panique
+4;Alex;J’ai un devoir à rendre avec Lucie demain à 8h30 !;;1;;alex_colere
+4;Natyahs;Serait-ce un voeu ?;;1;;natyahs_betise
+4;Alex;Il te faut combien de temps pour me fournir//un ordinateur qui fonctionne ?;;1;;alex_neutre
+4;Natyahs;Hmmm 45 min;;1;;natyahs_neutre
+4;Alex;Bon... J’ai pas le choix … OK;;1;;alex_suspicieu
+4;Natyahs;Alors mets la bague.;;1;;natyahs_propose
+5;Alex;Qu’est-ce que t’as fait de mon ordinateur ?;;1;;alex_choc
+5;Alex;Mon devoir ? J’ai besoin de mon devoir !!!;;1;;alex_colere
+5;Natyahs;Tu voulais un ordinateur qui fonctionnait non ?;;1;;natyahs_surpris
+5;Natyahs;Excuse moi, je pensais bien faire.;;1;;alex_mignon
+5;Alex;Ok, bon, il me reste 18 h avant l’heure du rendu.;;1;;alex_reflechi
+5;Alex;25 pages en 15 h, ça se fait non ?;;1;;alex_doute
+5;Natyahs;Tu pourrais souhaiter que je fasse ton devoir.;;1;;natyahs_propose
+5;Alex;Ca ira pour cette fois.;;1;;alex_colere
+6;Alex;Je vais jamais y arriver... ;;1;;alex_choc
+6;Alex;Il me reste une heure et 11 pages à écrire … ;;1;;alex_panique
+6;Alex;Lucie va me tuer …;;1;;alex_colere
+6;Natyahs;Laisse moi réparer ma bêtise.;;1;;natyahs_mignon
+6;Alex;Pour que tu fasses tout de travers encore une fois ? Non merci !;;1;;alex_colere
+6;Natyahs;Promis, je ferais très attention cette fois-ci.;;1;;natyahs_mignon
+6;Natyahs;Demande moi juste exactement ce que tu veux;;1;;natyahs_propose
+6;Alex;…;;1;;alex_suspicieu
+6;Alex;Est-ce que j’ai vraiment le choix ? …;;1;;alex_reflechi
+6;Natyahs;On a toujours le choix…;;1;;natyahs_betise
+6;Alex;Bon ok.;;1;;alex_reflechi
+6;Alex;Rends un devoir pour nous, et fais en sorte qu’il soit bon. Très bon même !;;1;;alex_neutre
+7;Alex;NATYAHS ! Qu’est-ce que t’as fait ?;;1;;alex_colere
+7;Natyahs;Qu'est ce qu'il se passe encore ?;;1;;natyahs_surpris
+7;Alex;Fait pas l'innocent !//Je suis convoquée avec Lucie pour suspicion de tricherie… ;;1;;alex_colere
+7;Alex;On doit passer un oral,//pour prouver que nous avons bien écrit notre devoir.;;1;;alex_panique
+7;Natyahs;Je n'ai fait que ton devoir, comme tu me l’as demandé.;;1;;natyahs_betise
+7;Alex;Bon... ;;1;;alex_colere
+7;Alex;Il faut que tu m’aides à réviser et à retenir ce que tu as écrit.;;1;;alex_reflechi
+7;Natyahs;Tu veux apprendre les 120 pages de ton devoir ?;;1;;natyahs_surpris
+7;Alex;120 PAGES ?;;1;;alex_choc
+7;Alex;Mais qu’est-ce qui t’a pris ? Il fallait juste faire les dizaines qui restaient !;;1;;alex_panique
+7;Natyahs;Oh … j'ai mal compris...;;1;;natyahs_sourcil
+7;Alex;Comment je fais maintenant ?;;1;;alex_panique
+7;Alex;A cause de toi, je vais perdre ma meilleure pote//et mon diplôme !;;1;;alex_colere
+7;Natyahs;Je peux t’aider à arranger les choses,//mais il va falloir que tu fasses un choix.;;1;;natyahs_propose
+7;Alex;Quel choix ?;;1;;alex_suspicieu
+7;Natyahs;Ta meilleure amie ou ton diplôme.//Et j'ai besoin de ton corps pour une journée.;;1;;natyahs_betise
 ;;;;;;
 ;;;;;;
 ;;;;;;

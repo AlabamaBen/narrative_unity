@@ -36,6 +36,14 @@ public class Minigame2_Behavior : MonoBehaviour {
         "Ennéade"
     };
 
+    List<string> intervention = new List<string>
+    {
+        "Eh bah ça a l'ai compliqué ça. T'as l'air de bien galérer",
+        "Tu sais je peux t'aider à écrire ça, c'est un sujet que je connais bien en plus...",
+        "Aller tu vois bien que t'y arrivera pas, laisse moi faire.",
+        "Ah il te reste pas beaucoup de temps, ça devient compliqué, pense un peu à ton amie"
+    };
+
     int count = 0;
 
     public float timer_lenght = 30;
@@ -69,11 +77,13 @@ public class Minigame2_Behavior : MonoBehaviour {
         Invoke("Open_Intervention", 4);
     }
 
+    int nbr = 0; 
+
     void Open_Intervention()
     {
         djin_Intervention.transform.position = new Vector2(djin_Intervention.transform.position.x, Random.Range(botomright.position.y, topleft.position.y));
         djin_Intervention.Appear();
-        djin_Intervention.Display_Text("Oulala ça a l'ai compliqué ça. T'as l'air de bien galérer");
+        djin_Intervention.Display_Text(intervention[nbr]);
         Invoke("Close_Intervention", 5);
     }
 

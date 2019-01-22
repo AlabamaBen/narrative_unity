@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Nunito-Regular SDF
+  m_Name: Nunito-Regular SDF 1
   m_EditorClassIdentifier: 
-  hashCode: 1247009697
+  hashCode: 783895600
   material: {fileID: 21531561609418596}
   materialHashCode: 1885406474
   fontAssetType: 1
@@ -990,7 +990,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Nunito-Regular SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: GLOW_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
