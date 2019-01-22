@@ -30,6 +30,8 @@ public class PhoneManager : MonoBehaviour {
     private int choix;
 
     [Header("SoundSFX")]
+
+
     public bool phoneGameFinished = false;
     // Use this for initialization
     void Awake()
