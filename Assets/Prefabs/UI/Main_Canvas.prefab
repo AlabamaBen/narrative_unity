@@ -2792,6 +2792,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 9d444f8fedfe9c64e92582a1f4891604, type: 3}
   - img_name: natyahs_surpris
     sprite: {fileID: 21300000, guid: a2c1ce6ca9603474d8d4872241641849, type: 3}
+  - img_name: alex_choc
+    sprite: {fileID: 21300000, guid: 14f56355c045fd344a664467b5baf841, type: 3}
 --- !u!114 &114541174669475586
 MonoBehaviour:
   m_ObjectHideFlags: 1
