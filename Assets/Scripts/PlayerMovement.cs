@@ -92,10 +92,10 @@ public class PlayerMovement : MonoBehaviour {
         }
         if(blocked)
         {
-            Debug.Log("Distance Target : " + (target_obj.hit_position.position - transform.position).sqrMagnitude);
+            //Debug.Log("Distance Target : " + (target_obj.hit_position.position - transform.position).sqrMagnitude);
             if(target_obj != null)
             {
-                Debug.Log("Blocked on : " + target_obj.gameObject.name);
+                //Debug.Log("Blocked on : " + target_obj.gameObject.name);
 
 
                 if ((target_obj.hit_position.position - transform.position).sqrMagnitude < 0.1f)
@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Unblock : " + target_obj.gameObject.name);
+                //Debug.Log("Unblock : " + target_obj.gameObject.name);
                 blocked = false;
             }
 

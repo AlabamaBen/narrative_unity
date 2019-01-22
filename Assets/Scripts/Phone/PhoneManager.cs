@@ -59,6 +59,8 @@ public class PhoneManager : MonoBehaviour {
         buttonToDesactivate[0].SetActive(true);
         boiteEnvoi.text = "";
         smsObj.SetActive(false);
+        smsObj.GetComponent<Image>().enabled = false;
+        smsTexte.gameObject.SetActive(false);
 
         bool phoneOpened = animator.GetBool("phoneOpened");
 
@@ -165,17 +167,20 @@ public class PhoneManager : MonoBehaviour {
                         substep++;
                         break;
                     case 2:
+                        Debug.Log("choix");
                         string choixMsg = "";
                         if (choix == 1)
                         {
                             choixMsg = "Oui, pas de soucis t’inquiète,\n on va tout déchirer !";
                             smsTexte.text = choixMsg;
+                            buttonToDesactivate[3].SetActive(true);
                             substep++;
                         }
                         else if (choix == 2)
                         {
                             choixMsg = "Lucie, j’ai eu un soucis \navec mon ordinateur,\nmais t’inquiète,\nle devoir sera là demain\nà 8h30 sans soucis";
                             smsTexte.text = choixMsg;
+                            buttonToDesactivate[3].SetActive(true);
                             substep++;
                         }
                         break;
@@ -196,11 +201,11 @@ public class PhoneManager : MonoBehaviour {
     public void SetChoice(int _choix)
     {
         choix = _choix;
+        ClickOnMessageButton();
     }
 
     private void FinishPhoneGame()
     {
-
         phoneGameFinished = true;
         substep = 0;
         step++;

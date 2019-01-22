@@ -108,7 +108,7 @@ public class DisplayDialogue : MonoBehaviour {
 
     public void DestroyAllDialogues()
     {
-        StartCoroutine(DestroyLastDialog(0.35F));
+        StartCoroutine(DestroyLastDialog(0.75F));
     }
 
 

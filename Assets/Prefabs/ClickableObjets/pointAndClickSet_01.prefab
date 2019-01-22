@@ -1223,8 +1223,6 @@ MonoBehaviour:
     - {fileID: 1365105548686104}
   - gameObjectList:
     - {fileID: 1961414020894744}
-    - {fileID: 1415268467954064}
-    - {fileID: 1365105548686104}
   - gameObjectList:
     - {fileID: 1922737759530932}
 --- !u!212 &212199483075132246

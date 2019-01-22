@@ -38,9 +38,10 @@ public class GameManager : MonoBehaviour {
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
-       
+
         // TEST
-        //step=10;
+        //Cinematics.instance.DisplayCinematic(2);
+        //step=12;
         //ClickableObjetManager.phase = 1;
     }
 
@@ -222,27 +223,41 @@ public class GameManager : MonoBehaviour {
                     step++;
                 }
                 break;
-            case 10: // Click sur verrre eau
+            case 10: // Click et renverse verrre eau
                 if (ClickableObjetManager.instance.finishedPAndCStep)
                 {
                     step++;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
                     // init next step
-                    Cinematics.instance.DisplayCinematic(2);
+                    Cinematics.instance.DisplayCinematic(1);
+                    blockMovementOnGround = true;
                 }
                 break;
             case 11: // Fin de la cinematique 2
                 if (Cinematics.instance.endCinematic)
                 {
                     //Cinematics.instance.DisplayText("");
-                    CurtainsFadeIn();
+                    //CurtainsFadeIn();
+                    //init next step
+                    Cinematics.instance.endCinematic = false;
+                    Cinematics.instance.DisplayCinematic(2);
                     step++;
-                    Invoke("CurtainsFadeOut", 1F);
-                    dialoguesSeqFinished = false;
                 }
                 break;
-            case 12: //Debut dialogue Natyahs et Alex catastrophe
-                if (!dialoguesSeqFinished)
+            case 12: // Fin de la cinematique 2
+                if (Cinematics.instance.endCinematic)
+                {
+                    blockInput = true;
+                    //Cinematics.instance.DisplayText("");
+                    //CurtainsFadeIn();
+                    blockMovementOnGround = false;
+                    dialoguesSeqFinished = false;
+                    step++;
+                    Invoke("waitAndUnblockInput", 1f);
+                }
+                break;
+            case 13: //Debut dialogue Natyahs et Alex catastrophe
+                if (!dialoguesSeqFinished && !blockInput)
                 {
                     if (!SpeechManager.instance.startDialogue) 
                     {
@@ -258,20 +273,20 @@ public class GameManager : MonoBehaviour {
                         dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
                     }
                 }
-                else
+                else if (dialoguesSeqFinished)
                 {
                     if (!SpeechManager.instance.textDisplayed) // Player click to end dialog
                     {
                         SpeechManager.instance.HideDialog();
                         blockMovementOnGround = false;
-                        step++;
                         dialoguesSeqFinished = false;
+                        step++;
                     }
 
                     // Init next step
                 }
                 break;
-            case 13: // Fin de dialogue entre Natyahs et Alex
+            case 14: // Fin de dialogue entre Natyahs et Alex
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
@@ -280,20 +295,21 @@ public class GameManager : MonoBehaviour {
                     step++;
                 }
                 break;
-            case 14: // Message de Lucie - Smartphone
+            case 15: // Message de Lucie - Smartphone
                 if (PhoneManager.instance.phoneGameFinished)
                 {
                     // Init next step
-                    step++;
                     PhoneManager.instance.phoneGameFinished = false;
                     dialoguesSeqFinished = false;
+                    step++;
                 }
                 break;
-            case 15: //Suite dialogue Natyahs et Alex catastrophe
+            case 16: //Suite dialogue Natyahs et Alex catastrophe
                 if (!dialoguesSeqFinished)
                 {
                     if (!SpeechManager.instance.startDialogue)
                     {
+                        Debug.Log("dialogue catastrophe pc");
                         blockInput = true;
                         blockMovementOnGround = true;
                         // Display first line of dialogue
@@ -312,15 +328,13 @@ public class GameManager : MonoBehaviour {
                     {
                         SpeechManager.instance.HideDialog();
                         blockMovementOnGround = false;
-                        step++;
                         dialoguesSeqFinished = false;
-                        sceneLoaded = false;
+                        step++;
                     }
-
-                    // Init next step
+                    
                 }
                 break;
-            case 16: // Fin de dialogue entre Natyahs et Alex
+            case 17: // Fin de dialogue entre Natyahs et Alex
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
@@ -373,7 +387,7 @@ public class GameManager : MonoBehaviour {
 
     public void CurtainsFadeOut()
     {
-        Debug.Log("CurtainsFadeOut");
+        //Debug.Log("CurtainsFadeOut");
         Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
         newColor.a = 255;
         curtains_Panel.GetComponent<SpriteRenderer>().color = newColor;
@@ -384,7 +398,7 @@ public class GameManager : MonoBehaviour {
 
     public void DeActivateCurtains()
     {
-        Debug.Log("DeActivateCurtains");
+        //Debug.Log("DeActivateCurtains");
         Color newColor = curtains_Panel.GetComponent<SpriteRenderer>().color;
         newColor.a = 0;
         curtains_Panel.GetComponent<SpriteRenderer>().color = newColor;

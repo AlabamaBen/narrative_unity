@@ -153,7 +153,7 @@ public class ClickableObjetManager : MonoBehaviour
 
     public void Destroy_Object(ClickableObject obj)
     {
-        Debug.Log("Destroy_Object : " + obj.gameObject.name);
+        //Debug.Log("Destroy_Object : " + obj.gameObject.name);
 
         obj.StopBlinking();
         clickableObjets.Remove(obj.GetComponent<ClickableObject>());
