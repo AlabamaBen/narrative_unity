@@ -132,6 +132,7 @@ public class PhoneManager : MonoBehaviour {
                         screen.sprite = screenSprites[2+substep];
                         screen.gameObject.SetActive(true);
                         DesactivateAllButtons();
+                        SFX_Tap.PlayTheSound();
                         buttonToDesactivate[1].SetActive(true);
                         substep++;
                         break;
@@ -139,6 +140,7 @@ public class PhoneManager : MonoBehaviour {
                         screen.sprite = screenSprites[2 + substep];
                         DesactivateAllButtons();
                         buttonToDesactivate[2].SetActive(true);
+                        SFX_Tap.PlayTheSound();
                         substep++;
                         break;
                     case 2:
@@ -146,6 +148,7 @@ public class PhoneManager : MonoBehaviour {
                         smsTexte.text = "Ok !";
                         DesactivateAllButtons();
                         buttonToDesactivate[3].SetActive(true);
+                        SFX_Texting.PlayTheSound();
                         substep++;
                         break;
                     case 3:
@@ -154,6 +157,7 @@ public class PhoneManager : MonoBehaviour {
                             boiteEnvoi.text = "";
                             smsObj.SetActive(true);
                             smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
+                            SFX_Send.PlayTheSound();
 
                             StartCoroutine(LaunchAnimationPhone(false, 2f));
                             DesactivateAllButtons();
@@ -168,6 +172,7 @@ public class PhoneManager : MonoBehaviour {
                     case 0:
                         screen.sprite = screenSprites[4 + substep];
                         screen.gameObject.SetActive(true);
+                        SFX_Tap.PlayTheSound();
                         DesactivateAllButtons();
                         buttonToDesactivate[1].SetActive(true);
                         substep++;
@@ -175,6 +180,7 @@ public class PhoneManager : MonoBehaviour {
                     case 1:
                         screen.sprite = screenSprites[4 + substep];
                         DesactivateAllButtons();
+                        SFX_Tap.PlayTheSound();
                         this.panel_Choix_sms.SetActive(true);
                         choix = 0;
                         //buttonToDesactivate[2].SetActive(true);
@@ -187,6 +193,8 @@ public class PhoneManager : MonoBehaviour {
                         {
                             choixMsg = "Oui, pas de soucis t’inquiète,\n on va tout déchirer !";
                             smsTexte.text = choixMsg;
+                            SFX_Texting.PlayTheSound();
+                            
                             buttonToDesactivate[3].SetActive(true);
                             substep++;
                         }
@@ -194,6 +202,8 @@ public class PhoneManager : MonoBehaviour {
                         {
                             choixMsg = "Lucie, j’ai eu un soucis \navec mon ordinateur,\nmais t’inquiète,\nle devoir sera là demain\nà 8h30 sans soucis";
                             smsTexte.text = choixMsg;
+                            SFX_Texting.PlayTheSound();
+
                             buttonToDesactivate[3].SetActive(true);
                             substep++;
                         }
@@ -201,6 +211,7 @@ public class PhoneManager : MonoBehaviour {
                     case 3:
                         smsObj.SetActive(true);
                         smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
+                        SFX_Send.PlayTheSound();
 
                         StartCoroutine(LaunchAnimationPhone(false, 2f));
                         DesactivateAllButtons();
