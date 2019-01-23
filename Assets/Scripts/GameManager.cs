@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
                     //TEST, next line to remove 
-                    Ring.Game_End = true;
+                    //Ring.Game_End = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
@@ -462,7 +462,7 @@ public class GameManager : MonoBehaviour
                 if (m_Scene.name != "minigame_2" && !sceneLoaded)
                 {
                     //TEST, next line to remove
-                    Minigame2_Behavior.MINIGAME2_END = true;
+                    //Minigame2_Behavior.MINIGAME2_END = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
