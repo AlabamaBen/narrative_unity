@@ -32,7 +32,7 @@ public class Ring : MonoBehaviour {
     public SFXSound SFX_Steam;
 
 
-    public SpriteRenderer sprite_cat;
+    public GameObject cat;
 
     public ParticleSystem fire; 
 
@@ -86,7 +86,7 @@ public class Ring : MonoBehaviour {
                     if(fog.Density > 3f)
                     {
                         state = Ring_State.SmokeFadeOut;
-                        sprite_cat.enabled = true; 
+                        cat.SetActive(true); 
                     }
                 }
                 break;
