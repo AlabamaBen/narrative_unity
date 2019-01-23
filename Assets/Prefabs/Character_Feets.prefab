@@ -130,12 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56669973993c744a954abc0cb463d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   pointer: {fileID: 0}
   top: {fileID: 0}
   bottom: {fileID: 0}
   animator: {fileID: 95565665572556878}
-  scale_offset: 1.5
+  scale_offset: 1.6
   clickableObjetManager: {fileID: 0}
 --- !u!212 &212308451748558786
 SpriteRenderer:
@@ -170,7 +170,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 724705765
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dce250adf32e61d428e2b0d3a5eaaa20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.59607846}

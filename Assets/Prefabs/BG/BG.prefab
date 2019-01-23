@@ -332,14 +332,18 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -7.512751, y: -2.5595858}
-      - {x: -11.88264, y: -5.264595}
-      - {x: -15.409657, y: -6.004271}
+    - - {x: 0.32021555, y: -2.7462924}
+      - {x: 0.28697032, y: -2.574746}
+      - {x: -3.04755, y: -2.6072962}
+      - {x: -2.993985, y: -2.1717427}
+      - {x: -7.1629148, y: -2.0992742}
+      - {x: -12.545489, y: -4.7674584}
+      - {x: -15.778122, y: -4.8297863}
       - {x: -19.203493, y: -6.544997}
       - {x: -19.27295, y: -10.868297}
-      - {x: 6.5824523, y: -10.502017}
-      - {x: 5.7047286, y: -7.343221}
-      - {x: 4.675764, y: -3.1669073}
+      - {x: 7.1640525, y: -10.812821}
+      - {x: 6.364872, y: -6.968015}
+      - {x: 5.158394, y: -2.7295902}
 --- !u!114 &114607756786283600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -385,7 +389,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -443624907
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4ed16a1be85dc604cae2d2fdaf807977, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -477,7 +481,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -443624907
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f95e7fb576c1e004f8312de0ea1913ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -523,7 +527,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -443624907
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 26b4f347f75e26047b054bd374a987e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -570,7 +574,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -23477277
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: 699f7a75c06ab784bb21e2c7e9f5af75, type: 3}
   m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_FlipX: 0
@@ -621,8 +625,8 @@ SpriteMask:
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 724705765
   m_BackSortingLayerID: 724705765
-  m_FrontSortingLayer: 2
-  m_BackSortingLayer: 2
+  m_FrontSortingLayer: 1
+  m_BackSortingLayer: 1
   m_FrontSortingOrder: 1
   m_BackSortingOrder: -1
   m_IsCustomRangeActive: 1
