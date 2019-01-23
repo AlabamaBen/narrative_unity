@@ -449,7 +449,7 @@ public class GameManager : MonoBehaviour
                     // init next step
 
                     Cinematics.instance.endCinematic = false;
-                    Cinematics.instance.DisplayPlanche(5); // TODO replace DisplayPlanche(5); 
+                    Cinematics.instance.DisplayPlanche(6); 
                     dialoguesSeqFinished = false;
                     step++;
                 }
@@ -602,7 +602,7 @@ public class GameManager : MonoBehaviour
                 {
                     // init next step
                     Cinematics.instance.endCinematic = false;
-                    Cinematics.instance.DisplayPlanche(1); // TO DO replace [planche 7]
+                    Cinematics.instance.DisplayPlanche(7);
                     step++;
                 }
                 break;
