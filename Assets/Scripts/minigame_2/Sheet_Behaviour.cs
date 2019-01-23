@@ -8,7 +8,9 @@ public class Sheet_Behaviour : MonoBehaviour {
 
     public Transform mask;
 
-    public int score; 
+    public int score;
+
+    public SFXSound SFX_Writing;
 
 	// Use this for initialization
 	void Start () {
@@ -26,5 +28,6 @@ public class Sheet_Behaviour : MonoBehaviour {
     public void hit()
     {
         mask.Translate(new Vector2(0, - line_size));
+        SFX_Writing.PlayTheSound();
     }
 }

@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Minigame2_Behavior : MonoBehaviour {
 
 
-    public TextMesh Tracked_Display;
+    public TextMeshPro Tracked_Display;
     public TextMesh CountDown_Display;
     public float CountDown;
     public GameObject bubble_prefabs;
@@ -13,6 +14,9 @@ public class Minigame2_Behavior : MonoBehaviour {
     public Sheet_Behaviour sheet_Behaviour;
     public Djin_Intervention djin_Intervention;
     public Animation fade;
+    public SFXSound SFX_Alarm;
+    public AudioSource SFX_Tiktok;
+
 
     public static bool MINIGAME2_END = false; 
 
@@ -101,15 +105,17 @@ public class Minigame2_Behavior : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-        timer -= Time.deltaTime;
-        CountDown_Display.text = ""+(int)timer;
 
         if (timer < 0f)
         {
             if(!fade.isPlaying)
             {
                 fade.Play();
-                MINIGAME2_END = true;
+                SFX_Alarm.PlayTheSound();
+                SFX_Tiktok.Stop();
+
+
+                Invoke("End_Game", 5); 
             }
         }
         else
@@ -119,6 +125,10 @@ public class Minigame2_Behavior : MonoBehaviour {
         }
     }
      
+    void End_Game()
+    {
+        MINIGAME2_END = true;
+    }
 
 
     private void Pop_Bubble(string name, bool tracked)
