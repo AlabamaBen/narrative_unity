@@ -113,6 +113,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &13709537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1020893779501482, guid: 5fd4c2637d40687429fe9598c96a1b03,
+    type: 2}
+  m_PrefabInternal: {fileID: 41859624}
+--- !u!114 &13709540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13709537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2156c3f2295b33b4bb01312d51706785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  isInterractable: 0
+  isClicked: 0
+  dialogue: 
+  blinking: 0
+  blinkingSpeed: 0.2
+  hit_position: {fileID: 18124501}
+--- !u!4 &18124501 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4408892402005122, guid: 5fd4c2637d40687429fe9598c96a1b03,
+    type: 2}
+  m_PrefabInternal: {fileID: 41859624}
 --- !u!1 &41611964
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +907,29 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edeba378bc5fad347b168ae488557f4d, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1526601535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1051234583462430, guid: 5fd4c2637d40687429fe9598c96a1b03,
+    type: 2}
+  m_PrefabInternal: {fileID: 41859624}
+--- !u!114 &1526601538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1526601535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2156c3f2295b33b4bb01312d51706785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  isInterractable: 0
+  isClicked: 0
+  dialogue: 
+  blinking: 0
+  blinkingSpeed: 0.2
+  hit_position: {fileID: 18124501}
 --- !u!114 &1607794020 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114595611123263888, guid: 4aa9fe1da2189134e9b5bf77a842c798,
@@ -896,6 +947,29 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1093938711}
   m_Script: {fileID: 11500000, guid: 83b884047932c354d97a74e346e26cbb, type: 3}
+--- !u!1 &1873526096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1682990441126864, guid: 5fd4c2637d40687429fe9598c96a1b03,
+    type: 2}
+  m_PrefabInternal: {fileID: 41859624}
+--- !u!114 &1873526099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1873526096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2156c3f2295b33b4bb01312d51706785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  isInterractable: 0
+  isClicked: 0
+  dialogue: 
+  blinking: 0
+  blinkingSpeed: 0.2
+  hit_position: {fileID: 18124501}
 --- !u!1001 &1904395653
 Prefab:
   m_ObjectHideFlags: 0
