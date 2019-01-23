@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         //step = 17;
         //dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
-        step = 38;
+        step = 41;
 
     }
 
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
                     step++;
                 }
                 break;
-            case -1: // Blink antre
+            case -1: 
                 if (!blockInput)
                 {
                     step++;
@@ -576,7 +576,7 @@ public class GameManager : MonoBehaviour
                 if (!blockInput)
                 {
                     Cinematics.instance.endCinematic = false;
-                    Cinematics.instance.DisplayAntre(5f, 0.3f);
+                    Cinematics.instance.DisplayAntre(2f, 0.3f);
                     step++;
                 }
                 break;
@@ -661,7 +661,6 @@ public class GameManager : MonoBehaviour
             case 41: // Fin du fade out - Cinematique  - Convocation, Choix de cartes
                 if (!blockInput)
                 {
-                    Debug.Log(" Choix de cartes");
                     // init next step
                     worlds_Canvas.SetActive(true);
                 }
@@ -669,25 +668,22 @@ public class GameManager : MonoBehaviour
             case 42: // Fin de choix cartes / Fade IN 
                 blockInput = true;
                 CurtainsFadeIn();
+                Invoke("waitAndUnblockInput", 3f);
                 step++;
-                Invoke("waitAndUnblockInput", 1.75f);
                 break;
-            case 43: // Fade Out
+            case 43: // Lancement mini jeu boite
+
                 if (!blockInput)
                 {
-                    blockInput = true;
-                    CurtainsFadeOut();
-                    Invoke("waitAndUnblockInput", 1f);
-                    blockMovementOnGround = true;
-                    step++;
+                    m_Scene = SceneManager.GetActiveScene();
+                    if (m_Scene.name != "final_room" && !sceneLoaded)
+                    {
+
+                        sceneLoaded = true;
+                        StartCoroutine(LoadYourAsyncScene("final_room"));
+                    }
                 }
                 break;
-                /*
-            case 14:
-                if (!blockInput)
-                {
-                }
-                break;*/
         }
     }
 
@@ -718,6 +714,12 @@ public class GameManager : MonoBehaviour
         {
             // Erase collected item from step 31
             ClickableObjetManager.instance.DeActivateCleanedObjects();
+        }
+        else if (step == 43)
+        {
+            curtains_Panel.SetActive(false);
+            worlds_Canvas.SetActive(false);
+            Debug.Log("THEE END");
         }
         step++;
     }
