@@ -45,6 +45,16 @@ public class ClickableObjetManager : MonoBehaviour
         startPAndClick = false;
     }
 
+    public void DeActivateCleanedObjects()
+    {
+        // Deactivate all objects that have been cleaned
+        foreach (GameObject obj in objectCollections[1].gameObjectList)
+        {
+            obj.GetComponent<ClickableObject>().isInterractable = false;
+            obj.SetActive(false);
+        }
+    }
+
     public void SetActivableObjects(int _phase)
     {
         clickableObjets = new List<ClickableObject>();
