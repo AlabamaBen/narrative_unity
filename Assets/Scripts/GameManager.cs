@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
         //step = 17;
         //dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
-        step = 41;
+        //step = 41;
+        //Cinematics.instance.DisplayPlanche(7);
 
     }
 
@@ -654,7 +655,7 @@ public class GameManager : MonoBehaviour
                     // Init next step
                     Debug.Log(" Fin pourquoi je suis convoquee ?");
                     blockInput = true;
-                    Invoke("waitAndUnblockInput", 2f);
+                    Invoke("waitAndUnblockInput", 1.5f);
                     step++;
                 }
                 break;
@@ -668,7 +669,7 @@ public class GameManager : MonoBehaviour
             case 42: // Fin de choix cartes / Fade IN 
                 blockInput = true;
                 CurtainsFadeIn();
-                Invoke("waitAndUnblockInput", 3f);
+                Invoke("waitAndUnblockInput", 1.5f);
                 step++;
                 break;
             case 43: // Lancement mini jeu boite
@@ -682,7 +683,8 @@ public class GameManager : MonoBehaviour
                         worlds_Canvas.SetActive(false);
                         curtains_Panel.SetActive(false);
                         sceneLoaded = true;
-                        StartCoroutine(LoadYourAsyncScene("final_room"));
+                        StartCoroutine(LoadScene("final_room", 0f));
+                        step++;
                     }
                 }
                 break;
@@ -763,6 +765,22 @@ public class GameManager : MonoBehaviour
     public void ChoixCarte(int choix)
     {
         Debug.Log("choix : " + choix);
-        step++;
+        worlds_Canvas.SetActive(false);
+        curtains_Panel.SetActive(false);
+        StartCoroutine(LoadScene("final_room", 1f));
+        worlds_Canvas.SetActive(false);
+        curtains_Panel.SetActive(false);
+        /*
+        Scene m_Scene = SceneManager.GetActiveScene();
+        if (m_Scene.name != "final_room" && !sceneLoaded)
+        {
+
+            worlds_Canvas.SetActive(false);
+            curtains_Panel.SetActive(false);
+            sceneLoaded = true;
+            StartCoroutine(LoadYourAsyncScene("final_room"));
+            step++;
+        }*/
+        // step++;
     }
 }

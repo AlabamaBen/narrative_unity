@@ -276,7 +276,7 @@ Prefab:
     - target: {fileID: 82377491050677130, guid: f4914ac355b39bf4ab0ddcf6f1071df9,
         type: 2}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 82377491050677130, guid: f4914ac355b39bf4ab0ddcf6f1071df9,
         type: 2}

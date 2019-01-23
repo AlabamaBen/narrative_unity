@@ -980,6 +980,21 @@ Prefab:
       propertyPath: m_AnchoredPosition.x
       value: -601
       objectReference: {fileID: 0}
+    - target: {fileID: 82737254503471986, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 82721656888585276, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 82961886939150090, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edeba378bc5fad347b168ae488557f4d, type: 2}
   m_IsPrefabAsset: 0
