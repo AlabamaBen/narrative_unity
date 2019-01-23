@@ -267,7 +267,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: dd182ebecc945884cbba6e4e7a491e16, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3673b54c06a990d4da22473ca68b7d60, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -285,8 +285,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 397133424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.78, z: 0}
-  m_LocalScale: {x: 1.064, y: 1.064, z: 1.064}
+  m_LocalPosition: {x: -0.02, y: -0.09, z: 0}
+  m_LocalScale: {x: 0.4789064, y: 0.4789064, z: 0.4789064}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -464,8 +464,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 486238164}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.012250215, y: -0.0822922, z: -0.012217774}
-  m_LocalScale: {x: 24.251041, y: 10.612572, z: 4.38536}
+  m_LocalPosition: {x: -0.012250215, y: -0.36, z: -0.012217774}
+  m_LocalScale: {x: 108.9415, y: 16.36883, z: 6.763979}
   m_Children: []
   m_Father: {fileID: 888592132}
   m_RootOrder: 0
@@ -747,7 +747,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b9c74a60673155b4685b1cadcc18bbfa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd3c3770ced279c4a9f2fcd458093937, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -766,7 +766,7 @@ Transform:
   m_GameObject: {fileID: 670108315}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.012250211, y: 0.51411676, z: -0.012217774}
-  m_LocalScale: {x: 4.38536, y: 4.38536, z: 4.38536}
+  m_LocalScale: {x: 0.62313104, y: 0.62313104, z: 0.62313104}
   m_Children:
   - {fileID: 1412959315}
   - {fileID: 2079871124}
@@ -783,7 +783,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 0.56, z: 0.2}
+  m_Size: {x: 10.23, y: 6.95, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &670108320
 MonoBehaviour:
@@ -2060,7 +2060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  distance: 3
+  distance: 5
   Target: 300
   dirt: {fileID: 1746039369}
   SFX_Wipe: {fileID: 1166481550}
@@ -2150,8 +2150,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1598461679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03774979, y: -0.6241168, z: 0.012217774}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.03774979, y: -0.96, z: 0.012217774}
+  m_LocalScale: {x: 1.6511201, y: 1.6511201, z: 1.6511201}
   m_Children:
   - {fileID: 1517889670}
   m_Father: {fileID: 0}
