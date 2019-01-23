@@ -196,12 +196,14 @@ public class Cinematics : MonoBehaviour
 
     }
 
+
+    public SFXSound SFX_tok; 
     // BENJAMIN
     private void PlaySound(int plancheIndex, int imgIndex){
 
         if (plancheIndex == 2 && imgIndex == 0) // Jouer un son de toc toc
         {
-
+            SFX_tok.PlayTheSound();
         }
     }
 

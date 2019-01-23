@@ -20,6 +20,7 @@ public class ClickableObjetManager : MonoBehaviour
 
     public PlayerMovement playerMovement;
 
+    public SFXSound SFX_water; 
     // Use this for initialization
     void Awake()
     {
@@ -140,6 +141,8 @@ public class ClickableObjetManager : MonoBehaviour
                         //clickableObjets.Remove(obj.GetComponent<ClickableObject>());
 
                         startPAndClick = false;
+
+                        SFX_water.PlayTheSound();
 
                         verre_eau.GetComponent<Animator>().SetBool("renverse", true);
 

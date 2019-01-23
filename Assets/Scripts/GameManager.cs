@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public static bool blockMovementOnGround = false;
     public GameObject curtains_Panel;
 
+    public SFXSound SFX_Door; 
+
 
     // Constant from DialoguesManager
     // public static int sequenceIndex;
@@ -270,6 +272,8 @@ public class GameManager : MonoBehaviour
                 if (!blockInput)
                 {
                     // BENJAMIN : Jouer un son de porte qui claque
+
+                    SFX_Door.PlayTheSound();
 
                     blockInput = true;
                     SpeechManager.instance.displayMonologue.SetMonolog("Ah enfin tranquille !");
