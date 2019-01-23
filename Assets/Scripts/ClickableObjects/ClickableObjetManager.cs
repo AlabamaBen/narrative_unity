@@ -123,7 +123,7 @@ public class ClickableObjetManager : MonoBehaviour
                 {
                     if (obj.gameObject.activeSelf)
                     {
-                        Debug.Log("GO and Destroy : " + obj.gameObject.name);
+                        //Debug.Log("GO and Destroy : " + obj.gameObject.name);
                         playerMovement.GoAndDestroy(obj);
                     }
 

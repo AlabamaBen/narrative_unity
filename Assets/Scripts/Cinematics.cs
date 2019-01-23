@@ -68,6 +68,7 @@ public class Cinematics : MonoBehaviour
     {
         if (compteur < images.Count)
         {
+            PlaySound(plancheIndex, imgIndex);
             // fade from opaque to transparent
             if (fadeAway)
             {
@@ -166,7 +167,7 @@ public class Cinematics : MonoBehaviour
     }
 
 
-    public void DisplayCinematic(int index)
+    public void DisplayPlanche(int index)
     {
         planches[index].SetActive(true);
         InitCinematics(index);
@@ -194,4 +195,15 @@ public class Cinematics : MonoBehaviour
         StartCoroutine(FadeINandOutImage(false, antreImg, delay,antre));
 
     }
+
+    // BENJAMIN
+    private void PlaySound(int plancheIndex, int imgIndex){
+
+        if (plancheIndex == 2 && imgIndex == 0) // Jouer un son de toc toc
+        {
+
+        }
+    }
+
+    
 }

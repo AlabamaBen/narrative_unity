@@ -52,13 +52,13 @@ public class SpeechManager : MonoBehaviour
         {
             buttonMonologAntiSpam = true;
             displayMonologue.animator.SetBool("openMonolog", false);
-
+            
             if (startDialogue)
             {
                 StartCoroutine(WaitCloseMonologAndDisplayNextSequenceMonolog());
             }
             // TO REDO (Not clean)
-            else if (GameManager.step == 23)
+            else if (GameManager.step == 15 || GameManager.step == 16 || GameManager.step == 26 )
             {
                 GameManager.instance.dialoguesSeqFinished = false;
                 GameManager.instance.blockInput = false;

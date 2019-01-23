@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
         //step = 17;
         //dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
+        //step = 25;
+        //blockInput = false;
     }
 
     // Update is called once per frame
@@ -73,9 +75,6 @@ public class GameManager : MonoBehaviour
 
                         // Init next step
                         PhoneManager.instance.StartPhone();
-
-                        // TEST
-                        //step=3;
                         step++;
                     }
                 }
@@ -130,14 +129,13 @@ public class GameManager : MonoBehaviour
                     sceneLoaded = true;
                     //StartCoroutine(LoadScene("MainScene", 0f));
                     StartCoroutine(LoadYourAsyncScene("MainScene"));
-
-                    step++;
+                    dialoguesSeqFinished = false;
                 }
                 break;
             case 5: // 1 - Debut 1er rencontre dialogue Natyahs et Alex
                 if (!dialoguesSeqFinished)
                 {
-                    if (!SpeechManager.instance.startDialogue && SpeechManager.instance.displayDialogue.dialogue_Alex_Nat != null && SpeechManager.instance.displayDialogue.messagesList != null) // NEED TO FIND BETTER SOLUTION
+                    if (!SpeechManager.instance.startDialogue) 
                     {
                         blockInput = true;
                         blockMovementOnGround = true;
@@ -184,7 +182,7 @@ public class GameManager : MonoBehaviour
                     dialoguesSeqFinished = false;
                 }
                 break;
-            case 8: // Debut dialogue rangement Natyahs et Alex
+            case 8: // 2 - Debut dialogue rangement Natyahs et Alex
                 if (!dialoguesSeqFinished)
                 {
                     if (!SpeechManager.instance.startDialogue)
@@ -216,7 +214,7 @@ public class GameManager : MonoBehaviour
                     // Init next step
                 }
                 break;
-            case 9: // Fin de dialogue entre Natyahs et Alex
+            case 9: // 2 - Fin de dialogue entre Natyahs et Alex
                 if (!blockInput && !dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
@@ -233,16 +231,16 @@ public class GameManager : MonoBehaviour
                     step++;
                     ClickableObjetManager.instance.finishedPAndCStep = false;
                     // init next step
-                    Cinematics.instance.DisplayCinematic(1);
+                    Cinematics.instance.DisplayPlanche(1);
                     blockMovementOnGround = true;
                 }
                 break;
-            case 11: // Fin de la cinematique 2
+            case 11: // Cinematique 2, Mere qui arrive et Pc dans l'eau
                 if (Cinematics.instance.endCinematic)
                 {
                     //init next step
                     Cinematics.instance.endCinematic = false;
-                    Cinematics.instance.DisplayCinematic(2);
+                    Cinematics.instance.DisplayPlanche(2);
                     step++;
                 }
                 break;
@@ -258,16 +256,76 @@ public class GameManager : MonoBehaviour
                     CurtainsFadeIn();
                 }
                 break;
-            case 13: // Fin de la cinematique 2
+            case 13: // Fade IN / Fade Out
                 if (!blockInput)
                 {
                     blockInput = true;
                     CurtainsFadeOut();
                     Invoke("waitAndUnblockInput", 1f);
+                    blockMovementOnGround = true;
                     step++;
                 }
                 break;
-            case 14: //Debut dialogue Natyahs et Alex catastrophe
+            case 14:
+                if (!blockInput)
+                {
+                    // BENJAMIN : Jouer un son de porte qui claque
+
+                    blockInput = true;
+                    SpeechManager.instance.displayMonologue.SetMonolog("Ah enfin tranquille !");
+                    // init next step
+                    step++;
+                }
+                break;
+            case 15:
+                if (!blockInput)
+                {
+                    blockInput = true;
+                    SpeechManager.instance.displayMonologue.SetMonolog("Bon j'ai du boulot");
+                    // init next step
+
+                    step++;
+                }
+                break;
+            case 16: // Lancement cinématique 3 - Mon pc est mort
+                if (!blockInput)
+                {
+                    // init next step
+                    Cinematics.instance.endCinematic = false;
+                    Cinematics.instance.DisplayPlanche(3); 
+                    step++;
+                }
+                break;
+            case 17: // Fin de la cinematique 3
+                if (Cinematics.instance.endCinematic)
+                {
+                    //init next step
+                    Cinematics.instance.endCinematic = false;
+                    Cinematics.instance.DisplayPlanche(4); 
+                    step++;
+                }
+                break;
+            case 18: // Fin de la cinematique 3
+                if (Cinematics.instance.endCinematic)
+                {
+                    //init next step
+                    PhoneManager.instance.StartPhone();
+                    step++;
+                }
+                break;
+            case 19: // Message de Lucie - Smartphone
+                if (PhoneManager.instance.phoneGameFinished)
+                {
+                    PhoneManager.instance.phoneGameFinished = false;
+
+                    // Init next step
+                    blockInput = true;
+                    dialoguesSeqFinished = false;
+                    Invoke("waitAndUnblockInput", 1.5f);
+                    step++;
+                }
+                break;
+            case 20: // 3 - Debut dialogue Natyahs et Alex catastrophe, besoin d'un nouveau pc 1er voeu nouveau PC
                 if (!dialoguesSeqFinished && !blockInput)
                 {
                     if (!SpeechManager.instance.startDialogue)
@@ -297,59 +355,11 @@ public class GameManager : MonoBehaviour
                     // Init next step
                 }
                 break;
-            case 15: // Fin de dialogue entre Natyahs et Alex
-                if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
-                { // Current animation (Fadeout Dialogues) finished
-                    dialoguesSeqFinished = true;
-                    // Init next step
-                    PhoneManager.instance.StartPhone();
-                    step++;
-                }
-                break;
-            case 16: // Message de Lucie - Smartphone
-                if (PhoneManager.instance.phoneGameFinished)
-                {
-                    // Init next step
-                    PhoneManager.instance.phoneGameFinished = false;
-                    dialoguesSeqFinished = false;
-                    step++;
-                }
-                break;
-            case 17: //Dialogue Natyahs et Alex voeu PC
-                if (!dialoguesSeqFinished)
-                {
-                    if (!SpeechManager.instance.startDialogue)
-                    {
-                        blockInput = true;
-                        blockMovementOnGround = true;
-                        // Display first line of dialogue
-                        SpeechManager.instance.DisplayFirstSequence();
-
-                        Invoke("waitAndUnblockInput", 1f);
-                    }
-                    else if (!blockInput && SpeechManager.instance.startDialogue && Input.anyKeyDown && !SpeechManager.instance.textDisplayed) // Player click to display next dialog
-                    {
-                        dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
-                    }
-                }
-                else
-                {
-                    if (!SpeechManager.instance.textDisplayed) // Player click to end dialog
-                    {
-                        SpeechManager.instance.HideDialog();
-                        blockMovementOnGround = false;
-                        dialoguesSeqFinished = false;
-                        step++;
-                    }
-
-                }
-                break;
-            case 18: // Fin de dialogue Natyahs et Alex voeu PC
+            case 21: // 3 - Fin de dialogue entre Natyahs et Alex besoin d'un nouveau pc 1er voeu nouveau PC
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
                     SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
-
 
                     // Init next step
                     blockInput = true;
@@ -359,14 +369,14 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             // TO REDO
-            case 19: // Blink antre
+            case 22: // Blink antre
                 if (!blockInput)
                 {
                     Cinematics.instance.DisplayAntre(5f, 0.3f);
                     step++;
                 }
                 break;
-            case 20: // Fin de la cinematique antre
+            case 23: // Fin de la cinematique antre
                 if (Cinematics.instance.endCinematic)
                 {
                     blockInput = true;
@@ -375,7 +385,7 @@ public class GameManager : MonoBehaviour
                     step++;
                 }
                 break;
-            case 21: // Fin de la cinematique antre
+            case 24: // Fin de la cinematique antre
                 if (!blockInput)
                 {
                     blockInput = true;
@@ -383,38 +393,28 @@ public class GameManager : MonoBehaviour
                     Invoke("waitAndUnblockInput", 1.5f);
                 }
                 break;
-            case 22:
+            case 25: // Monologue sur vision antre
                 if (!blockInput)
                 {
-                    Debug.Log("DisplayCinematic 3");
+                    // init next step
                     blockInput = true;
+                    Debug.Log("C'était quoi cette vision");
                     SpeechManager.instance.displayMonologue.SetMonolog("C'était quoi cette vision ?");
-                    // init next step
-                    blockMovementOnGround = true;
                     step++;
                 }
                 break;
-            case 23: // fin de C'était quoi cette vision, début cinématique 3
+            case 26:
                 if (!blockInput)
                 {
                     // init next step
+
                     Cinematics.instance.endCinematic = false;
-                    Cinematics.instance.DisplayCinematic(2); // TODO replace cinmtic
-                    step++;
-                }
-                break;
-            case 24: // Fin de la cinematique 3
-                if (Cinematics.instance.endCinematic)
-                {
-                    Debug.Log("DisplayCinematic 3 suite");
-                    //init next step
-                    Cinematics.instance.endCinematic = false;
-                    Cinematics.instance.DisplayCinematic(2); // TODO replace cinmtic
+                    Cinematics.instance.DisplayPlanche(2); // TODO replace DisplayPlanche(5); 
                     dialoguesSeqFinished = false;
                     step++;
                 }
                 break;
-            case 25: //Debut dialogue Natyahs et Alex 
+            case 27: // 4 - Dialogue Natyahs et Alex Qu’est-ce que t’as fait de mon ordinateur ?, Bon j'ai du travail
                 if (!dialoguesSeqFinished && Cinematics.instance.endCinematic)
                 {
                     if (!SpeechManager.instance.startDialogue)
@@ -431,7 +431,83 @@ public class GameManager : MonoBehaviour
                         dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
                     }
                 }
-                else if(dialoguesSeqFinished && Cinematics.instance.endCinematic)
+                else if (dialoguesSeqFinished && Cinematics.instance.endCinematic)
+                {
+                    if (!SpeechManager.instance.textDisplayed) // Player click to end dialog
+                    {
+                        SpeechManager.instance.HideDialog();
+                        blockMovementOnGround = false;
+                        dialoguesSeqFinished = false;
+                        step++;
+                    }
+
+                }
+                break;
+            case 28: // 4 - Fin de dialogue Natyahs et Alex Qu’est-ce que t’as fait de mon ordinateur ?, Bon j'ai du travail
+                if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
+                { // Current animation (Fadeout Dialogues) finished
+                    dialoguesSeqFinished = true;
+                    SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
+
+                    // Init next step
+                    step++;
+                }
+                break;
+            case 29: // Lancement mini devoir
+                m_Scene = SceneManager.GetActiveScene();
+                if (m_Scene.name != "minigame_2" && !sceneLoaded)
+                {
+                    //TEST, next line to remove
+                    Minigame2_Behavior.MINIGAME2_END = true;
+
+                    CurtainsFadeIn();
+                    sceneLoaded = true;
+                    StartCoroutine(LoadScene("minigame_2", 2f));
+                }
+
+                if (m_Scene.name == "minigame_2" && curtains_Panel.GetComponent<Animator>().gameObject.activeSelf && curtains_Panel.GetComponent<Animator>().GetBool("fadeIn"))
+                {
+                    CurtainsFadeOut();
+                }
+                else
+                {
+                    if (Minigame2_Behavior.MINIGAME2_END)
+                    {
+                        CurtainsFadeIn();
+                        step++;
+                    }
+                }
+                break;
+            case 30: // Reload de la scene principale
+                m_Scene = SceneManager.GetActiveScene();
+                if (m_Scene.name != "MainScene" && !sceneLoaded)
+                {
+                    CurtainsFadeOut();
+                    sceneLoaded = true;
+                    //StartCoroutine(LoadScene("MainScene", 0f));
+                    StartCoroutine(LoadYourAsyncScene("MainScene"));
+                    dialoguesSeqFinished = false;
+                }
+                break;
+                // TO DO EFFACER LES OBJETS
+            case 31: //Debut dialogue Natyahs et Alex 
+                if (!dialoguesSeqFinished)
+                {
+                    if (!SpeechManager.instance.startDialogue)
+                    {
+                        blockInput = true;
+                        blockMovementOnGround = true;
+                        // Display first line of dialogue
+                        SpeechManager.instance.DisplayFirstSequence();
+
+                        Invoke("waitAndUnblockInput", 1f);
+                    }
+                    else if (!blockInput && SpeechManager.instance.startDialogue && Input.anyKeyDown && !SpeechManager.instance.textDisplayed) // Player click to display next dialog
+                    {
+                        dialoguesSeqFinished = SpeechManager.instance.DisplayNextSequenceDialogue();
+                    }
+                }
+                else if (dialoguesSeqFinished)
                 {
                     if (!SpeechManager.instance.textDisplayed) // Player click to end dialog
                     {
@@ -444,11 +520,13 @@ public class GameManager : MonoBehaviour
                     // Init next step
                 }
                 break;
-            case 26: // Fin de dialogue entre Natyahs et Alex
+            case 32: // Fin de dialogue entre Natyahs et Alex
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
-                    
+                    SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
+
+                    Debug.Log("Fin");
                     // Init next step
                     step++;
                 }
@@ -477,7 +555,9 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+        step++;
     }
+    
 
     private void waitAndUnblockInput()
     {

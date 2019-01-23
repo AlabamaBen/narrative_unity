@@ -14,7 +14,7 @@ public class Minigame2_Behavior : MonoBehaviour {
     public Djin_Intervention djin_Intervention;
     public Animation fade;
 
-    public bool MINIGAME2_END = false; 
+    public static bool MINIGAME2_END = false; 
 
     List<string> words = new List<string>
     {
@@ -109,6 +109,7 @@ public class Minigame2_Behavior : MonoBehaviour {
             if(!fade.isPlaying)
             {
                 fade.Play();
+                MINIGAME2_END = true;
             }
         }
         else
