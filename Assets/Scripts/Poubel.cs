@@ -17,5 +17,11 @@ public class Poubel : MonoBehaviour {
        GameManager.instance.worlds_Canvas.SetActive(false);
         GameManager.instance.curtains_Panel.SetActive(false);
     }
-	
+
+    private void Update()
+    {
+        GameManager.instance.worlds_Canvas.SetActive(false);
+        GameManager.instance.curtains_Panel.SetActive(false);
+    }
+
 }
