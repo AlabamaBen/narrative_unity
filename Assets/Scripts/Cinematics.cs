@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Cinematics : MonoBehaviour
 {
+    public GameObject bgIntro;
     public List<GameObject> planches;
     public GameObject legend;
     public GameObject antre;

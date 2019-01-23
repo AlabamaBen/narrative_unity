@@ -187,7 +187,6 @@ public class PhoneManager : MonoBehaviour {
                         substep++;
                         break;
                     case 2:
-                        Debug.Log("choix");
                         string choixMsg = "";
                         if (choix == 1)
                         {

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-    public static int step = 0;
+    public static int step = -3;
 
     public bool dialoguesSeqFinished;
 
@@ -51,8 +51,7 @@ public class GameManager : MonoBehaviour
         //step = 17;
         //dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
-        step = 41;
-        //blockInput = false;
+        step = 38;
 
     }
 
@@ -62,6 +61,29 @@ public class GameManager : MonoBehaviour
         Scene m_Scene;
         switch (step)
         {
+            case -3:
+                // init next step
+                Cinematics.instance.bgIntro.SetActive(true);
+                Cinematics.instance.endCinematic = false;
+                Cinematics.instance.DisplayPlanche(0);
+                step++;
+                break;
+            case -2: //  Cinematique 4 - Met la bague
+                if (Cinematics.instance.endCinematic)
+                {
+                    Cinematics.instance.bgIntro.SetActive(false);
+                    // Init next step
+                    blockInput = true;
+                    Invoke("waitAndUnblockInput", 0f);
+                    step++;
+                }
+                break;
+            case -1: // Blink antre
+                if (!blockInput)
+                {
+                    step++;
+                }
+                break;
             case 0: // 0 - Intro, 2 pensees défilent
                 if (!dialoguesSeqFinished)
                 {
@@ -107,7 +129,7 @@ public class GameManager : MonoBehaviour
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
                     //TEST, next line to remove 
-                    //Ring.Game_End = true;
+                    Ring.Game_End = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
@@ -371,7 +393,7 @@ public class GameManager : MonoBehaviour
 
                     // init next step
                     Cinematics.instance.endCinematic = false;
-                    Cinematics.instance.DisplayPlanche(1); // TO DO replace [planche 5]
+                    Cinematics.instance.DisplayPlanche(5); 
                     step++;
                 }
                 break;
@@ -416,7 +438,7 @@ public class GameManager : MonoBehaviour
                 {
                     // init next step
                     blockInput = true;
-                    Debug.Log("C'était quoi cette vision");
+                    // Debug.Log("C'était quoi cette vision");
                     SpeechManager.instance.displayMonologue.SetMonolog("C'était quoi cette vision ?");
                     step++;
                 }
@@ -427,7 +449,7 @@ public class GameManager : MonoBehaviour
                     // init next step
 
                     Cinematics.instance.endCinematic = false;
-                    Cinematics.instance.DisplayPlanche(2); // TODO replace DisplayPlanche(5); 
+                    Cinematics.instance.DisplayPlanche(5); // TODO replace DisplayPlanche(5); 
                     dialoguesSeqFinished = false;
                     step++;
                 }
@@ -476,7 +498,7 @@ public class GameManager : MonoBehaviour
                 if (m_Scene.name != "minigame_2" && !sceneLoaded)
                 {
                     //TEST, next line to remove
-                    //Minigame2_Behavior.MINIGAME2_END = true;
+                    Minigame2_Behavior.MINIGAME2_END = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
@@ -630,8 +652,8 @@ public class GameManager : MonoBehaviour
                     SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
 
                     // Init next step
+                    Debug.Log(" Fin pourquoi je suis convoquee ?");
                     blockInput = true;
-                    CurtainsFadeIn();
                     Invoke("waitAndUnblockInput", 2f);
                     step++;
                 }
@@ -639,6 +661,7 @@ public class GameManager : MonoBehaviour
             case 41: // Fin du fade out - Cinematique  - Convocation, Choix de cartes
                 if (!blockInput)
                 {
+                    Debug.Log(" Choix de cartes");
                     // init next step
                     worlds_Canvas.SetActive(true);
                 }
