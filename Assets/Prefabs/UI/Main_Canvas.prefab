@@ -6378,7 +6378,7 @@ MonoBehaviour:
   - img_name: natyahs_sourcil
     sprite: {fileID: 21300000, guid: 8457143dad2947c42aaf0731899ac409, type: 3}
   - img_name: natyahs_surpris
-    sprite: {fileID: 21300000, guid: 0aa70a8adb57a5446ab91485fa2bea40, type: 3}
+    sprite: {fileID: 21300000, guid: 468204c0e9718d84ea56f244efe3c875, type: 3}
   - img_name: alex_choc
     sprite: {fileID: 21300000, guid: 654758f76fd064740bc40cd383e70f20, type: 3}
 --- !u!114 &114527528837443398
@@ -9041,7 +9041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 68, y: 105}
+  m_AnchoredPosition: {x: 32, y: 105}
   m_SizeDelta: {x: 580, y: 860}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &224432121182634292
@@ -9881,7 +9881,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -62, y: 105}
+  m_AnchoredPosition: {x: -17, y: 105}
   m_SizeDelta: {x: 580, y: 860}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224874231864546064
