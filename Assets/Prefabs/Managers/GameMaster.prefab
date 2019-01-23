@@ -231,6 +231,7 @@ MonoBehaviour:
   blockInput: 0
   curtains_Panel: {fileID: 1560066844860666}
   SFX_Door: {fileID: 114994118258834516}
+  worlds_Canvas: {fileID: 0}
 --- !u!114 &114614955137993900
 MonoBehaviour:
   m_ObjectHideFlags: 1
