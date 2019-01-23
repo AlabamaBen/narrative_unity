@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         //step = 17;
         //dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
-        step = 41;
+        //step = 41;
 
     }
 
