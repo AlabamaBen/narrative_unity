@@ -12,7 +12,7 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 1;Natyahs;Ah, on ne peut pas tout avoir, mais c’est comme tu veux.;;1;;natyahs_surpris
 1;Natyahs;Je vais faire une petite sieste ici.;;1;;natyahs_interet
 1;Natyahs;Tant que tu possèdes la bague, je serais dans le coin.;;1;;natyahs_ennui
-1;Alex;Pourquoi ça ?;;1;;alex_choc
+1;Alex;Pourquoi ça ?;;1;;alex_doute
 1;Natyahs;Je ne peux pas m’en éloigner avec ce corps...\\T'occupes, c'est un truc de génie.;;1;;natyahs_interet
 2;Alex;Ah mince, j'avais oublié ! Faut que je range...;;1;;alex_panique
 2;Natyahs;Tu veux de l'aide ?;;1;;natyahs_interet
