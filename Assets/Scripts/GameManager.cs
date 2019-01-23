@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         //step = 17;
         //dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
-        //step = 41;
+        step = 41;
 
     }
 
@@ -679,6 +679,8 @@ public class GameManager : MonoBehaviour
                     if (m_Scene.name != "final_room" && !sceneLoaded)
                     {
 
+                        worlds_Canvas.SetActive(false);
+                        curtains_Panel.SetActive(false);
                         sceneLoaded = true;
                         StartCoroutine(LoadYourAsyncScene("final_room"));
                     }
@@ -715,7 +717,7 @@ public class GameManager : MonoBehaviour
             // Erase collected item from step 31
             ClickableObjetManager.instance.DeActivateCleanedObjects();
         }
-        else if (step == 43)
+        else if (step == 41)
         {
             curtains_Panel.SetActive(false);
             worlds_Canvas.SetActive(false);
