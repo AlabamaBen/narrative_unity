@@ -8,31 +8,32 @@ public class Menu : MonoBehaviour {
 
     public GameObject Credit;
     public GameObject MainMenu;
-    public Image blackpanel;
-    public float fade_speed = 3f;
-
-    bool fadeout = false; 
+    public Animation blackpanel;
+    public Animation musicfade;
+    public ParticleSystem[] particleSystems; 
 
     public void OnClickPlay()
     {
         Debug.Log("PLAY");
 
-        fadeout = true;
         blackpanel.gameObject.SetActive(true);
+
+        blackpanel.Play();
+        musicfade.Play();
+
+        foreach(ParticleSystem particleSystem in particleSystems)
+        {
+            particleSystem.Stop(); 
+        }
+
+        Invoke("LoadGame", 7); 
     }
 
-    private void Update()
+    void LoadGame()
     {
-        if(fadeout)
-        {
-            blackpanel.color = new Color(blackpanel.color.r, blackpanel.color.g, blackpanel.color.b, blackpanel.color.a + fade_speed * Time.deltaTime);
-            if (blackpanel.color.a > 0.99f)
-            {
-                fadeout = false;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
 
     public void OnClickCredits()
     {
