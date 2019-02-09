@@ -23,8 +23,7 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 3;Alex;Un ordinateur qui fonctionne !;;1;;alex_panique
 3;Alex;J’ai un devoir à rendre avec Lucie demain à 8h30 !;;1;;alex_colere
 3;Natyahs;Serait-ce un voeu ?;;1;;natyahs_betise
-3;Alex;Il te faut combien de temps pour me fournir;;1;;alex_neutre
-3;Alex;un ordinateur qui fonctionne ?;;1;;alex_neutre
+3;Alex;Il te faut combien de temps pour me fournir\\un ordinateur qui fonctionne ?;;1;;alex_neutre
 3;Natyahs;Hmmm 45 min;;1;;natyahs_neutre
 3;Alex;Bon... J’ai pas le choix … OK;;1;;alex_suspicieu
 3;Natyahs;Alors mets la bague.;;1;;natyahs_propose
@@ -37,7 +36,7 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 4;Natyahs;Tu pourrais souhaiter que je fasse ton devoir.;;1;;natyahs_propose
 4;Alex;Ca ira pour cette fois.;;1;;alex_suspicieu
 4;Alex;Allez je m'y met.;;1;;alex_neutre
-5;Alex;Je vais jamais y arriver... ;;1;;alex_choc
+5;Alex;Je ne vais jamais y arriver... ;;1;;alex_choc
 5;Alex;Il me reste une heure et 11 pages à écrire … ;;1;;alex_panique
 5;Alex;Lucie va me tuer …;;1;;alex_colere
 5;Natyahs;Laisse moi réparer ma bêtise.;;1;;natyahs_mignon
@@ -48,27 +47,20 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 5;Alex;Est-ce que j’ai vraiment le choix ? …;;1;;alex_reflechi
 5;Natyahs;On a toujours le choix…;;1;;natyahs_betise
 5;Alex;Bon ok.;;1;;alex_reflechi
-5;Alex;Rends un devoir pour nous, et fais en sorte qu’il soit bon. !;;1;;alex_neutre
-5;Alex;Très bon même !;;1;;alex_neutre
+5;Alex;Rends un devoir pour nous, et fais en sorte qu’il soit bon. Très bon même !;;1;;alex_neutre
 6;Alex;NATYAHS ! Qu’est-ce que t’as fait ?;;1;;alex_colere
 6;Natyahs;Qu'est ce qu'il se passe encore ?;;1;;natyahs_surpris
-6;Alex;Fait pas l'innocent ! ;;1;;alex_colere
-6;Alex;Je suis convoquée avec Lucie pour suspicion de tricherie… ;;1;;alex_colere
-6;Alex;On doit passer un oral,;;1;;alex_panique
-6;Alex;pour prouver que nous avons bien écrit le devoir nous même.;;1;;alex_panique
+6;Alex;Fait pas l'innocent !\\Je suis convoquée avec Lucie pour suspicion de tricherie… ;;1;;alex_colere
+6;Alex;On doit passer un oral,\\pour prouver que nous avons bien écrit le devoir nous même.;;1;;alex_panique
 6;Natyahs;Je n'ai fait que ton devoir, comme tu me l’as demandé.;;1;;natyahs_betise
 6;Alex;Bon... ;;1;;alex_colere
 6;Alex;Il faut que tu m’aides à réviser et à retenir ce que tu as écrit.;;1;;alex_reflechi
 6;Natyahs;Tu veux apprendre les 120 pages de ton devoir ?;;1;;natyahs_surpris
 6;Alex;120 PAGES ?;;1;;alex_choc
-6;Alex;Mais qu’est-ce qui t’a pris ?;;1;;alex_panique
-6;Alex;Il fallait juste faire les dizaines qui restaient !;;1;;alex_panique
+6;Alex;Mais qu’est-ce qui t’a pris ? Il fallait juste faire les dizaines qui restaient !;;1;;alex_panique
 6;Natyahs;Oh … j'ai mal compris...;;1;;natyahs_sourcil
 6;Alex;Comment je fais maintenant ?;;1;;alex_panique
-6;Alex;A cause de toi,;;1;;alex_colere
-6;Alex;je vais perdre ma meilleure pote et mon diplôme !;;1;;alex_colere
-6;Natyahs;Je peux t’aider à arranger les choses,;;1;;natyahs_propose
-6;Natyahs;mais il va falloir que tu fasses un choix.;;1;;natyahs_propose
+6;Alex;A cause de toi, je vais perdre ma meilleure amie\\et mon diplôme !;;1;;alex_colere
+6;Natyahs;Je peux t’aider à arranger les choses,\\mais il va falloir que tu fasses un choix.;;1;;natyahs_propose
 6;Alex;Quel choix ?;;1;;alex_suspicieu
-6;Natyahs;Ta meilleure amie ou ton diplôme.;;1;;natyahs_betise
-6;Natyahs;Et j'ai besoin de ton corps pour une journée.;;1;;natyahs_betise
+6;Natyahs;Ta meilleure amie ou ton diplôme.\\Et j'ai besoin de ton corps pour une journée.;;1;;natyahs_betise
