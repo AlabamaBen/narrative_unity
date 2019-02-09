@@ -50,7 +50,7 @@ public class LoadDialoguesManager : MonoBehaviour {
         Regex CSVParser = new Regex(";"); // (",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
 
         int allDialoguesCompteur = 0;
-        Debug.Log(fLines[0]);
+        //Debug.Log(fLines[0]);
         int counterCSV = 1; // Skip first line of csv
 
         dialogueSequenceTemp = new List<DataObject>();
