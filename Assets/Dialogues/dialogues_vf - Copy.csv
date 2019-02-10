@@ -1,0 +1,76 @@
+Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue);Nom_image
+0;Alex;Mhhff...!;Pensee;1;;alex_neutre
+0;Natyahs;"Hé ce ""truc"" est un génie, tu sais comme dans les films.";;1;;natyahs_epaule
+0;Alex;Il est quelle heure ?;Pensee;1;;alex_neutre
+0;Natyahs;Mais je dois prendre possession de ton corps\\pour les exaucer.;;1;;natyahs_propose
+0;Alex;?!! Mais c’est quoi ce truc ?;;1;;alex_neutre
+0;Natyahs;"Hé ce ""truc"" est un génie, tu sais comme dans les films.";;1;;natyahs_epaule
+0;Alex;Donc j’ai droit de faire un souhait ?;;1;;alex_suspicieu
+0;Natyahs;Absolument tout ce que tu veux... ;;1;;natyahs_mignon
+0;Natyahs;Mais je dois prendre possession de ton corps\\pour les exaucer.;;1;;natyahs_propose
+0;Alex;Hmmmm;;1;;alex_suspicieu
+0;Natyahs;Tu n’as pas un rêve à réaliser ?;;1;;natyahs_neutre
+0;Alex;Si, mais je ne veux pas perdre le contrôle de mon corps.;;1;;alex_doute
+0;Natyahs;Ah, on ne peut pas tout avoir, mais c’est comme tu veux.;;1;;natyahs_surpris
+0;Natyahs;Je vais faire une petite sieste ici.;;1;;natyahs_interet
+0;Natyahs;Tant que tu possèdes la bague, je serais dans le coin.;;1;;natyahs_ennui
+0;Alex;Pourquoi ça ?;;1;;alex_doute
+0;Natyahs;Je ne peux pas m’en éloigner avec ce corps...\\T'occupes, c'est un truc de génie.;;1;;natyahs_interet
+0;Alex;Ah mince, j'avais oublié ! Faut que je range...;;1;;alex_panique
+0;Natyahs;Tu veux de l'aide ?;;1;;natyahs_interet
+0;Natyahs;Ce serait un gachi de mon pouvoir, mais si tu le souhaites…;;1;;natyahs_epaule
+0;Alex;Bien essayé, mais je vais garder mon corps ce coup-ci.;;1;;alex_rigole
+0;Natyahs;Besoin de quelque chose ?;;1;;natyahs_propose
+0;Alex;!!;;1;;alex_choc
+0;Alex;Un ordinateur qui fonctionne !;;1;;alex_panique
+0;Alex;J’ai un devoir à rendre avec Lucie demain à 8h30 !;;1;;alex_colere
+0;Natyahs;Serait-ce un voeu ?;;1;;natyahs_betise
+0;Alex;Il te faut combien de temps pour me fournir;;1;;alex_neutre
+0;Alex;un ordinateur qui fonctionne ?;;1;;alex_neutre
+0;Natyahs;Hmmm 45 min;;1;;natyahs_neutre
+0;Alex;Bon... J’ai pas le choix … OK;;1;;alex_suspicieu
+0;Natyahs;Alors mets la bague.;;1;;natyahs_propose
+0;Alex;Qu’est-ce que t’as fait de mon ordinateur ?;;1;;alex_choc
+0;Alex;Mon devoir ? J’ai besoin de mon devoir !!!;;1;;alex_colere
+0;Natyahs;Tu voulais un ordinateur qui fonctionne non ?;;1;;natyahs_surpris
+0;Natyahs;Excuse moi, je pensais bien faire.;;1;;alex_mignon
+0;Alex;Ok, bon, il me reste 18 h avant l’heure du rendu.;;1;;alex_reflechi
+0;Alex;25 pages en 15 h, ça se fait non ?;;1;;alex_doute
+0;Natyahs;Tu pourrais souhaiter que je fasse ton devoir.;;1;;natyahs_propose
+0;Alex;Ca ira pour cette fois.;;1;;alex_suspicieu
+0;Alex;Allez je m'y met.;;1;;alex_neutre
+0;Alex;Je vais jamais y arriver... ;;1;;alex_choc
+0;Alex;Il me reste une heure et 11 pages à écrire … ;;1;;alex_panique
+0;Alex;Lucie va me tuer …;;1;;alex_colere
+0;Natyahs;Laisse moi réparer ma bêtise.;;1;;natyahs_mignon
+0;Alex;Pour que tu fasses tout de travers encore une fois ? Non merci !;;1;;alex_colere
+0;Natyahs;Promis, je ferais très attention cette fois-ci.;;1;;natyahs_mignon
+0;Natyahs;Demande moi juste exactement ce que tu veux;;1;;natyahs_propose
+0;Alex;…;;1;;alex_suspicieu
+0;Alex;Est-ce que j’ai vraiment le choix ? …;;1;;alex_reflechi
+0;Natyahs;On a toujours le choix…;;1;;natyahs_betise
+0;Alex;Bon ok.;;1;;alex_reflechi
+0;Alex;Rends un devoir pour nous, et fais en sorte qu’il soit bon. !;;1;;alex_neutre
+0;Alex;Très bon même !;;1;;alex_neutre
+0;Alex;NATYAHS ! Qu’est-ce que t’as fait ?;;1;;alex_colere
+0;Natyahs;Qu'est ce qu'il se passe encore ?;;1;;natyahs_surpris
+0;Alex;Fait pas l'innocent ! ;;1;;alex_colere
+0;Alex;Je suis convoquée avec Lucie pour suspicion de tricherie… ;;1;;alex_colere
+0;Alex;On doit passer un oral,;;1;;alex_panique
+0;Alex;pour prouver que nous avons bien écrit notre devoir.;;1;;alex_panique
+0;Natyahs;Je n'ai fait que ton devoir, comme tu me l’as demandé.;;1;;natyahs_betise
+0;Alex;Bon... ;;1;;alex_colere
+0;Alex;Il faut que tu m’aides à réviser et à retenir ce que tu as écrit.;;1;;alex_reflechi
+0;Natyahs;Tu veux apprendre les 120 pages de ton devoir ?;;1;;natyahs_surpris
+0;Alex;120 PAGES ?;;1;;alex_choc
+0;Alex;Mais qu’est-ce qui t’a pris ?;;1;;alex_panique
+0;Alex;Il fallait juste faire les dizaines qui restaient !;;1;;alex_panique
+0;Natyahs;Oh … j'ai mal compris...;;1;;natyahs_sourcil
+0;Alex;Comment je fais maintenant ?;;1;;alex_panique
+0;Alex;A cause de toi,;;1;;alex_colere
+0;Alex;je vais perdre ma meilleure pote et mon diplôme !;;1;;alex_colere
+0;Natyahs;Je peux t’aider à arranger les choses,;;1;;natyahs_propose
+0;Natyahs;mais il va falloir que tu fasses un choix.;;1;;natyahs_propose
+0;Alex;Quel choix ?;;1;;alex_suspicieu
+0;Natyahs;Ta meilleure amie ou ton diplôme.;;1;;natyahs_betise
+0;Natyahs;Et j'ai besoin de ton corps pour une journée.;;1;;natyahs_betise

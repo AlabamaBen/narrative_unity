@@ -12,7 +12,6 @@ public class DisplayDialogue : MonoBehaviour {
     private string stringToDisplay; // dynamic string that is displayed
     public Animator animator;
     public RectTransform canvas;
-    private float panelWidth;
     private float panelHeight;
 
        [Header("SFX sound param")]
@@ -35,7 +34,6 @@ public class DisplayDialogue : MonoBehaviour {
     private void Start()
     {
         animator = this.GetComponent<Animator>();
-        panelWidth = canvas.rect.width * canvas.localScale.x;
         panelHeight = canvas.rect.height * canvas.localScale.y;
     }
 
