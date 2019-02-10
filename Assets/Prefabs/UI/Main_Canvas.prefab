@@ -6384,6 +6384,7 @@ MonoBehaviour:
   message_List_Panel: {fileID: 1456674022218982}
   messagesList: []
   animator: {fileID: 95688054593915764}
+  canvas: {fileID: 224361697218919470}
   talk_sound_Alex: {fileID: 114645944854044460}
   talk_sound_Natyahs: {fileID: 114772679387247444}
   text_speed: 0.02
@@ -8866,8 +8867,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 62.33, y: 10.96}
-  m_SizeDelta: {x: 194.16, y: 33.77}
+  m_AnchoredPosition: {x: 47.61, y: 10.96}
+  m_SizeDelta: {x: 208.88, y: 33.77}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &224310761311396286
 RectTransform:

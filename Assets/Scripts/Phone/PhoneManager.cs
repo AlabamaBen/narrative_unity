@@ -118,7 +118,7 @@ public class PhoneManager : MonoBehaviour {
                             smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
 
                             StartCoroutine(LaunchAnimationPhone(false, 2f));
-                            SFX_Send.PlayTheSound();
+                            StartCoroutine(PlaySoundWithDelay(SFX_Send, 1f));
                             DesactivateAllButtons();
                             Invoke("FinishPhoneGame", 2.5F);
                         }
@@ -157,7 +157,7 @@ public class PhoneManager : MonoBehaviour {
                             boiteEnvoi.text = "";
                             smsObj.SetActive(true);
                             smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
-                            SFX_Send.PlayTheSound();
+                            StartCoroutine(PlaySoundWithDelay(SFX_Send, 1f));
 
                             StartCoroutine(LaunchAnimationPhone(false, 2f));
                             DesactivateAllButtons();
@@ -220,6 +220,11 @@ public class PhoneManager : MonoBehaviour {
                 }
                 break;
         }
+    }
+    private IEnumerator PlaySoundWithDelay(SFXSound sound, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        sound.PlayTheSound();
     }
 
     public void SetChoice(int _choix)

@@ -14,13 +14,17 @@ public class MoveMessageBox : MonoBehaviour {
     }
     public void AnimateTextBox()
     {
+        //Debug.Log("transform.position  " + transform.position);
+        //Debug.Log("targetPosition.position  " + targetPosition);
         // Smoothly move the camera towards that target position
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     }
 
     private void Update()
     {
-        if(transform.position != targetPosition)
+        if(Vector3.Distance(transform.position,targetPosition)>=0.1f)
+        {
             AnimateTextBox();
+        }
     }
 }

@@ -44,10 +44,7 @@ public class LoadDialoguesManager : MonoBehaviour {
 
         string fs = file.text;
         string[] fLines = Regex.Split(fs, "\n");
-        string line;
 
-        //Define separator pattern
-        Regex CSVParser = new Regex(";"); // (",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
 
         int allDialoguesCompteur = 0;
         //Debug.Log(fLines[0]);
@@ -60,6 +57,8 @@ public class LoadDialoguesManager : MonoBehaviour {
         {
             //Debug.Log(line);
             //Separating columns to array
+            //Define separator pattern
+            Regex CSVParser = new Regex(";"); // (",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
             string[] rowData = CSVParser.Split(fLines[counterCSV]);
 
             DataObject tempObject = new DataObject(rowData[0], rowData[1], rowData[2], rowData[3], rowData[4], rowData[5], rowData[6]);

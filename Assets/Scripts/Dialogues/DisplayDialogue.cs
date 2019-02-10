@@ -11,7 +11,11 @@ public class DisplayDialogue : MonoBehaviour {
     public List<GameObject> messagesList; 
     private string stringToDisplay; // dynamic string that is displayed
     public Animator animator;
-    [Header("SFX sound param")]
+    public RectTransform canvas;
+    private float panelWidth;
+    private float panelHeight;
+
+       [Header("SFX sound param")]
     public SFXSound_Voice talk_sound_Alex;
     public SFXSound_Voice talk_sound_Natyahs;
     [SerializeField]
@@ -31,8 +35,23 @@ public class DisplayDialogue : MonoBehaviour {
     private void Start()
     {
         animator = this.GetComponent<Animator>();
+        panelWidth = canvas.rect.width * canvas.localScale.x;
+        panelHeight = canvas.rect.height * canvas.localScale.y;
     }
 
+    // Resize boxes
+    private void Update()
+    {
+        float value = canvas.rect.height * canvas.localScale.y;
+        if (value != panelHeight)
+        {
+            foreach (GameObject msg in messagesList)
+            {
+                msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position;
+            }
+            panelHeight = canvas.rect.height * canvas.localScale.y;
+        }
+    }
 
     IEnumerator AnimateTextDialog(Text textBox, string strComplete, float speed, string interlocuteur)
     {
@@ -68,7 +87,7 @@ public class DisplayDialogue : MonoBehaviour {
     {
         foreach (GameObject msg in messagesList)
         {
-            msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position + Vector3.up * 100;
+            msg.GetComponent<MoveMessageBox>().targetPosition = msg.transform.position + Vector3.up * canvas.rect.height * canvas.localScale.y * 0.1f;
         }
 
         GameObject currentMsg = null;
@@ -106,7 +125,6 @@ public class DisplayDialogue : MonoBehaviour {
         }
     }
 
-
     public void DestroyAllDialogues()
     {
         // End Dialogue Fade out last 3sec
@@ -128,8 +146,11 @@ public class DisplayDialogue : MonoBehaviour {
 
     private void ReplaceSprite(string _name,Image spriteToReplace)
     {
+        _name = _name.Trim(); // inconsistency empty character at the end
+
         foreach (SpriteData spr in allSprites)
         {
+
             if (spr.img_name != "" && spr.img_name.Equals(_name))
             {
                 spriteToReplace.sprite = spr.sprite;

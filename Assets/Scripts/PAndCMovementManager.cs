@@ -8,11 +8,11 @@ using UnityEngine.EventSystems;
 public class PAndCMovementManager : MonoBehaviour {
     [SerializeField]
     private PlayerMovement playerMovement;
-    private bool monologueUiCliked;
+    //private bool monologueUiCliked;
 
     // Use this for initialization
     void Start () {
-        monologueUiCliked = false;
+        //monologueUiCliked = false;
     }
 	
 	// Update is called once per frame

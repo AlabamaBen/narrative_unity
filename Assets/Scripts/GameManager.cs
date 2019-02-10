@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         // TEST
         //Cinematics.instance.DisplayCinematic(2);
-        //step = 17;
+        //step = 5;
         //dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
         //step = 41;

@@ -142,7 +142,7 @@ public class Ring : MonoBehaviour {
     [HideInInspector]
     public static bool Game_End = false;
 
-    float sound_wip_time = 0; 
+    //float sound_wip_time = 0; 
 
     Vector2 last_mouse_position; 
     private void OnMouseDrag()

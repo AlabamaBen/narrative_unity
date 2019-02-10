@@ -7,7 +7,7 @@ public class minigame_1 : MonoBehaviour {
 
     Vector3 originalPosition;
 
-    float shakeAmt = 0;
+    //float shakeAmt = 0;
 
     public Slider progress_bar;
 
