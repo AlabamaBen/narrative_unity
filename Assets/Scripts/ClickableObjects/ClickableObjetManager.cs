@@ -17,6 +17,7 @@ public class ClickableObjetManager : MonoBehaviour
     public bool startPAndClick;
 
     public GameObject verre_eau;
+    public GameObject pc;
 
     public PlayerMovement playerMovement;
 
@@ -53,6 +54,13 @@ public class ClickableObjetManager : MonoBehaviour
             obj.GetComponent<ClickableObject>().isInterractable = false;
             obj.SetActive(false);
         }
+        pc.SetActive(false);
+        verre_eau.SetActive(false);
+    }
+
+    public void DisplayPC()
+    {
+        pc.SetActive(true);
     }
 
     public void SetActivableObjects(int _phase)
@@ -149,15 +157,6 @@ public class ClickableObjetManager : MonoBehaviour
                         //obj.StopBlinking();
                         //obj.gameObject.SetActive(false);
                         //clickableObjets.Remove(obj.GetComponent<ClickableObject>());
-
-                        startPAndClick = false;
-
-                        SFX_water.PlayTheSound();
-
-                        verre_eau.GetComponent<Animator>().SetBool("renverse", true);
-
-                        Invoke("EndPhase3Minigame", 2F);
-                        phase++;
                     }
                 }
                 break;
@@ -178,6 +177,16 @@ public class ClickableObjetManager : MonoBehaviour
 
             SetActivableObjects(phase);
             BlinkAllObjects();
+        }
+        else if(phase == 2)
+        {
+
+            startPAndClick = false;
+            SFX_water.PlayTheSound();
+            verre_eau.GetComponent<Animator>().SetBool("renverse", true);
+
+            Invoke("EndPhase3Minigame", 2F);
+            phase++;
         }
 
     }

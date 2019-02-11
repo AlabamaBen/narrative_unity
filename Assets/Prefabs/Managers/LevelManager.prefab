@@ -182,6 +182,7 @@ MonoBehaviour:
   finishedPAndCStep: 0
   startPAndClick: 0
   verre_eau: {fileID: 0}
+  pc: {fileID: 0}
   playerMovement: {fileID: 0}
   SFX_water: {fileID: 114619898839290028}
 --- !u!114 &114619898839290028

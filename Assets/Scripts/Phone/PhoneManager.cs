@@ -157,7 +157,7 @@ public class PhoneManager : MonoBehaviour {
                             boiteEnvoi.text = "";
                             smsObj.SetActive(true);
                             smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
-                            StartCoroutine(PlaySoundWithDelay(SFX_Send, 1f));
+                            StartCoroutine(PlaySoundWithDelay(SFX_Send, 1.5f));
 
                             StartCoroutine(LaunchAnimationPhone(false, 2f));
                             DesactivateAllButtons();

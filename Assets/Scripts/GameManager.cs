@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         // TEST
         //Cinematics.instance.DisplayCinematic(2);
-        //step = 5;
+        //step = 8; ClickableObjetManager.phase = 1;
         //dialoguesSeqFinished = false;
         //ClickableObjetManager.phase = 1;
         //step = 41;
@@ -202,7 +202,7 @@ public class GameManager : MonoBehaviour
                     step++;
                 }
                 break;
-            case 7: // Message de Lucie - Smartphone
+            case 7: // Message de Maman - Smartphone
                 if (PhoneManager.instance.phoneGameFinished)
                 {
                     // Init next step
@@ -288,6 +288,7 @@ public class GameManager : MonoBehaviour
             case 13: // Fade IN / Fade Out
                 if (!blockInput)
                 {
+                    ClickableObjetManager.instance.DeActivateCleanedObjects();
                     blockInput = true;
                     CurtainsFadeOut();
                     Invoke("waitAndUnblockInput", 1f);
@@ -298,8 +299,6 @@ public class GameManager : MonoBehaviour
             case 14:
                 if (!blockInput)
                 {
-                    // BENJAMIN : Jouer un son de porte qui claque
-
                     SFX_Door.PlayTheSound();
 
                     blockInput = true;
@@ -333,6 +332,7 @@ public class GameManager : MonoBehaviour
                     //init next step
                     Cinematics.instance.endCinematic = false;
                     Cinematics.instance.DisplayPlanche(4);
+                    ClickableObjetManager.instance.DisplayPC();
                     step++;
                 }
                 break;
