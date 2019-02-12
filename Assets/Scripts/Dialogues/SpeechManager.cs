@@ -58,7 +58,7 @@ public class SpeechManager : MonoBehaviour
                 StartCoroutine(WaitCloseMonologAndDisplayNextSequenceMonolog());
             }
             // TO REDO (Not clean)
-            else if (GameManager.step == 15 || GameManager.step == 16 || GameManager.step == 27 )
+            else if (GameManager.step == 16 || GameManager.step == 17 || GameManager.step == 28 )
             {
                 GameManager.instance.dialoguesSeqFinished = false;
                 GameManager.instance.blockInput = false;

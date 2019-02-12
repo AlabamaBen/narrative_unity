@@ -16,7 +16,7 @@ Sequence id;Personnage;Dialogue;Etat;Skipable;Delai (avant de lancer le dialogue
 1;Natyahs;Je ne peux pas m’en éloigner avec ce corps...\\T'occupes, c'est un truc de génie.;;1;;natyahs_interet
 2;Alex;Ah mince, j'avais oublié ! Faut que je range...;;1;;alex_panique
 2;Natyahs;Tu veux de l'aide ?;;1;;natyahs_interet
-2;Natyahs;Ce serait un gachi de mon pouvoir, mais si tu le souhaites…;;1;;natyahs_epaule
+2;Natyahs;Ce serait un gâchis de mon pouvoir, mais si tu le souhaites...;;1;;natyahs_epaule
 2;Alex;Bien essayé, mais je vais garder mon corps ce coup-ci.;;1;;alex_rigole
 3;Natyahs;Besoin de quelque chose ?;;1;;natyahs_propose
 3;Alex;!!;;1;;alex_choc

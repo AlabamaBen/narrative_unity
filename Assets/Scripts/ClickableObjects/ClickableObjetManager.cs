@@ -58,6 +58,11 @@ public class ClickableObjetManager : MonoBehaviour
         verre_eau.SetActive(false);
     }
 
+    public void MaskWaterGlass()
+    {
+        verre_eau.SetActive(false);
+    }
+
     public void DisplayPC()
     {
         pc.SetActive(true);

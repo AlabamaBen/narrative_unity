@@ -9,6 +9,7 @@ public class Cinematics : MonoBehaviour
     public List<GameObject> planches;
     public GameObject legend;
     public GameObject antre;
+    public GameObject panel_Text;
     private List<Image> images;
     private int compteur;
     private bool blockInput;
@@ -100,14 +101,19 @@ public class Cinematics : MonoBehaviour
         {
             startCinematic = false;
             // Fade out BG
-            foreach (Image img in images)
+            for (int i=0;i<images.Count-1;i++)
             {
-                StartCoroutine(FadeImageBgPlanche(true, img,plancheIndex, speedAnimation));
+                Debug.Log(i);
+                StartCoroutine(FadeINandOutImage(true, images[i], speedAnimation, images[i].gameObject));
             }
-            StartCoroutine(FadeImageBgPlanche(true, planches[plancheIndex].GetComponent<Image>(), plancheIndex, speedAnimation));
+            Invoke("WaitAndEndCinematic", 0.5f);
         }
     }
-
+    private void WaitAndEndCinematic()
+    {
+        StartCoroutine(FadeINandOutImage(true, images[images.Count - 1], 5f, images[images.Count - 1].gameObject));
+        StartCoroutine(FadeImageBgPlanche(true, planches[plancheIndex].GetComponent<Image>(), plancheIndex, speedAnimation));
+    }
     IEnumerator FadeImageBgPlanche(bool fadeAway,Image img,int index, float speed)
     {
         // fade from opaque to transparent
@@ -167,6 +173,41 @@ public class Cinematics : MonoBehaviour
         }
     }
 
+    IEnumerator FadeText(bool fadeAway, Text text, float speed, GameObject objToDeactivate)
+    {
+        // fade from opaque to transparent
+        if (fadeAway)
+        {
+            // loop over 1 second backwards
+            for (float i = 1; i >= 0; i -= Time.deltaTime * speed)
+            {
+                // set color with i as alpha
+                text.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+            objToDeactivate.SetActive(false);
+            endCinematic = true;
+        }
+        // fade from transparent to opaque
+        else
+        {
+            text.enabled = true;
+            // loop over 0.5 second
+            for (float i = 0; i <= 1; i += Time.deltaTime * speed)
+            {
+                // set color with i as alpha
+                text.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+            StartCoroutine(FadeText(true, text, speed, objToDeactivate));
+        }
+    }
+
+    public void DisplayText()
+    {
+        panel_Text.SetActive(true);
+        StartCoroutine(FadeText(false, panel_Text.GetComponentInChildren<Text>(), 0.5f,panel_Text));
+    }
 
     public void DisplayPlanche(int index)
     {
@@ -199,7 +240,6 @@ public class Cinematics : MonoBehaviour
 
 
     public SFXSound SFX_tok; 
-    // BENJAMIN
     private void PlaySound(int plancheIndex, int imgIndex){
 
         if (plancheIndex == 2 && imgIndex == 0) // Jouer un son de toc toc
