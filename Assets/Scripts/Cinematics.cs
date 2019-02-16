@@ -52,8 +52,12 @@ public class Cinematics : MonoBehaviour
         startCinematic = true;
         blockInput = true;
 
-        StartCoroutine(FadeImageBgPlanche(false, planches[index].GetComponent<Image>(), index, speedAnimation));
+        Debug.Log(endCinematic);
+
+        StartCoroutine(FadeImageBgPlanche(false, planches[index].GetComponent<Image>(), index, speedAnimation,false));
+        Debug.Log(endCinematic);
         StartCoroutine(FadeVignette(false, compteur, index, speedAnimation));
+        Debug.Log(endCinematic);
 
     }
 
@@ -103,18 +107,19 @@ public class Cinematics : MonoBehaviour
             // Fade out BG
             for (int i=0;i<images.Count-1;i++)
             {
-                Debug.Log(i);
-                StartCoroutine(FadeINandOutImage(true, images[i], speedAnimation, images[i].gameObject));
+                StartCoroutine(FadeINandOutImage(true, images[i], speedAnimation, images[i].gameObject,false));
             }
             Invoke("WaitAndEndCinematic", 0.5f);
         }
     }
+
     private void WaitAndEndCinematic()
     {
-        StartCoroutine(FadeINandOutImage(true, images[images.Count - 1], 5f, images[images.Count - 1].gameObject));
-        StartCoroutine(FadeImageBgPlanche(true, planches[plancheIndex].GetComponent<Image>(), plancheIndex, speedAnimation));
+        StartCoroutine(FadeINandOutImage(true, images[images.Count - 1], 5f, images[images.Count - 1].gameObject, false));
+        StartCoroutine(FadeImageBgPlanche(true, planches[plancheIndex].GetComponent<Image>(), plancheIndex, speedAnimation,true));
     }
-    IEnumerator FadeImageBgPlanche(bool fadeAway,Image img,int index, float speed)
+
+    IEnumerator FadeImageBgPlanche(bool fadeAway,Image img,int index, float speed, bool _endCinematic)
     {
         // fade from opaque to transparent
         if (fadeAway)
@@ -127,7 +132,8 @@ public class Cinematics : MonoBehaviour
                 yield return null;
             }
             planches[index].gameObject.SetActive(false);
-            endCinematic = true;
+            if(_endCinematic)
+                endCinematic = true;
         }
         // fade from transparent to opaque
         else
@@ -143,7 +149,7 @@ public class Cinematics : MonoBehaviour
         }
     }
 
-    IEnumerator FadeINandOutImage(bool fadeAway, Image img, float speed, GameObject objToDeactivate)
+    IEnumerator FadeINandOutImage(bool fadeAway, Image img, float speed, GameObject objToDeactivate, bool _endCinematic)
     {
         // fade from opaque to transparent
         if (fadeAway)
@@ -156,7 +162,8 @@ public class Cinematics : MonoBehaviour
                 yield return null;
             }
             objToDeactivate.SetActive(false);
-            endCinematic = true;
+            if (_endCinematic)
+                endCinematic = true;
         }
         // fade from transparent to opaque
         else
@@ -169,7 +176,7 @@ public class Cinematics : MonoBehaviour
                 img.color = new Color(1, 1, 1, i);
                 yield return null;
             }
-            StartCoroutine(FadeINandOutImage(true, img, speed, antre));
+            StartCoroutine(FadeINandOutImage(true, img, speed, antre,_endCinematic));
         }
     }
 
@@ -211,6 +218,8 @@ public class Cinematics : MonoBehaviour
 
     public void DisplayPlanche(int index)
     {
+        Debug.Log(endCinematic);
+        endCinematic = false;
         planches[index].SetActive(true);
         InitCinematics(index);
     }
@@ -234,7 +243,7 @@ public class Cinematics : MonoBehaviour
         Color transparencyColor = antreImg.color;
         transparencyColor.a = transparency;
         antreImg.color = transparencyColor;
-        StartCoroutine(FadeINandOutImage(false, antreImg, delay,antre));
+        StartCoroutine(FadeINandOutImage(false, antreImg, delay,antre,true));
 
     }
 

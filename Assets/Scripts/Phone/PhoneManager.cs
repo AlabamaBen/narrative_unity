@@ -33,6 +33,7 @@ public class PhoneManager : MonoBehaviour {
     public SFXSound SFX_Buzz;
     public SFXSound SFX_Tap;
     public SFXSound SFX_Send;
+    public SFXSound SFX_Texting_Short;
     public SFXSound SFX_Texting;
 
 
@@ -148,7 +149,7 @@ public class PhoneManager : MonoBehaviour {
                         smsTexte.text = "Ok !";
                         DesactivateAllButtons();
                         buttonToDesactivate[3].SetActive(true);
-                        SFX_Texting.PlayTheSound();
+                        SFX_Texting_Short.PlayTheSound();
                         substep++;
                         break;
                     case 3:
@@ -210,7 +211,7 @@ public class PhoneManager : MonoBehaviour {
                     case 3:
                         smsObj.SetActive(true);
                         smsObj.GetComponent<Animator>().SetTrigger("sendMessage");
-                        SFX_Send.PlayTheSound();
+                        StartCoroutine(PlaySoundWithDelay(SFX_Send, 0.5f));
 
                         StartCoroutine(LaunchAnimationPhone(false, 2f));
                         DesactivateAllButtons();

@@ -47,14 +47,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // TEST
-        //Cinematics.instance.DisplayCinematic(2);
-        //step = 8; ClickableObjetManager.phase = 1;
-        //dialoguesSeqFinished = false;
-        //ClickableObjetManager.phase = 1;
-        //step = 23;
-        //Cinematics.instance.endCinematic = false;
-        //Cinematics.instance.DisplayPlanche(2);
-        //Cinematics.instance.DisplayPlanche(7);
+
+        //step = 1; PhoneManager.instance.phoneGameFinished = true;
 
     }
 
@@ -132,7 +126,7 @@ public class GameManager : MonoBehaviour
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
                     //TEST, next line to remove 
-                    //Ring.Game_End = true;
+                    Ring.Game_End = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
@@ -270,21 +264,24 @@ public class GameManager : MonoBehaviour
             case 11: // Cinematique 2, Mere qui arrive et Pc dans l'eau
                 if (Cinematics.instance.endCinematic)
                 {
-                    //init next step
                     Cinematics.instance.endCinematic = false;
+                    //init next step
                     Cinematics.instance.DisplayPlanche(2);
+                    Debug.Log("Cinematique" + Cinematics.instance.endCinematic);
                     step++;
                 }
                 break;
             case 12: // Fin de la cinematique 2
                 if (Cinematics.instance.endCinematic)
                 {
+                    Debug.Log(Cinematics.instance.endCinematic);
+                    Debug.Log("waitAndUnblockInput 5 ");
                     blockInput = true;
                     //Cinematics.instance.DisplayText("");
                     blockMovementOnGround = false;
                     dialoguesSeqFinished = false;
                     step++;
-                    Invoke("waitAndUnblockInput", 2f);
+                    Invoke("waitAndUnblockInput", 3f);
                     CurtainsFadeIn();
                 }
                 break;
@@ -305,6 +302,7 @@ public class GameManager : MonoBehaviour
                     blockInput = true;
                     CurtainsFadeOut();
                     Invoke("waitAndUnblockInput", 1f);
+                    StartCoroutine(ResetPlayerPos(1, 0f));
                     step++;
                 }
                 break;
@@ -335,6 +333,7 @@ public class GameManager : MonoBehaviour
                     // init next step
                     Cinematics.instance.endCinematic = false;
                     Cinematics.instance.DisplayPlanche(3);
+                    StartCoroutine(ResetPlayerPos(2, 0.5f));
                     step++;
                 }
                 break;
@@ -511,7 +510,7 @@ public class GameManager : MonoBehaviour
                 if (m_Scene.name != "minigame_2" && !sceneLoaded)
                 {
                     //TEST, next line to remove
-                    //Minigame2_Behavior.MINIGAME2_END = true;
+                    Minigame2_Behavior.MINIGAME2_END = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
@@ -703,6 +702,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator ResetPlayerPos(int positionIndex, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayerMovement.instance.ResetPlayerPos(positionIndex);
+    }
 
     IEnumerator LoadScene(string sceneName, float delay)
     {

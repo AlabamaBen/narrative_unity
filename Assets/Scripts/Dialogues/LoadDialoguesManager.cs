@@ -8,12 +8,15 @@ public class LoadDialoguesManager : MonoBehaviour {
     public List<DataObject> dialogueSequenceTemp;
     [HideInInspector]
     public List<List<DataObject>> allDialogues;
-    public TextAsset file;
+    public List<TextAsset> file;
 
     public static LoadDialoguesManager instance = null;
 
+    [HideInInspector]
     public static int sequenceIndex;
+    [HideInInspector]
     public static int dialogueIndex;
+    public static int indexDialogueFile = 1;
 
     private string m_path;
 
@@ -42,7 +45,7 @@ public class LoadDialoguesManager : MonoBehaviour {
     {
         allDialogues = new List<List<DataObject>>();
 
-        string fs = file.text;
+        string fs = file[indexDialogueFile].text;
         string[] fLines = Regex.Split(fs, "\n");
 
 

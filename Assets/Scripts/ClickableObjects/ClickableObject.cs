@@ -18,6 +18,7 @@ public class ClickableObject : MonoBehaviour
     public float blinkingSpeed;
 
     public Transform hit_position;
+    private Collider2D coll;
 
 
     private void Awake()
@@ -26,18 +27,34 @@ public class ClickableObject : MonoBehaviour
         blinking = false;
         prefab = this.gameObject;
         isInterractable = false;
+        coll = GetComponent<Collider2D>();
     }
 
-    private void OnMouseDown()
+
+
+    void Update()
     {
-        //Debug.Log("clikc");
-        if (isInterractable && !isClicked)
+        // Move this object to the position clicked by the mouse.
+        if (Input.GetMouseButtonDown(0))
         {
-            isClicked = true;
-            ClickableObjetManager.instance.ObjectClicked(this);
-            Invoke("waitAndUnblockInput", 0.5f);
+            //Debug.Log("Hit object: " );
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray);
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                RaycastHit2D hit = hits[i];
+                if (hit.collider.gameObject.name.Equals(this.name) && isInterractable && !isClicked)
+                {
+                    isClicked = true;
+                    ClickableObjetManager.instance.ObjectClicked(this);
+                    Invoke("waitAndUnblockInput", 0.2f);
+                }
+            }
         }
     }
+
     private void waitAndUnblockInput()
     {
         isClicked = false;

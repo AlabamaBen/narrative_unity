@@ -18,6 +18,34 @@ public class PlayerMovement : MonoBehaviour {
 
     public ClickableObjetManager clickableObjetManager;
 
+
+    public static PlayerMovement instance = null;
+
+    private void Awake()
+    {
+        //Check if instance already exists
+        if (instance == null)
+        {
+            //if not, set instance to this
+            instance = this;
+        }
+        //If instance already exists and it's not this:
+        else if (instance != this)
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);
+    }
+
+    public void ResetPlayerPos(int position)
+    {
+        Vector3 startPosition = this.transform.position;
+        if (position==1)
+            startPosition = new Vector3(-15f, -4.35f, 0);
+        else if (position == 2)
+            startPosition = new Vector3(4.2f, -8.7f, 0);
+
+        this.gameObject.transform.position = startPosition;
+    }
+
     // Use this for initialization
     void Start () {
         spriteOffset = 0; //this.GetComponent<SpriteRenderer>().size.y * this.transform.localScale.y / 4;
