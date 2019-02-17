@@ -10,6 +10,7 @@ public class Cinematics : MonoBehaviour
     public GameObject legend;
     public GameObject antre;
     public GameObject panel_Text;
+    public GameObject panel_tuto;
     private List<Image> images;
     private int compteur;
     private bool blockInput;
@@ -48,16 +49,14 @@ public class Cinematics : MonoBehaviour
             images.Add(img);
         }
         compteur = 0;
+        if (index==2)
+            compteur = 1;
         plancheIndex = index;
         startCinematic = true;
         blockInput = true;
 
-        Debug.Log(endCinematic);
-
         StartCoroutine(FadeImageBgPlanche(false, planches[index].GetComponent<Image>(), index, speedAnimation,false));
-        Debug.Log(endCinematic);
         StartCoroutine(FadeVignette(false, compteur, index, speedAnimation));
-        Debug.Log(endCinematic);
 
     }
 
@@ -75,6 +74,7 @@ public class Cinematics : MonoBehaviour
         if (compteur < images.Count)
         {
             PlaySound(plancheIndex, imgIndex);
+            images[imgIndex].gameObject.SetActive(true);
             // fade from opaque to transparent
             if (fadeAway)
             {
@@ -99,7 +99,12 @@ public class Cinematics : MonoBehaviour
                 }
             }
             blockInput = false;
-            compteur++;
+            if (plancheIndex == 2 && compteur == 1)
+                compteur = 0;
+            else if (plancheIndex == 2 && compteur == 0)
+                compteur = 2;
+            else
+                compteur++;
         }
         else
         {
@@ -210,18 +215,30 @@ public class Cinematics : MonoBehaviour
         }
     }
 
-    public void DisplayText()
+    public void DisplayText(int text)
     {
         panel_Text.SetActive(true);
+        if (text == 2)
+            panel_Text.GetComponentInChildren<Text>().text = "Quelques jours plus tard...";
         StartCoroutine(FadeText(false, panel_Text.GetComponentInChildren<Text>(), 0.5f,panel_Text));
     }
 
     public void DisplayPlanche(int index)
     {
-        Debug.Log(endCinematic);
         endCinematic = false;
         planches[index].SetActive(true);
         InitCinematics(index);
+    }
+
+    public void DisplayTutoMinigame2()
+    {
+        endCinematic = false;
+        panel_tuto.SetActive(true);
+    }
+
+    public void LauchMinigame2()
+    {
+        endCinematic = true;
     }
 
     private void WaitAndUnblockInput()

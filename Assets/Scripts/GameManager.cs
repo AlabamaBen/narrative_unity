@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // TEST
-
+        //step = 36;
+        //StartCoroutine(LoadScene("minigame_2", 2f));
         //step = 1; PhoneManager.instance.phoneGameFinished = true;
-
     }
 
     // Update is called once per frame
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
                     step++;
                 }
                 break;
-            case -1: 
+            case -1:
                 if (!blockInput)
                 {
                     step++;
@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
                 if (m_Scene.name != "minigame_1" && !sceneLoaded)
                 {
                     //TEST, next line to remove 
-                    Ring.Game_End = true;
+                    //Ring.Game_End = true;
 
                     CurtainsFadeIn();
                     sceneLoaded = true;
@@ -267,15 +267,15 @@ public class GameManager : MonoBehaviour
                     Cinematics.instance.endCinematic = false;
                     //init next step
                     Cinematics.instance.DisplayPlanche(2);
-                    Debug.Log("Cinematique" + Cinematics.instance.endCinematic);
+                    //Debug.Log("Cinematique" + Cinematics.instance.endCinematic);
                     step++;
                 }
                 break;
             case 12: // Fin de la cinematique 2
                 if (Cinematics.instance.endCinematic)
                 {
-                    Debug.Log(Cinematics.instance.endCinematic);
-                    Debug.Log("waitAndUnblockInput 5 ");
+                    //Debug.Log(Cinematics.instance.endCinematic);
+                    //Debug.Log("waitAndUnblockInput 5 ");
                     blockInput = true;
                     //Cinematics.instance.DisplayText("");
                     blockMovementOnGround = false;
@@ -289,7 +289,7 @@ public class GameManager : MonoBehaviour
                 if (!blockInput)
                 {
                     ClickableObjetManager.instance.DeActivateCleanedObjects();
-                    Cinematics.instance.DisplayText();
+                    Cinematics.instance.DisplayText(1);
                     blockInput = true;
                     Invoke("waitAndUnblockInput", 3f);
                     blockMovementOnGround = true;
@@ -405,7 +405,7 @@ public class GameManager : MonoBehaviour
 
                     // init next step
                     Cinematics.instance.endCinematic = false;
-                    Cinematics.instance.DisplayPlanche(5); 
+                    Cinematics.instance.DisplayPlanche(5);
                     step++;
                 }
                 break;
@@ -461,7 +461,7 @@ public class GameManager : MonoBehaviour
                     // init next step
 
                     Cinematics.instance.endCinematic = false;
-                    Cinematics.instance.DisplayPlanche(6); 
+                    Cinematics.instance.DisplayPlanche(6);
                     dialoguesSeqFinished = false;
                     step++;
                 }
@@ -503,32 +503,37 @@ public class GameManager : MonoBehaviour
 
                     // Init next step
                     step++;
+                    Cinematics.instance.DisplayTutoMinigame2();
                 }
                 break;
             case 31: // Lancement mini devoir
-                m_Scene = SceneManager.GetActiveScene();
-                if (m_Scene.name != "minigame_2" && !sceneLoaded)
+                if (Cinematics.instance.endCinematic == true)
                 {
-                    //TEST, next line to remove
-                    Minigame2_Behavior.MINIGAME2_END = true;
-
-                    CurtainsFadeIn();
-                    sceneLoaded = true;
-                    StartCoroutine(LoadScene("minigame_2", 2f));
-                }
-
-                if (m_Scene.name == "minigame_2" && curtains_Panel.GetComponent<Animator>().gameObject.activeSelf && curtains_Panel.GetComponent<Animator>().GetBool("fadeIn"))
-                {
-                    CurtainsFadeOut();
-                }
-                else
-                {
-                    if (Minigame2_Behavior.MINIGAME2_END)
+                    m_Scene = SceneManager.GetActiveScene();
+                    if (m_Scene.name != "minigame_2" && !sceneLoaded)
                     {
+                        //TEST, next line to remove
+                        //Minigame2_Behavior.MINIGAME2_END = true;
+
                         CurtainsFadeIn();
-                        step++;
+                        sceneLoaded = true;
+                        StartCoroutine(LoadScene("minigame_2", 2f));
+                    }
+
+                    if (m_Scene.name == "minigame_2" && curtains_Panel.GetComponent<Animator>().gameObject.activeSelf && curtains_Panel.GetComponent<Animator>().GetBool("fadeIn"))
+                    {
+                        CurtainsFadeOut();
+                    }
+                    else
+                    {
+                        if (Minigame2_Behavior.MINIGAME2_END)
+                        {
+                            //CurtainsFadeIn();
+                            step++;
+                        }
                     }
                 }
+
                 break;
             case 32: // Reload de la scene principale
                 m_Scene = SceneManager.GetActiveScene();
@@ -581,10 +586,24 @@ public class GameManager : MonoBehaviour
                     blockInput = true;
                     CurtainsFadeIn();
                     Invoke("waitAndUnblockInput", 2f);
+
+                    // init next step
+                    Cinematics.instance.endCinematic = false;
+                    Cinematics.instance.DisplayPlanche(5);
                     step++;
                 }
                 break;
-            case 35: // Blink antre
+            case 35: //  Cinematique 4 - Met la bague
+                if (Cinematics.instance.endCinematic)
+                {
+                    // Init next step
+                    blockInput = true;
+                    CurtainsFadeIn();
+                    Invoke("waitAndUnblockInput", 2f);
+                    step++;
+                }
+                break;
+            case 36: // Blink antre
                 if (!blockInput)
                 {
                     Cinematics.instance.endCinematic = false;
@@ -592,8 +611,26 @@ public class GameManager : MonoBehaviour
                     step++;
                 }
                 break;
-            case 36: // Fin de la cinematique antre
+            case 37: // Fin de la cinematique antre
                 if (Cinematics.instance.endCinematic)
+                {
+                    blockInput = true;
+                    Invoke("waitAndUnblockInput", 1f);
+                    step++;
+                }
+                break;
+            case 38: // Fin du fade out
+                if (!blockInput)
+                {
+                    blockInput = true;
+                    Cinematics.instance.DisplayText(2);
+                    Invoke("waitAndUnblockInput", 2f);
+                    blockMovementOnGround = true;
+                    step++;
+                }
+                break;
+            case 39: // Fin du fade out - Cinematique  - Convocation
+                if (!blockInput)
                 {
                     blockInput = true;
                     CurtainsFadeOut();
@@ -601,15 +638,7 @@ public class GameManager : MonoBehaviour
                     step++;
                 }
                 break;
-            case 37: // Fin du fade out
-                if (!blockInput)
-                {
-                    blockInput = true;
-                    step++;
-                    Invoke("waitAndUnblockInput", 1.5f);
-                }
-                break;
-            case 38: // Fin du fade out - Cinematique  - Convocation
+            case 40: // Fin du fade out - Cinematique  - Convocation
                 if (!blockInput)
                 {
                     // init next step
@@ -618,7 +647,7 @@ public class GameManager : MonoBehaviour
                     step++;
                 }
                 break;
-            case 39: //  Cinematique 4 - Met la bague
+            case 41: //  Cinematique 7
                 if (Cinematics.instance.endCinematic)
                 {
                     blockInput = true;
@@ -627,7 +656,7 @@ public class GameManager : MonoBehaviour
                     Invoke("waitAndUnblockInput", 1.5f);
                 }
                 break;
-            case 40: // 6 - Debut dialogue Natyahs et Alex, pourquoi je suis convoquee ?
+            case 42: // 6 - Debut dialogue Natyahs et Alex, pourquoi je suis convoquee ?
                 if (!dialoguesSeqFinished && !blockInput)
                 {
                     if (!SpeechManager.instance.startDialogue)
@@ -657,34 +686,47 @@ public class GameManager : MonoBehaviour
                     // Init next step
                 }
                 break;
-            case 41: // 6 - Fin pourquoi je suis convoquee ?
+            case 43: // 6 - Fin pourquoi je suis convoquee ?
                 if (!dialoguesSeqFinished && SpeechManager.instance.displayDialogue.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !SpeechManager.instance.displayDialogue.animator.IsInTransition(0))
                 { // Current animation (Fadeout Dialogues) finished
                     dialoguesSeqFinished = true;
                     SpeechManager.instance.displayDialogue.dialogue_Alex_Nat.SetActive(false);
 
                     // Init next step
-                    Debug.Log(" Fin pourquoi je suis convoquee ?");
                     blockInput = true;
                     Invoke("waitAndUnblockInput", 1.5f);
                     step++;
                 }
                 break;
-            case 42: // Fin du fade out - Cinematique  - Convocation, Choix de cartes
+            case 44: // Fin du fade out - Cinematique  - Convocation, Choix de cartes
                 if (!blockInput)
                 {
                     // init next step
                     worlds_Canvas.SetActive(true);
                 }
                 break;
-            case 43: // Fin de choix cartes / Fade IN 
+            case 45: // Fin de choix cartes / Fade IN 
                 blockInput = true;
-                CurtainsFadeIn();
                 Invoke("waitAndUnblockInput", 1.5f);
+
+                // init next step
+                Cinematics.instance.endCinematic = false;
+                Cinematics.instance.DisplayPlanche(5);
+
                 step++;
                 break;
-            case 44: // Lancement mini jeu boite
-
+            case 46: //  Cinematique 4 - Met la bague
+                if (Cinematics.instance.endCinematic)
+                {
+                    // Init next step
+                    blockInput = true;
+                    CurtainsFadeIn();
+                    Invoke("waitAndUnblockInput", 2f);
+                    sceneLoaded = false;
+                    step++;
+                }
+                break;
+            case 47:
                 if (!blockInput)
                 {
                     m_Scene = SceneManager.GetActiveScene();
@@ -692,9 +734,9 @@ public class GameManager : MonoBehaviour
                     {
 
                         worlds_Canvas.SetActive(false);
-                        curtains_Panel.SetActive(false);
+                        //curtains_Panel.SetActive(false);
                         sceneLoaded = true;
-                        StartCoroutine(LoadScene("final_room", 0f));
+                        StartCoroutine(LoadYourAsyncScene("final_room"));
                         step++;
                     }
                 }
@@ -735,7 +777,7 @@ public class GameManager : MonoBehaviour
             // Erase collected item from step 31
             ClickableObjetManager.instance.DeActivateCleanedObjects();
         }
-        else if (step == 42)
+        else if (step == 47)
         {
             curtains_Panel.SetActive(false);
             worlds_Canvas.SetActive(false);
@@ -780,12 +822,12 @@ public class GameManager : MonoBehaviour
 
     public void ChoixCarte(int choix)
     {
-        Debug.Log("choix : " + choix);
+        //Debug.Log("choix : " + choix);
         worlds_Canvas.SetActive(false);
-        curtains_Panel.SetActive(false);
-        StartCoroutine(LoadScene("final_room", 1f));
-        worlds_Canvas.SetActive(false);
-        curtains_Panel.SetActive(false);
+        //curtains_Panel.SetActive(false);
+        //StartCoroutine(LoadScene("final_room", 1f));
+        //worlds_Canvas.SetActive(false);
+        //curtains_Panel.SetActive(false);
         /*
         Scene m_Scene = SceneManager.GetActiveScene();
         if (m_Scene.name != "final_room" && !sceneLoaded)
@@ -797,6 +839,6 @@ public class GameManager : MonoBehaviour
             StartCoroutine(LoadYourAsyncScene("final_room"));
             step++;
         }*/
-        // step++;
+        step++;
     }
 }

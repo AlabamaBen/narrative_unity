@@ -22,7 +22,7 @@ public class minigame_1 : MonoBehaviour {
     public float amplitude;
     public float length;
 
-    bool Opened = false; 
+    bool Opened = false;
 
     private void OnMouseDown()
     {
@@ -47,7 +47,7 @@ public class minigame_1 : MonoBehaviour {
     {
         originalPosition = transform.position;
         progress_bar.maxValue = Target;
-        progress_bar.value = 0; 
+        progress_bar.value = 0;
     }
 
 

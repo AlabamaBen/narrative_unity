@@ -37,6 +37,10 @@ public class PhoneManager : MonoBehaviour {
     public SFXSound SFX_Texting;
 
 
+    [SerializeField]
+    private Text time1;
+    [SerializeField]
+    private Text time2;
 
 
     public bool phoneGameFinished = false;
@@ -243,6 +247,21 @@ public class PhoneManager : MonoBehaviour {
 
     private IEnumerator LaunchAnimationPhone(bool phoneOpened, float delay)
     {
+        switch (step)
+        {
+            case 0:
+                time1.text = "14:07";
+                time2.text = "14:07";
+                break;
+            case 1:
+                time1.text = "14:24";
+                time2.text = "14:24";
+                break;
+            case 2:
+                time1.text = "16:01";
+                time2.text = "16:01";
+                break;
+        }
         yield return new WaitForSeconds(delay);
         animator.SetBool("phoneOpened", phoneOpened);
     }

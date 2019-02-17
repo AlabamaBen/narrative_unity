@@ -18,8 +18,6 @@ public class ClickableObject : MonoBehaviour
     public float blinkingSpeed;
 
     public Transform hit_position;
-    private Collider2D coll;
-
 
     private void Awake()
     {
@@ -27,7 +25,6 @@ public class ClickableObject : MonoBehaviour
         blinking = false;
         prefab = this.gameObject;
         isInterractable = false;
-        coll = GetComponent<Collider2D>();
     }
 
 

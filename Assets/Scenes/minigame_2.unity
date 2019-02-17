@@ -1932,7 +1932,6 @@ MonoBehaviour:
   fade: {fileID: 763277770}
   SFX_Alarm: {fileID: 583862666}
   SFX_Tiktok: {fileID: 1309853039}
-  timer_lenght: 30
 --- !u!1001 &1917722530
 Prefab:
   m_ObjectHideFlags: 0

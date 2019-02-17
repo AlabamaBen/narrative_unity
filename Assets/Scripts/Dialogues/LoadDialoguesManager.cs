@@ -16,7 +16,7 @@ public class LoadDialoguesManager : MonoBehaviour {
     public static int sequenceIndex;
     [HideInInspector]
     public static int dialogueIndex;
-    public static int indexDialogueFile = 1;
+    public static int indexDialogueFile = 0;
 
     private string m_path;
 
@@ -56,9 +56,9 @@ public class LoadDialoguesManager : MonoBehaviour {
         dialogueSequenceTemp = new List<DataObject>();
         
         // Read file until end of file
-        while (counterCSV< fLines.Length -1) // Foreach lines in the document
+        while (counterCSV< fLines.Length) // Foreach lines in the document
         {
-            //Debug.Log(line);
+            //Debug.Log(fLines[counterCSV]);
             //Separating columns to array
             //Define separator pattern
             Regex CSVParser = new Regex(";"); // (",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");

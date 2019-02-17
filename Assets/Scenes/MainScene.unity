@@ -628,14 +628,19 @@ Prefab:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 772077522}
-    - target: {fileID: 224474964202830400, guid: edeba378bc5fad347b168ae488557f4d,
+    - target: {fileID: 224944131931928438, guid: edeba378bc5fad347b168ae488557f4d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 44.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 224944131931928438, guid: edeba378bc5fad347b168ae488557f4d,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1003.9
       objectReference: {fileID: 0}
-    - target: {fileID: 224474964202830400, guid: edeba378bc5fad347b168ae488557f4d,
+    - target: {fileID: 114628050255551786, guid: edeba378bc5fad347b168ae488557f4d,
         type: 2}
-      propertyPath: m_SizeDelta.y
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -844,10 +849,6 @@ Prefab:
     - target: {fileID: 4968216301978704, guid: 4a667c12886a6184485d9c97414fa146, type: 2}
       propertyPath: m_RootOrder
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1003743681573046, guid: 4a667c12886a6184485d9c97414fa146, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a667c12886a6184485d9c97414fa146, type: 2}
